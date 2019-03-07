@@ -1,3 +1,4 @@
+"use strict";
 /* Load Car Data Access Object */
 const EquipementDao = require('../dao/equipementDao');
 

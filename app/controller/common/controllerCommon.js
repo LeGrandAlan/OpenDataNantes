@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Controllers Common functions
  */
