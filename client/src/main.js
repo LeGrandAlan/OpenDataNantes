@@ -1,7 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
 import * as L from 'leaflet';
-import 'leaflet/dist/leaflet.css'
+import 'leaflet/dist/leaflet.css';
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css'
 
 Vue.config.productionTip = false;
 
@@ -13,6 +15,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('../node_modules/leaflet/dist/images/marker-shadow.png')
 });
 
+Vue.use(Vuetify);
 
 new Vue({
   render: h => h(App),
