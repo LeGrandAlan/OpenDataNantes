@@ -1,8 +1,5 @@
 <template>
     <div id="map">
-        <div>
-
-        </div>
         <l-map
                 id="map-map"
                 :zoom="zoom"
@@ -87,13 +84,11 @@
 
 <style>
     #map {
-        width: 100%;
-        height: 100%;
         z-index: 2;
         position: relative;
     }
     #map-map {
-        height: 70%;
+        height: 100%;
         position: absolute;
         bottom: 0;
     }
