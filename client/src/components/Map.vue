@@ -1,16 +1,13 @@
 <template>
-    <div>
-        <div style="height: 20vh; overflow: auto;">
-            <h3>Simple map</h3>
-            <p>First marker is placed at {{ withPopup.lat }}, {{ withPopup.lng }}</p>
-            <p> Center is at {{ currentCenter }} and the zoom is: {{ currentZoom }} </p>
-            <button @click="showLongText">Toggle long popup</button>
+    <div id="map">
+        <div>
+
         </div>
         <l-map
+                id="map-map"
                 :zoom="zoom"
                 :center="center"
                 :options="mapOptions"
-                style="height: 80vh"
                 @update:center="centerUpdate"
                 @update:zoom="zoomUpdate"
         >
@@ -18,26 +15,28 @@
                     :url="url"
                     :attribution="attribution"
             />
-            <l-marker :lat-lng="withPopup">
-                <l-popup>
-                    <div @click="innerClick">
-                        I am a popup
-                        <p v-show="showParagraph">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi. Donec finibus semper metus id malesuada.
-                        </p>
-                    </div>
-                </l-popup>
-            </l-marker>
-            <l-marker :lat-lng="withTooltip">
-                <l-tooltip :options="{permanent: true, interactive: true}">
-                    <div @click="innerClick">
-                        I am a tooltip
-                        <p v-show="showParagraph">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi. Donec finibus semper metus id malesuada.
-                        </p>
-                    </div>
-                </l-tooltip>
-            </l-marker>
+            <v-marker-cluster>
+                <l-marker :lat-lng="withPopup">
+                    <l-popup>
+                        <div @click="innerClick">
+                            I am a popup
+                            <p v-show="showParagraph">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi. Donec finibus semper metus id malesuada.
+                            </p>
+                        </div>
+                    </l-popup>
+                </l-marker>
+                <l-marker :lat-lng="withTooltip">
+                    <l-tooltip :options="{permanent: true, interactive: true}">
+                        <div @click="innerClick">
+                            I am a tooltip
+                            <p v-show="showParagraph">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi. Donec finibus semper metus id malesuada.
+                            </p>
+                        </div>
+                    </l-tooltip>
+                </l-marker>
+            </v-marker-cluster>
         </l-map>
     </div>
 </template>
@@ -47,7 +46,7 @@
 	import * as L from "leaflet";
 
 	export default {
-		name: 'Simple',
+		name: 'Map',
 		components: {
 			LMap,
 			LTileLayer,
@@ -79,12 +78,23 @@
 			centerUpdate (center) {
 				this.currentCenter = center;
 			},
-			showLongText () {
-				this.showParagraph = !this.showParagraph;
-			},
 			innerClick () {
 				alert('Click!');
 			}
 		}
 	};
 </script>
+
+<style>
+    #map {
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        position: relative;
+    }
+    #map-map {
+        height: 70%;
+        position: absolute;
+        bottom: 0;
+    }
+</style>

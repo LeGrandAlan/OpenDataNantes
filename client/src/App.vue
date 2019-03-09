@@ -1,30 +1,66 @@
 <template>
     <div id="app">
-        <Simple />
+        <v-app id="inspire" light>
+            <v-navigation-drawer
+                    clipped
+                    fixed
+                    v-model="drawer"
+                    app
+            >
+                <v-list dense>
+                    <v-list-tile>
+                        <v-list-tile-action>
+                            <v-icon>fas fa-dumbbell</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>Activités</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                    <v-list-tile><!-- v-on:click="" -->
+                        <v-list-tile-action>
+                            <v-icon>fas fa-warehouse</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>Equipements</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                </v-list>
+            </v-navigation-drawer>
+            <v-toolbar app fixed clipped-left>
+                <v-toolbar-side-icon  v-on:click.stop="drawer = !drawer"></v-toolbar-side-icon>
+                <v-toolbar-title>OpenDataNantes</v-toolbar-title>
+            </v-toolbar>
+            <v-content>
+                <v-container fluid fill-height pa-0>
+                    <v-layout justify-center align-center>
+                        <Map />
+                    </v-layout>
+                </v-container>
+            </v-content>
+            <v-footer app fixed>
+                <span>&copy; 2019</span>
+            </v-footer>
+        </v-app>
     </div>
 </template>
 
 <script>
-	import Simple from './components/Map.vue';
+	import Map from './components/Map.vue';
 
 	export default {
 		name: 'app',
 		components: {
-			Simple
+			Map
+		},
+        data: () => ({
+			drawer: true
+		}),
+
+		props: {
+			source: String
 		},
 		mounted() {
 			setTimeout(function() { window.dispatchEvent(new Event('resize')) }, 250);
 		}
 	}
 </script>
-
-<style>
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
-</style>

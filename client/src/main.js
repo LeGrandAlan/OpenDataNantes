@@ -2,8 +2,12 @@ import Vue from 'vue';
 import App from './App.vue';
 import * as L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster';
 import Vuetify from 'vuetify';
+import '@fortawesome/fontawesome-free/css/all.css';
 import 'vuetify/dist/vuetify.min.css'
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 Vue.config.productionTip = false;
 
@@ -15,8 +19,11 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('../node_modules/leaflet/dist/images/marker-shadow.png')
 });
 
-Vue.use(Vuetify);
+Vue.use(Vuetify, {
+  iconfont: 'fa'
+});
+Vue.component('v-marker-cluster', Vue2LeafletMarkerCluster);
 
 new Vue({
   render: h => h(App),
-}).$mount('#app');
+}).$mount('#appHtml'); //le id=app du fichier html
