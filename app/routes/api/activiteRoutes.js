@@ -32,6 +32,10 @@ router.get('/liste/nom_activite/:value', function (req, res) {
 	activiteController.listOfNomActivite(req, res);
 });
 
+router.get('/liste/nom_activite/', function (req, res) {
+	activiteController.listOfNomActiviteSimple(res);
+});
+
 router.get('/liste/niveau_activite/', function (req, res) {
 	activiteController.listOfNiveauActivite(res);
 });

@@ -53,6 +53,12 @@ class ActiviteController {
 			.catch(this.common.findError(res));
 	};
 
+	listOfNomActiviteSimple(res) {
+		this.activiteDao.listOfNomActiviteSimple()
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
 
 	listOfNomActivite(req, res) {
 		const value = req.params.value;

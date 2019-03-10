@@ -124,6 +124,18 @@ class ActiviteDao {
 		});
 	}
 
+	listOfNomActiviteSimple() {
+		const sqlRequest = "select distinct activites.\"Activité libellé\", activites.\"Activité code\" from activites";
+
+		return this.common.findAll(sqlRequest).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push({nom: row["Activité libellé"], code: row["Activité code"]});
+			}
+			return noms;
+		});
+	}
+
 	listOfNomActivite(value) {
 		const sqlRequest = "select distinct activites.\"Activité libellé\" from activites where activites.\"Activité libellé\" like $value";
 		const sqlParams = {
