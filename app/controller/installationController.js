@@ -105,14 +105,33 @@ class InstallationController {
 			.catch(this.common.findError(res));
 	}
 
-	listOfCodeDepartement(req, res) {
+	listOfNomDepartement(req, res) {
 		const value = req.params.value;
-		this.installationDao.findByDesserteTram(value)
+		this.installationDao.listOfNomDepartement(value)
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	}
 
+	listOfNomCommune(req, res) {
+		const value = req.params.value;
+		this.installationDao.listOfNomCommune(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
 
+	listOfNomInstalation(req, res) {
+		const value = req.params.value;
+		this.installationDao.listOfNomInstalation(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
+	listOfCodePostal(req, res) {
+		const value = req.params.value;
+		this.installationDao.listOfCodePostal(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
 }
 
 module.exports = InstallationController;

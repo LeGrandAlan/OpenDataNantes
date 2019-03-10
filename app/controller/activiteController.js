@@ -33,6 +33,13 @@ class ActiviteController {
 			.catch(this.common.findError(res));
 	}
 
+	findByNoEquipement(req, res) {
+		const value = req.params.value;
+		this.activiteDao.findByNoEquipement(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
 	listOfNomDepartement(req, res) {
 		const value = req.params.value;
 		this.activiteDao.listOfNomDepartement(value)
@@ -42,6 +49,12 @@ class ActiviteController {
 
 	listOfNiveauActivite(res) {
 		this.activiteDao.listOfNiveauActivite()
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
+	listOfNomActiviteSimple(res) {
+		this.activiteDao.listOfNomActiviteSimple()
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	};

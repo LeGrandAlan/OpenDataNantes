@@ -70,6 +70,30 @@ class ActiviteDao {
 	}
 
 
+	findByNoEquipement(value) {
+		const sqlRequest = "select * from activites inner join Equipements on activites.\"Numéro de la fiche équipement\" = Equipements.\"Numéro de la fiche équipement\" " +
+			"where Equipements.\"Numéro de la fiche équipement\" = $value;";
+		const sqlParams = {
+			$value: value
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+
+			let activites = [];
+
+			for (const row of rows) {
+				let values = Object.values(row);
+				activites.push(new Activite(values[0], values[1], values[2], values[3], values[5], values[6], values[7]
+					, values[8], values[9], values[10], values[11], values[12], values[13]
+					, new Equipement(values[14], values[15], values[16], values[17], values[18], values[19], values[20], values[21], values[22]
+						, values[23], values[24], values[25], values[26], values[27], values[28])));
+			}
+
+			return activites;
+		});
+	}
+
+
 	listOfNomDepartement(value) {
 		const sqlRequest = "select distinct activites.\"Libellé du département\" from activites where activites.\"Libellé du département\" like $value";
 		const sqlParams = {
@@ -100,6 +124,18 @@ class ActiviteDao {
 		});
 	}
 
+	listOfNomActiviteSimple() {
+		const sqlRequest = "select distinct activites.\"Activité libellé\", activites.\"Activité code\" from activites";
+
+		return this.common.findAll(sqlRequest).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push({nom: row["Activité libellé"], code: row["Activité code"]});
+			}
+			return noms;
+		});
+	}
+
 	listOfNomActivite(value) {
 		const sqlRequest = "select distinct activites.\"Activité libellé\" from activites where activites.\"Activité libellé\" like $value";
 		const sqlParams = {
@@ -118,7 +154,6 @@ class ActiviteDao {
 			return noms;
 		});
 	}
-
 
 	listOfNiveauActivite() {
 		const sqlRequest = "select distinct activites.\"Niveau de l activité - Classif.\" from activites";
