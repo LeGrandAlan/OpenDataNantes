@@ -1,17 +1,24 @@
 {
-  "name": "dtnj-k",
+  "name": "Projet openDataNantes",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./index.js"
   },
   "dependencies": {
     "@vue/cli": "^3.4.1",
     "cookie-parser": "^1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.0",
     "http-errors": "~1.6.2",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "bluebird": "*",
+    "body-parser": "*",
+    "csv": "^5.1.1",
+    "csv-parse": "^4.3.1",
+    "ejs": "*",
+    "express": "*",
+    "path": "^0.12.7",
+    "sqlite3": "*"
   },
   "devDependencies": {
     "leaflet": "^1.4.0"
