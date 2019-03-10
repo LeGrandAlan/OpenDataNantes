@@ -42,10 +42,8 @@
                             <v-flex xs3>
                                 <v-card-text>
                                     <v-autocomplete
-                                            v-model="model"
-                                            :items="items"
-                                            :loading="isLoading"
-                                            :search-input.sync="search"
+                                            v-model="departement"
+                                            :items="departements"
                                             color="white"
                                             hide-no-data
                                             hide-selected
@@ -61,10 +59,8 @@
                             <v-flex xs4>
                                 <v-card-text>
                                     <v-autocomplete
-                                            v-model="model"
-                                            :items="items"
-                                            :loading="isLoading"
-                                            :search-input.sync="search"
+                                            v-model="commune"
+                                            :items="communes"
                                             color="white"
                                             hide-no-data
                                             hide-selected
@@ -86,10 +82,8 @@
                             <v-flex xs4>
                                 <v-card-text>
                                     <v-autocomplete
-                                            v-model="model"
-                                            :items="items"
-                                            :loading="isLoading"
-                                            :search-input.sync="search"
+                                            v-model="activite"
+                                            :items="activites"
                                             color="white"
                                             hide-no-data
                                             hide-selected
@@ -105,11 +99,9 @@
                             <v-flex xs4>
                                 <v-card-text>
                                     <v-autocomplete
-                                            v-model="model"
-                                            :items="items"
-                                            :loading="isLoading"
-                                            :search-input.sync="search"
-                                            color="white"
+                                            v-model="niveauActivite"
+                                            :items="niveauxActivite"
+                                            color="grey"
                                             hide-no-data
                                             hide-selected
                                             item-text="Description"
@@ -138,6 +130,7 @@
 
 <script>
 	import Map from './components/Map.vue';
+	import axios from 'axios';
 
 	export default {
 		name: 'app',
@@ -145,14 +138,32 @@
 			Map
 		},
 		data: () => ({
-			drawer: true
+			drawer: true,
+            departement: "",
+            departements: null,
+            commune: "",
+            communes: null,
+            activite: "",
+            activites: null,
+			niveauActivite: "Non défini",
+            niveauxActivite: null,
 		}),
-
+		/*methods: {
+			getNiveauActivite () {
+				return ["ete"];
+				//return axios.get("http://localhost:3000/api/activite/liste/niveau_activite");
+			}
+		},*/
 		props: {
 			source: String
 		},
 		mounted() {
-			setTimeout(function() { window.dispatchEvent(new Event('resize')) }, 250);
+			setTimeout(function () {
+				window.dispatchEvent(new Event('resize'))
+			}, 250);
+			axios.get("http://localhost:3000/api/activite/liste/niveau_activite").then(reponse => {
+				this.niveauxActivite = reponse.data;
+            });
 		}
 	}
 </script>

@@ -1,8 +1,11 @@
 "use strict";
 /* Load modules */
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const bodyParser = require("body-parser");
+
+app.use(cors());
 
 /* BJF Current PATH */
 //const path = require('path');
