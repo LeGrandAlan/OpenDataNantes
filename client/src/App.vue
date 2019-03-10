@@ -44,7 +44,7 @@
                                     <v-autocomplete
                                             v-model="departement"
                                             :items="departements"
-                                            color="white"
+                                            color="grey"
                                             hide-no-data
                                             hide-selected
                                             item-text="Description"
@@ -61,7 +61,7 @@
                                     <v-autocomplete
                                             v-model="commune"
                                             :items="communes"
-                                            color="white"
+                                            color="grey"
                                             hide-no-data
                                             hide-selected
                                             item-text="Description"
@@ -84,7 +84,7 @@
                                     <v-autocomplete
                                             v-model="activite"
                                             :items="activites"
-                                            color="white"
+                                            color="grey"
                                             hide-no-data
                                             hide-selected
                                             item-text="Description"
@@ -143,17 +143,11 @@
             departements: null,
             commune: "",
             communes: null,
-            activite: "",
+            activite: "Non défini",
             activites: null,
 			niveauActivite: "Non défini",
             niveauxActivite: null,
 		}),
-		/*methods: {
-			getNiveauActivite () {
-				return ["ete"];
-				//return axios.get("http://localhost:3000/api/activite/liste/niveau_activite");
-			}
-		},*/
 		props: {
 			source: String
 		},
@@ -163,6 +157,10 @@
 			}, 250);
 			axios.get("http://localhost:3000/api/activite/liste/niveau_activite").then(reponse => {
 				this.niveauxActivite = reponse.data;
+            });
+			axios.get("http://localhost:3000/api/activite/liste/nom_activite/").then(response => {
+				this.activites = response.data.map(res => res.nom);
+				this.activites.push("Non défini");
             });
 		}
 	}
