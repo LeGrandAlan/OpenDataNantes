@@ -19,5 +19,8 @@
     "express": "*",
     "path": "^0.12.7",
     "sqlite3": "*"
+  },
+  "devDependencies": {
+    "leaflet": "^1.4.0"
   }
 }
