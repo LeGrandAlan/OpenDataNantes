@@ -10,6 +10,8 @@ const installationController = new InstallationController();
  * Installation Entity routes
  */
 
+/**     findBy     **/
+
 
 router.get('/', function (req, res) {
 	installationController.findAll(res);
@@ -57,6 +59,24 @@ router.get('/desserte_tram/:value', function (req, res) {
 
 router.get('/coordonnes/:latitude/:longitude', function (req, res) {
 	installationController.findByCoordonnes(req, res);
+});
+
+/**     listOf     **/
+
+router.get('/liste/nom_departement/:value', function (req, res) {
+	installationController.listOfNomDepartement(req, res);
+});
+
+router.get('/liste/nom_commune/:value', function (req, res) {
+	installationController.listOfNomCommune(req, res);
+});
+
+router.get('/liste/nom_instalation/:value', function (req, res) {
+	installationController.listOfNomInstalation(req, res);
+});
+
+router.get('/liste/code_postal/:value', function (req, res) {
+	installationController.listOfCodePostal(req, res);
 });
 
 

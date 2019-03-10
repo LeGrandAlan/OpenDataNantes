@@ -14,11 +14,13 @@ router.get('/', function (req, res) {
 	activiteController.findAll(res);
 });
 
-
 router.get('/code_postal/:code_postal', function (req, res) {
 	activiteController.findByCodePostal(req, res);
 });
 
+router.get('/equipement/numero_equipement/:value', function (req, res) {
+	activiteController.findByNoEquipement(req, res);
+});
 
 router.get('/liste/nom_departement/:value', function (req, res) {
 	activiteController.listOfNomDepartement(req, res);

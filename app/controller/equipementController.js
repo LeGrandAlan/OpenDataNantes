@@ -33,6 +33,34 @@ class EquipementController {
 			.catch(this.common.findError(res));
 	}
 
+	listOfNomDepartement(req, res) {
+		const value = req.params.value;
+		this.equipementDao.listOfNomDepartement(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
+	listOfNomCommune(req, res) {
+		const value = req.params.value;
+		this.equipementDao.listOfNomCommune(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
+	listOfNomEquipement(req, res) {
+		const value = req.params.value;
+		this.equipementDao.listOfNomEquipement(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
+	listOfTypeEquipement(req, res) {
+		const value = req.params.value;
+		this.equipementDao.listOfTypeEquipement(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
 }
 
 module.exports = EquipementController;

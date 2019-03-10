@@ -65,8 +65,71 @@ class EquipementDao {
 
 			return equipements;
 		});
-
 	}
+
+
+
+
+	listOfNomDepartement(value) {
+		const sqlRequest = "select distinct Equipements.Departement from Equipements where Equipements.Departement like $value";
+		const sqlParams = {
+			$value: value + "%"
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Departement"]);
+			}
+			return noms;
+		});
+	}
+
+	listOfNomCommune(value) {
+		const sqlRequest = "select distinct Equipements.Commune from Equipements where Equipements.Commune like $value";
+		const sqlParams = {
+			$value: value + "%"
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Commune"]);
+			}
+			return noms;
+		});
+	}
+
+	listOfNomEquipement(value) {
+		const sqlRequest = "select distinct Equipements.\"Equipement\" from Equipements where Equipements.\"Equipement\" like $value";
+		const sqlParams = {
+			$value: "%" + value + "%"
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Equipement"]);
+			}
+			return noms;
+		});
+	}
+
+	listOfTypeEquipement(value) {
+		const sqlRequest = "select distinct Equipements.\"Type d équipement\" from Equipements where Equipements.\"Type d équipement\" like $value";
+		const sqlParams = {
+			$value: "%" + value + "%"
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Type d équipement"]);
+			}
+			return noms;
+		});
+	}
+
 
 
 }
