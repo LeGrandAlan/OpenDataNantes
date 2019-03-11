@@ -53,6 +53,8 @@
                                             placeholder="Nom du département"
                                             prepend-icon="fas fa-city"
                                             return-object
+                                            v-on:change="chargerCommunes()"
+                                            clearable
                                     ></v-autocomplete>
                                 </v-card-text>
                             </v-flex>
@@ -61,6 +63,7 @@
                                     <v-autocomplete
                                             v-model="commune"
                                             :items="communes"
+                                            :disabled="departement === ''"
                                             color="grey"
                                             hide-no-data
                                             hide-selected
@@ -70,14 +73,15 @@
                                             placeholder="Nom de la commune"
                                             prepend-icon="fas fa-city"
                                             return-object
+                                            clearable
                                     ></v-autocomplete>
                                 </v-card-text>
                             </v-flex>
                             <v-flex xs2>
-                                <v-switch label="Déserte bus"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
+                                <v-switch v-model="bus" label="Déserte bus"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
                             </v-flex>
                             <v-flex xs2>
-                                <v-switch label="Déserte tram"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
+                                <v-switch v-model="tram" label="Déserte tram"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
                             </v-flex>
                             <v-flex xs4>
                                 <v-card-text>
@@ -93,6 +97,7 @@
                                             placeholder="Type d'activité"
                                             prepend-icon="fas fa-city"
                                             return-object
+                                            clearable
                                     ></v-autocomplete>
                                 </v-card-text>
                             </v-flex>
@@ -110,11 +115,15 @@
                                             placeholder="Niveau d'activité"
                                             prepend-icon="fas fa-city"
                                             return-object
+                                            clearable
                                     ></v-autocomplete>
                                 </v-card-text>
                             </v-flex>
                             <v-flex xs2>
-                                <v-switch label="Handi-accessible"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
+                                <v-switch v-model="handi" label="Handi-accessible"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
+                            </v-flex>
+                            <v-flex xs2>
+                                <v-btn v-on:click="getData" color="info">Valider</v-btn>
                             </v-flex>
                         </v-layout>
                         <Map style="height: 70%; width: 100%;"/>
@@ -143,25 +152,54 @@
             departements: null,
             commune: "",
             communes: null,
-            activite: "Non défini",
+            activite: "",
             activites: null,
-			niveauActivite: "Non défini",
+			niveauActivite: "",
             niveauxActivite: null,
+			handi: false,
+            bus: false,
+            tram: false
 		}),
 		props: {
 			source: String
 		},
 		mounted() {
+
 			setTimeout(function () {
 				window.dispatchEvent(new Event('resize'))
 			}, 250);
 			axios.get("http://localhost:3000/api/activite/liste/niveau_activite").then(reponse => {
 				this.niveauxActivite = reponse.data;
+				this.niveauxActivite = this.niveauxActivite.filter((item) => {
+					return item !== "Non défini";
+				});
             });
 			axios.get("http://localhost:3000/api/activite/liste/nom_activite/").then(response => {
 				this.activites = response.data.map(res => res.nom);
-				this.activites.push("Non défini");
             });
-		}
+			axios.get("http://localhost:3000/api/activite/liste/code_departement/").then(response => {
+				this.departements = response.data;
+            });
+		},
+		methods: {
+			getData() {
+				console.log(this.departement/*===""*/);
+				console.log(this.commune);
+                console.log(this.activite);
+				console.log(this.niveauActivite);
+                console.log(this.handi);
+				console.log(this.bus);
+				console.log(this.tram);
+			},
+			chargerCommunes() {
+				if(this.departement !== "Non défini") {
+					axios.get("http://localhost:3000/api/activite/liste/departement/nom_commune/" + this.departement).then(response => {
+						this.communes = response.data;
+					});
+                } else {
+					this.communes = null;
+                }
+            }
+        }
 	}
 </script>
