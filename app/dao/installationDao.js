@@ -237,7 +237,7 @@ class InstallationDao {
 	}
 
 
-	findByCoordonnes(latitude,longitude) {
+	findByCoordonnes(latitude, longitude) {
 		const sqlRequest = "SELECT * FROM installations WHERE code_postal LIKE $value";
 		const sqlParams = {
 			$latitude: "%" + latitude + "%",
@@ -259,27 +259,65 @@ class InstallationDao {
 	}
 
 
-	listOfCodeDepartement(value){
-		const sqlRequest = "SELECT * FROM installations WHERE code_postal LIKE $value";
+	listOfNomDepartement(value) {
+		const sqlRequest = "select distinct installations.Département from installations where installations.Département like $value";
 		const sqlParams = {
-			$latitude: "%" + latitude + "%",
-			$longitude: "%" + longitude + "%"
+			$value: value + "%"
 		};
 
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
-
-			let installations = [];
-
+			let noms = [];
 			for (const row of rows) {
-				let values = Object.values(row);
-				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+				noms.push(row["Département"]);
 			}
-
-			return installations;
+			return noms;
 		});
 	}
 
+	listOfNomCommune(value) {
+		const sqlRequest = "select distinct installations.\"Nom de la commune\" from installations where installations.\"Nom de la commune\" like $value";
+		const sqlParams = {
+			$value: value + "%"
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Nom de la commune"]);
+			}
+			return noms;
+		});
+	}
+
+	listOfNomInstalation(value) {
+		const sqlRequest = "select distinct installations.\"Nom usuel de l installation\" from installations where installations.\"Nom usuel de l installation\" like $value";
+		const sqlParams = {
+			$value: "%" + value + "%"
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Nom usuel de l installation"]);
+			}
+			return noms;
+		});
+	}
+
+	listOfCodePostal(value) {
+		const sqlRequest = "select distinct installations.\"Code postal\" from installations where installations.\"Code postal\" like $value";
+		const sqlParams = {
+			$value: value + "%"
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Code postal"]);
+			}
+			return noms;
+		});
+	}
 
 
 }

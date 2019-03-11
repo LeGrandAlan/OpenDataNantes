@@ -8,7 +8,7 @@
                     app
             >
                 <v-list dense>
-                    <v-list-tile>
+                    <v-list-tile v-on:click="currentComponent = 'RechercheActivite'">
                         <v-list-tile-action>
                             <v-icon>fas fa-dumbbell</v-icon>
                         </v-list-tile-action>
@@ -16,7 +16,7 @@
                             <v-list-tile-title>Activités</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile><!-- v-on:click="" -->
+                    <v-list-tile>
                         <v-list-tile-action>
                             <v-icon>fas fa-warehouse</v-icon>
                         </v-list-tile-action>
@@ -31,103 +31,9 @@
                 <v-toolbar-title>OpenDataNantes</v-toolbar-title>
             </v-toolbar>
             <v-content>
-                <v-container fluid fill-height pa-0>
-                    <v-layout column>
-                        <v-layout row wrap align-content-start pa-2>
-                            <v-flex xs12>
-                                <v-card-text>
-                                    <h1>Recherche d'activités</h1>
-                                </v-card-text>
-                            </v-flex>
-                            <v-flex xs3>
-                                <v-card-text>
-                                    <v-autocomplete
-                                            v-model="model"
-                                            :items="items"
-                                            :loading="isLoading"
-                                            :search-input.sync="search"
-                                            color="white"
-                                            hide-no-data
-                                            hide-selected
-                                            item-text="Description"
-                                            item-value="API"
-                                            label="Département"
-                                            placeholder="Nom du département"
-                                            prepend-icon="fas fa-city"
-                                            return-object
-                                    ></v-autocomplete>
-                                </v-card-text>
-                            </v-flex>
-                            <v-flex xs4>
-                                <v-card-text>
-                                    <v-autocomplete
-                                            v-model="model"
-                                            :items="items"
-                                            :loading="isLoading"
-                                            :search-input.sync="search"
-                                            color="white"
-                                            hide-no-data
-                                            hide-selected
-                                            item-text="Description"
-                                            item-value="API"
-                                            label="Commune"
-                                            placeholder="Nom de la commune"
-                                            prepend-icon="fas fa-city"
-                                            return-object
-                                    ></v-autocomplete>
-                                </v-card-text>
-                            </v-flex>
-                            <v-flex xs2>
-                                <v-switch label="Déserte bus"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
-                            </v-flex>
-                            <v-flex xs2>
-                                <v-switch label="Déserte tram"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
-                            </v-flex>
-                            <v-flex xs4>
-                                <v-card-text>
-                                    <v-autocomplete
-                                            v-model="model"
-                                            :items="items"
-                                            :loading="isLoading"
-                                            :search-input.sync="search"
-                                            color="white"
-                                            hide-no-data
-                                            hide-selected
-                                            item-text="Description"
-                                            item-value="API"
-                                            label="Activité"
-                                            placeholder="Type d'activité"
-                                            prepend-icon="fas fa-city"
-                                            return-object
-                                    ></v-autocomplete>
-                                </v-card-text>
-                            </v-flex>
-                            <v-flex xs4>
-                                <v-card-text>
-                                    <v-autocomplete
-                                            v-model="model"
-                                            :items="items"
-                                            :loading="isLoading"
-                                            :search-input.sync="search"
-                                            color="white"
-                                            hide-no-data
-                                            hide-selected
-                                            item-text="Description"
-                                            item-value="API"
-                                            label="Niveau"
-                                            placeholder="Niveau d'activité"
-                                            prepend-icon="fas fa-city"
-                                            return-object
-                                    ></v-autocomplete>
-                                </v-card-text>
-                            </v-flex>
-                            <v-flex xs2>
-                                <v-switch label="Handi-accessible"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
-                            </v-flex>
-                        </v-layout>
-                        <Map style="height: 70%; width: 100%;"/>
-                    </v-layout>
-                </v-container>
+                <keep-alive>
+                    <component v-bind:is="currentComponent"></component>
+                </keep-alive>
             </v-content>
             <v-footer app fixed>
                 <span>&copy; 2019</span>
@@ -137,22 +43,16 @@
 </template>
 
 <script>
-	import Map from './components/Map.vue';
+	import RechercheActivite from './components/RechercheActivite.vue';
 
 	export default {
 		name: 'app',
 		components: {
-			Map
+			RechercheActivite
 		},
 		data: () => ({
-			drawer: true
-		}),
-
-		props: {
-			source: String
-		},
-		mounted() {
-			setTimeout(function() { window.dispatchEvent(new Event('resize')) }, 250);
-		}
+			drawer: true,
+			currentComponent: null
+		})
 	}
 </script>
