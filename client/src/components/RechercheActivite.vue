@@ -46,10 +46,12 @@
                     </v-card-text>
                 </v-flex>
                 <v-flex xs2>
-                    <v-switch v-model="bus" label="Déserte bus"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
+                    <v-switch v-model="bus" label="Déserte bus"></v-switch>
+                    <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
                 </v-flex>
                 <v-flex xs2>
-                    <v-switch v-model="tram" label="Déserte tram"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
+                    <v-switch v-model="tram" label="Déserte tram"></v-switch>
+                    <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
                 </v-flex>
                 <v-flex xs4>
                     <v-card-text>
@@ -88,14 +90,34 @@
                     </v-card-text>
                 </v-flex>
                 <v-flex xs2>
-                    <v-switch v-model="handi" label="Handi-accessible"></v-switch> <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
+                    <v-switch v-model="handi" label="Handi-accessible"></v-switch>
                 </v-flex>
                 <v-flex xs2>
-                    <v-btn v-on:click="getData" color="info">Valider</v-btn>
+                    <v-btn v-on:click="chargerMarqueursCarte" color="info">Valider</v-btn>
                 </v-flex>
             </v-layout>
-            <Map style="height: 70%; width: 100%;"/>
+            <Map v-if="marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
+            <Map v-if="marqueursActivite === null" style="height: 70%; width: 100%;"/>
         </v-layout>
+        <v-snackbar
+                v-model="snackbar"
+                :bottom="y === 'bottom'"
+                :left="x === 'left'"
+                :multi-line="mode === 'multi-line'"
+                :right="x === 'right'"
+                :timeout="timeout"
+                :top="y === 'top'"
+                :vertical="mode === 'vertical'"
+        >
+            {{ text }}
+            <v-btn
+                    color="pink"
+                    flat
+                    @click="snackbar = false"
+            >
+                Fermer
+            </v-btn>
+        </v-snackbar>
     </v-container>
 </template>
 
@@ -119,7 +141,14 @@
 			niveauxActivite: null,
 			handi: false,
 			bus: false,
-			tram: false
+			tram: false,
+			marqueursActivite: null,
+			snackbar: false,
+			y: 'top',
+			x: null,
+			mode: '',
+			timeout: 4000,
+			text: ''
 		}),
 		props: {
 			source: String
@@ -143,18 +172,37 @@
 			});
 		},
 		methods: {
-			getData() {
-				/*console.log(this.departement/!*===""*!/);
-				console.log(this.commune);
-				console.log(this.activite);
-				console.log(this.niveauActivite);
-				console.log(this.handi);
-				console.log(this.bus);
-				console.log(this.tram);*/
+			chargerMarqueursCarte() {
+				let niveauActivite = this.niveauActivite === "" ? "null" : this.niveauActivite;
+				let activite = this.activite === "" ? "null" : this.activite;
+				let commune = this.commune === "" ? "null" : this.commune;
+				let departement = this.departement === "" ? "null" : this.departement;
+				let bus = this.bus ? "Oui" : "null";
+				let tram = this.tram ? "Oui" : "null";
+				let handi = this.handi ? "Oui" : "null";
+
+				let url = `http://localhost:3000/api/activite/`+
+					`departement/${departement}`+
+					`/commune/${commune}`+
+					`/activite/${activite}`+
+					`/niveau/${niveauActivite}`+
+					`/bus/${bus}`+
+					`/tram/${tram}`+
+					`/handicap/${handi}`;
+
+				axios.get(url).then(response => {
+					this.marqueursActivite = response.data;
+					this.text = response.data.length + " résultats !";
+					this.snackbar = true;
+				}).catch(() => {
+					this.marqueursActivite = null;
+					this.text = "Aucun résultats !";
+					this.snackbar = true;
+				});
 			},
 			chargerCommunes() {
-				if(this.departement !== "Non défini") {
-					axios.get("http://localhost:3000/api/activite/liste/departement/nom_commune/" + this.departement).then(response => {
+				if (this.departement !== "Non défini") {
+					axios.get("http://localhost:3000/api/activite/liste/departement/" + this.departement + "/nom_commune/").then(response => {
 						this.communes = response.data;
 					});
 				} else {

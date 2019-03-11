@@ -13,25 +13,15 @@
                     :attribution="attribution"
             />
             <v-marker-cluster>
-                <l-marker :lat-lng="withPopup">
+                <l-marker v-for="marqueurActivite in marqueursActivite" :lat-lng="getLatLng(marqueurActivite)">
                     <l-popup>
                         <div @click="innerClick">
-                            I am a popup
-                            <p v-show="showParagraph">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi. Donec finibus semper metus id malesuada.
-                            </p>
+                            <h3>{{marqueurActivite.activiteLibelle}}</h3><br>
+                            {{marqueurActivite.niveauDeLActivite}}<br>
+                            {{marqueurActivite.nomDeLaCommune}}<br>
+                            Nombre d'équipements : {{marqueurActivite.nombreEquipementsIdentiques}}
                         </div>
                     </l-popup>
-                </l-marker>
-                <l-marker :lat-lng="withTooltip">
-                    <l-tooltip :options="{permanent: true, interactive: true}">
-                        <div @click="innerClick">
-                            I am a tooltip
-                            <p v-show="showParagraph">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed pretium nisl, ut sagittis sapien. Sed vel sollicitudin nisi. Donec finibus semper metus id malesuada.
-                            </p>
-                        </div>
-                    </l-tooltip>
                 </l-marker>
             </v-marker-cluster>
         </l-map>
@@ -39,7 +29,7 @@
 </template>
 
 <script>
-	import { LMap, LTileLayer, LMarker, LPopup, LTooltip } from 'vue2-leaflet';
+	import { LMap, LTileLayer, LMarker, LPopup } from 'vue2-leaflet';
 	import * as L from "leaflet";
 
 	export default {
@@ -48,8 +38,7 @@
 			LMap,
 			LTileLayer,
 			LMarker,
-			LPopup,
-			LTooltip
+			LPopup
 		},
 		data () {
 			return {
@@ -68,6 +57,9 @@
 				}
 			};
 		},
+		props: {
+			marqueursActivite: Array
+		},
 		methods: {
 			zoomUpdate (zoom) {
 				this.currentZoom = zoom;
@@ -77,7 +69,10 @@
 			},
 			innerClick () {
 				alert('Click!');
-			}
+			},
+            getLatLng(elem) {
+                return L.latLng(parseFloat(elem.latitute), parseFloat(elem.longitude));
+            }
 		}
 	};
 </script>
