@@ -109,6 +109,21 @@ class ActiviteDao {
 		});
 	}
 
+	listOfNomCommuneByDepartement(value) {
+		const sqlRequest = "select distinct activites.\"Nom de la commune\" from activites where activites.\"Code du département\" like $value";
+		const sqlParams = {
+			$value: value
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Nom de la commune"]);
+			}
+			return noms;
+		});
+	}
+
 	listOfNomCommune(value) {
 		const sqlRequest = "select distinct activites.\"Nom de la commune\" from activites where activites.\"Nom de la commune\" like $value";
 		const sqlParams = {
@@ -123,6 +138,19 @@ class ActiviteDao {
 			return noms;
 		});
 	}
+
+	listOfCodeDepartment() {
+		const sqlRequest = "select distinct activites.\"Code du département\" from activites";
+
+		return this.common.findAll(sqlRequest).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Code du département"]);
+			}
+			return noms;
+		});
+	}
+
 
 	listOfNomActiviteSimple() {
 		const sqlRequest = "select distinct activites.\"Activité libellé\", activites.\"Activité code\" from activites";

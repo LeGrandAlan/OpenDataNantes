@@ -75,6 +75,20 @@ class ActiviteController {
 			.catch(this.common.findError(res));
 	};
 
+	listOfCodeDepartment(res) {
+		this.activiteDao.listOfCodeDepartment()
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
+	listOfNomCommuneByDepartement(req, res) {
+		const value = req.params.value;
+		this.activiteDao.listOfNomCommuneByDepartement(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
+
 
 }
 
