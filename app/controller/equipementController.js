@@ -25,6 +25,19 @@ class EquipementController {
 			.catch(this.common.findError(res));
 	};
 
+	findByAll(req, res) {
+		const departement = req.params.departement;
+		const commune = req.params.commune;
+		const activite = req.params.activite;
+		const niveau = req.params.niveau;
+		const bus = req.params.bus;
+		const tram = req.params.tram;
+		const handicap = req.params.handicap;
+		this.equipementDao.findByAll(departement, commune, activite, niveau, bus, tram, handicap)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
 
 	findByNoDeLInstallation(req, res) {
 		const noDeLInstallation = req.params.no_de_l_installation;

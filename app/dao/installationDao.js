@@ -35,6 +35,37 @@ class InstallationDao {
 		});
 	};
 
+	findByAll(departement, commune, installation, codePostal, installationParticuliere, bus, tram, handicap) {
+		const sqlRequest = "select i.* from installations where " +
+			"(\"Code du département\" = $departement OR $departement IS NULL) and (a.\"Nom de la commune\" = $commune OR $commune IS NULL) and " +
+			"(\"Code postal\" = $codePostal OR $codePostal IS NULL) and (a.\"Installation particulière\" = $instalatlionParticuliere OR $instalatlionParticuliere IS NULL) and " +
+			"(\"Desserte bus\" = $bus OR $bus IS NULL) and (\"Desserte Tram\" = $tram OR $tram IS NULL) and (\"Nom usuel de l installation\" = $installation OR $installation IS NULL) and" +
+			" (\"Accessibilité handicapés à mobilité réduite\" = $handicap OR $handicap IS NULL) ;";
+
+		const sqlParams = {
+			$departement: departement !== 'null' ? departement : null,
+			$commune: commune !== 'null' ? commune : null,
+			$installation: installation !== 'null' ? installation : null,
+			$codePostal: codePostal !== 'null' ? codePostal : null,
+			$instalatlionParticuliere: installationParticuliere !== 'null' ? installationParticuliere : null,
+			$bus: bus !== 'null' ? bus : null,
+			$tram: tram !== 'null' ? tram : null,
+			$handicap: handicap !== 'null' ? handicap : null
+		};
+
+		console.log(sqlParams);
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let installations = [];
+
+			for (const row of rows) {
+				let values = Object.values(row);
+				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+			}
+			return installations;
+		});
+	}
+
 	findByCodeDepartement(value) {
 		const sqlRequest = "SELECT * FROM installations WHERE \"Code du département\" LIKE $value";
 		const sqlParams = {

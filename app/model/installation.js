@@ -5,9 +5,9 @@
  */
 
 class Installation {
-	constructor(codeDepartement,departement,nomDeLaCommune,noDeLInstallation,nomUsuelDeLInstallation,noDeLaVoie
-	,nomDeLaVoie,nomDuLieuDit,codePostal,installationParticuliere,accHandicapes,nombrePlaceParking
-	,desserteBus,desserteTram,latitute,longitude) {
+	constructor(codeDepartement, departement, nomDeLaCommune, noDeLInstallation, nomUsuelDeLInstallation, noDeLaVoie
+		, nomDeLaVoie, nomDuLieuDit, codePostal, installationParticuliere, accHandicapes, nombrePlaceParking
+		, desserteBus, desserteTram, latitute, longitude) {
 
 		this.codeDepartement = codeDepartement;
 		this.departement = departement;

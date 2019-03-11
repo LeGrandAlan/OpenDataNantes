@@ -10,11 +10,15 @@ const installationController = new InstallationController();
  * Installation Entity routes
  */
 
-/**     findBy     **/
-
 
 router.get('/', function (req, res) {
 	installationController.findAll(res);
+});
+
+/**         findBy          **/
+
+router.get('/departement/:departement/commune/:commune/installation/:installation/codePostal/:codePostal/installationParticuliere/:instalationParticuliere/bus/:bus/tram/:tram/handicap/:handicap', function (req, res) {
+	installationController.findByAll(req, res);
 });
 
 router.get('/code_departement/:value', function (req, res) {

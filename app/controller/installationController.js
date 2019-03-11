@@ -27,6 +27,21 @@ class InstallationController {
 			.catch(this.common.findError(res));
 	};
 
+	findByAll(req, res) {
+		const departement = req.params.departement;
+		const commune = req.params.commune;
+		const installation = req.params.installation;
+		const codePostal = req.params.codePostal;
+		const installationParticuliere = req.params.installationParticuliere;
+		const bus = req.params.bus;
+		const tram = req.params.tram;
+		const handicap = req.params.handicap;
+		this.installationDao.findByAll(departement, commune, installation, codePostal, installationParticuliere, bus, tram, handicap)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
+
 	findByCodeDepartement(req, res) {
 		const value = req.params.value;
 		this.installationDao.findByCodeDepartement(value)
