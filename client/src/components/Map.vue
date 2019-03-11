@@ -71,7 +71,7 @@
 				alert('Click!');
 			},
             getLatLng(elem) {
-                return L.latLng(parseFloat(elem.latitute), parseFloat(elem.longitude));
+                return L.latLng(parseFloat(elem.latitude), parseFloat(elem.longitude));
             }
 		}
 	};
