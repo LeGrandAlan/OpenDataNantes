@@ -32,6 +32,14 @@ router.get('/liste/nom_activite/:value', function (req, res) {
 	activiteController.listOfNomActivite(req, res);
 });
 
+router.get('/liste/departement/nom_commune/:value', function (req, res) {
+	activiteController.listOfNomCommuneByDepartement(req, res);
+});
+
+router.get('/liste/code_departement/', function (req, res) {
+	activiteController.listOfCodeDepartment(res);
+});
+
 router.get('/liste/nom_activite/', function (req, res) {
 	activiteController.listOfNomActiviteSimple(res);
 });
