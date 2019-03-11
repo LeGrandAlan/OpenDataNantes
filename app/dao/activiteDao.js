@@ -39,6 +39,90 @@ class ActiviteDao {
 		});
 	};
 
+	findByAll2222(departement, commune, activite, niveau, bus, tram, handicap) {
+		let sqlRequest = "select a.* from activites a, Equipements e, installations i where ";
+
+		let sqlParams = {};
+		if (departement && departement !== 'null') {
+			sqlParams["$departement"] = departement;
+			sqlRequest += "a.\"Code du département\" like $departement and ";
+		}
+		if (commune && commune !== 'null') {
+			sqlParams["$commune"] = commune;
+			sqlRequest += "a.\"Nom de la commune\" like $commune and ";
+		}
+		if (activite && activite !== 'null') {
+			sqlParams["$activite"] = activite;
+			sqlRequest += "a.\"Activité libellé\" like $activite and ";
+		}
+		if (niveau && niveau !== 'null') {
+			sqlParams["$niveau"] = "%" + niveau + "%";
+			sqlRequest += "a.\"Niveau de l activité - Classif.\" like $niveau and ";
+		}
+		if ((bus && bus !== 'null') || (tram && tram !== 'null') || (handicap && handicap !== 'null'))
+			sqlRequest += "a.\"Numéro de la fiche équipement\"=e.\"Numéro de la fiche équipement\" and e.\"Numéro de l installation\"=i.\"Numéro de l installation\" and ";
+		if (bus && bus !== 'null') {
+			sqlParams["$bus"] = bus;
+			sqlRequest += "i.\"Desserte bus\" like $bus ";
+		}
+		if (tram && tram !== 'null') {
+			sqlParams["$tram"] = tram;
+			sqlRequest += "i.\"Desserte Tram\" like $tram and ";
+		}
+		if (handicap && handicap !== 'null') {
+			sqlParams["$handicap"] = handicap;
+			sqlRequest += "i.\"Accessibilité handicapés à mobilité réduite\" like $handicap  ";
+		}
+		if (sqlRequest.match(/where $/m))
+			sqlRequest.replace(/where $/, ";");
+		else if (sqlRequest.match(/and $/m))
+			sqlRequest.replace(/and $/, ";");
+		else
+			sqlRequest += ";";
+
+		console.log(sqlRequest);
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let activites = [];
+
+			for (const row of rows) {
+				let values = Object.values(row);
+				activites.push(
+					activites.push(new Activite(values[0], values[1], values[2], values[3], values[5], values[6], values[7]
+						, values[8], values[9], values[10], values[11], values[12], values[13])));
+			}
+			return activites;
+		});
+	}
+
+	findByAll(departement, commune, activite, niveau, bus, tram, handicap) {
+		const sqlRequest = "select a.* from activites a, Equipements e, installations i where " +
+			"(a.\"Code du département\" = $departement OR $departement IS NULL) and (a.\"Nom de la commune\" = $commune OR $commune IS NULL) and " +
+			"(a.\"Activité libellé\" like $activite OR $activite IS NULL) and (a.\"Niveau de l activité - Classif.\" like $niveau OR $niveau IS NULL) and " +
+			"a.\"Numéro de la fiche équipement\"=e.\"Numéro de la fiche équipement\" and e.\"Numéro de l installation\"=i.\"Numéro de l installation\" and " +
+			"(i.\"Desserte bus\" = $bus OR $bus IS NULL) and (i.\"Desserte Tram\" = $tram OR $tram IS NULL) and (i.\"Accessibilité handicapés à mobilité réduite\" = $handicap OR $handicap IS NULL) ;";
+
+		const sqlParams = {
+			$departement: departement !== 'null' ? departement : null,
+			$commune: commune !== 'null' ? commune : null,
+			$activite: activite !== 'null' ? activite : null,
+			$niveau: niveau !== 'null' ? niveau : null,
+			$bus: bus !== 'null' ? bus : null,
+			$tram: tram !== 'null' ? tram : null,
+			$handicap: handicap !== 'null' ? handicap : null
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let activites = [];
+
+			for (const row of rows) {
+				let values = Object.values(row);
+				activites.push(new Activite(values[0], values[1], values[2], values[3], values[5], values[6], values[7]
+					, values[8], values[9], values[10], values[11], values[12], values[13]));
+			}
+			return activites;
+		});
+	}
+
 	findByCodePostal(codePostal) {
 		const sqlRequest = "select activites.activite_code, activites.activite_libelle, " +
 			"Equipements.numero_de_la_fiche_equipement," +

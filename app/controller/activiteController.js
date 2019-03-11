@@ -26,6 +26,19 @@ class ActiviteController {
 			.catch(this.common.findError(res));
 	};
 
+	findByAll(req, res) {
+		const departement = req.params.departement;
+		const commune = req.params.commune;
+		const activite = req.params.activite;
+		const niveau = req.params.niveau;
+		const bus = req.params.bus;
+		const tram = req.params.tram;
+		const handicap = req.params.handicap;
+		this.activiteDao.findByAll(departement, commune, activite, niveau, bus, tram, handicap)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
 	findByCodePostal(req, res) {
 		const codePostal = req.params.code_postal;
 		this.activiteDao.findByCodePostal(codePostal)
@@ -87,7 +100,6 @@ class ActiviteController {
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	};
-
 
 
 }
