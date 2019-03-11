@@ -5,9 +5,9 @@
  */
 
 class Activite {
-	constructor(codeDuDepartement, libelleDuDepartement, codeINSEE, nomDeLaCommune,numeroEquipement, nombreEquipementsIdentiques
+	constructor(codeDuDepartement, libelleDuDepartement, codeINSEE, nomDeLaCommune, numeroEquipement, nombreEquipementsIdentiques
 		, activiteCode, activiteLibelle, activitePraticable, activitePratiquee, salleSpecialisable
-		, niveauDeLActivite, latitute, longitude, equipement) {
+		, niveauDeLActivite, latitude, longitude, equipement) {
 		this.codeDuDepartement = codeDuDepartement;
 		this.libelleDuDepartement = libelleDuDepartement;
 		this.codeINSEE = codeINSEE;
@@ -20,7 +20,7 @@ class Activite {
 		this.activitePratiquee = activitePratiquee;
 		this.salleSpecialisable = salleSpecialisable;
 		this.niveauDeLActivite = niveauDeLActivite;
-		this.latitude = latitute;
+		this.latitude = latitude;
 		this.longitude = longitude;
 		this.equipement = equipement;
 	}
