@@ -5,8 +5,6 @@ const cors = require('cors');
 const app = express();
 const bodyParser = require("body-parser");
 
-app.use(cors());
-
 /* BJF Current PATH */
 //const path = require('path');
 //global.appRoot = path.resolve(__dirname); //espacede nommage global
@@ -26,10 +24,8 @@ app.listen(port, () => {
 /* Express configuration */
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(cors());
 
 /* Router configuration */
 app.use('/api', require('./app/routes/router'));
-
-app.use('/', express.static('client'));
-
 

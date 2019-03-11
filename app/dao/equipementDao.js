@@ -31,7 +31,7 @@ class EquipementDao {
 				console.log(row);
 				let values = Object.values(row);
 				console.log(values);
-				equipements.push(new Equipement(values[0], values[1], values[2], values[3], values[6], values[7]
+				equipements.push(new Equipement(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
 					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]
 					, new Installation(values[15], values[16], values[17], values[18], values[19], values[20], values[21], values[22]
 						, values[23], values[24], values[25], values[26], values[27], values[28], values[29], values[30])));
@@ -41,6 +41,37 @@ class EquipementDao {
 			return equipements;
 		});
 	};
+
+	findByAll(departement, commune, activite, niveau, bus, tram, handicap) {
+		const sqlRequest = "select a.* from activites a, Equipements e, installations i where " +
+			"(a.\"Code du département\" = $departement OR $departement IS NULL) and (a.\"Nom de la commune\" = $commune OR $commune IS NULL) and " +
+			"(a.\"Activité libellé\" = $activite OR $activite IS NULL) and (a.\"Niveau de l activité - Classif.\" = $niveau OR $niveau IS NULL) and " +
+			"a.\"Numéro de la fiche équipement\"=e.\"Numéro de la fiche équipement\" and e.\"Numéro de l installation\"=i.\"Numéro de l installation\" and " +
+			"(i.\"Desserte bus\" = $bus OR $bus IS NULL) and (i.\"Desserte Tram\" = $tram OR $tram IS NULL) and (i.\"Accessibilité handicapés à mobilité réduite\" = $handicap OR $handicap IS NULL) ;";
+
+		const sqlParams = {
+			$departement: departement !== 'null' ? departement : null,
+			$commune: commune !== 'null' ? commune : null,
+			$activite: activite !== 'null' ? activite : null,
+			$niveau: niveau !== 'null' ? niveau : null,
+			$bus: bus !== 'null' ? bus : null,
+			$tram: tram !== 'null' ? tram : null,
+			$handicap: handicap !== 'null' ? handicap : null
+		};
+
+		console.log(sqlParams);
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let equipements = [];
+
+			for (const row of rows) {
+				let values = Object.values(row);
+				equipements.push(new Equipement(values[0], values[1], values[2], values[3],values[4], values[5], values[6], values[7]
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]));
+			}
+			return equipements;
+		});
+	}
+
 
 	findByNoDeLInstallation(noDeLInstallation) {
 		const sqlRequest = "select numero_de_la_fiche_equipement, " +
