@@ -27,6 +27,10 @@ class InstallationController {
 			.catch(this.common.findError(res));
 	};
 
+
+	/**         findBy         **/
+
+
 	findByAll(req, res) {
 		const departement = req.params.departement;
 		const commune = req.params.commune;
@@ -115,10 +119,14 @@ class InstallationController {
 	findByCoordonnes(req, res) {
 		const latitude = req.params.latitude;
 		const longitude = req.params.longitude;
-		this.installationDao.findByCoordonnes(latitude, longitude)
+		const rayon = req.params.rayon;
+		this.installationDao.findByCoordonnees(latitude, longitude, rayon)
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	}
+
+	/**         listOf         **/
+
 
 	listOfNomDepartement(req, res) {
 		const value = req.params.value;

@@ -25,6 +25,11 @@ router.get('/installation/:no_de_l_installation', function (req, res) {
 	equipementController.findByNoDeLInstallation(req, res);
 });
 
+router.get('/latitude/:latitude/longitude/:longitude/rayon/:rayon', function (req, res) {
+	equipementController.findByCoordonnees(req, res);
+});
+
+
 /**         listOf         **/
 
 router.get('/liste/nom_departement/:value', function (req, res) {

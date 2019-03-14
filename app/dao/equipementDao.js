@@ -42,6 +42,10 @@ class EquipementDao {
 		});
 	};
 
+
+	/**         findBy         **/
+
+
 	findByAll(departement, commune, activite, niveau, bus, tram, handicap) {
 		const sqlRequest = "select a.* from activites a, Equipements e, installations i where " +
 			"(a.\"Code du département\" = $departement OR $departement IS NULL) and (a.\"Nom de la commune\" = $commune OR $commune IS NULL) and " +
@@ -98,11 +102,43 @@ class EquipementDao {
 		});
 	}
 
+	findByCoordonnees(latitude, longitude, rayon) {
+		const sqlRequest = "SELECT *,  111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
+			"                 * COS(RADIANS(latitute)) " +
+			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
+			"                 + SIN(RADIANS($latitude)) " +
+			"                 * SIN(RADIANS(latitute)))) as distance " +
+			"FROM Equipements where ( 111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
+			"                 * COS(RADIANS(latitute)) " +
+			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
+			"                 + SIN(RADIANS($latitude)) " +
+			"                 * SIN(RADIANS(latitute))))) < $rayon " +
+			"order by distance;";
+		const sqlParams = {
+			$latitude: latitude,
+			$longitude: longitude,
+			$rayon: rayon
+		};
 
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let equipements = [];
+
+			for (const row of rows) {
+				let values = Object.values(row);
+				equipements.push(new Equipement(values[0], values[1], values[2], values[3],values[4], values[5], values[6], values[7]
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]));
+			}
+			return equipements;
+		});
+
+	}
+
+
+	/**         listOf         **/
 
 
 	listOfNomDepartement(value) {
-		const sqlRequest = "select distinct Equipements.Departement from Equipements where Equipements.Departement like $value";
+		const sqlRequest = "select distinct Departement from Equipements where Departement like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -117,7 +153,7 @@ class EquipementDao {
 	}
 
 	listOfNomCommune(value) {
-		const sqlRequest = "select distinct Equipements.Commune from Equipements where Equipements.Commune like $value";
+		const sqlRequest = "select distinct Commune from Equipements where Commune like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -132,7 +168,7 @@ class EquipementDao {
 	}
 
 	listOfNomEquipement(value) {
-		const sqlRequest = "select distinct Equipements.\"Equipement\" from Equipements where Equipements.\"Equipement\" like $value";
+		const sqlRequest = "select distinct Equipement from Equipements where Equipement like $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -147,7 +183,7 @@ class EquipementDao {
 	}
 
 	listOfTypeEquipement(value) {
-		const sqlRequest = "select distinct Equipements.\"Type d équipement\" from Equipements where Equipements.\"Type d équipement\" like $value";
+		const sqlRequest = "select distinct \"Type d équipement\" from Equipements where \"Type d équipement\" like $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};

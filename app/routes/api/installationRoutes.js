@@ -61,7 +61,7 @@ router.get('/desserte_tram/:value', function (req, res) {
 	installationController.findByDesserteTram(req, res);
 });
 
-router.get('/coordonnes/:latitude/:longitude', function (req, res) {
+router.get('/latitude/:latitude/longitude/:longitude/rayon/:rayon', function (req, res) {
 	installationController.findByCoordonnes(req, res);
 });
 

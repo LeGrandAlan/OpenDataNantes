@@ -39,9 +39,14 @@ class ActiviteDao {
 		});
 	};
 
+
+	/**         findBy         **/
+
+
+
 	findByAll(departement, commune, activite, niveau, bus, tram, handicap) {
 		const sqlRequest = "select a.* from activites a, Equipements e, installations i where " +
-			"(a.\"Code du département\" = $departement OR $departement IS NULL) and (a.\"Nom de la commune\" = $commune OR $commune IS NULL) and " +
+			"(a.\"Code du département\" = $departement OR $departement IS NULL) and (a.\"Nom de la commune\" like $commune OR $commune IS NULL) and " +
 			"(a.\"Activité libellé\" = $activite OR $activite IS NULL) and (a.\"Niveau de l activité - Classif.\" = $niveau OR $niveau IS NULL) and " +
 			"a.\"Numéro de la fiche équipement\" = e.\"Numéro de la fiche équipement\" and e.\"Numéro de l installation\" = i.\"Numéro de l installation\" and " +
 			"(i.\"Desserte bus\" = $bus OR $bus IS NULL) and (i.\"Desserte Tram\" = $tram OR $tram IS NULL) and (i.\"Accessibilité handicapés à mobilité réduite\" = $handicap OR $handicap IS NULL) ;";
@@ -122,9 +127,45 @@ class ActiviteDao {
 		});
 	}
 
+	findByCoordonnees(latitude, longitude, rayon) {
+		const sqlRequest = "SELECT *,  111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
+			"                 * COS(RADIANS(latitute)) " +
+			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
+			"                 + SIN(RADIANS($latitude)) " +
+			"                 * SIN(RADIANS(latitute)))) as distance " +
+			"FROM activites where ( 111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
+			"                 * COS(RADIANS(latitute)) " +
+			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
+			"                 + SIN(RADIANS($latitude)) " +
+			"                 * SIN(RADIANS(latitute))))) < $rayon " +
+			"order by distance;";
+		const sqlParams = {
+			$latitude: latitude,
+			$longitude: longitude,
+			$rayon: rayon
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+
+			let activites = [];
+
+			for (const row of rows) {
+				let values = Object.values(row);
+				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
+					, values[8], values[9], values[10], values[11], values[12], values[13]));
+			}
+
+			return activites;
+		});
+
+	}
+
+
+	/**         listOf         **/
+
 
 	listOfNomDepartement(value) {
-		const sqlRequest = "select distinct activites.\"Libellé du département\" from activites where activites.\"Libellé du département\" like $value";
+		const sqlRequest = "select distinct \"Libellé du département\" from activites where \"Libellé du département\" like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -139,7 +180,7 @@ class ActiviteDao {
 	}
 
 	listOfNomCommuneByDepartement(value) {
-		const sqlRequest = "select distinct activites.\"Nom de la commune\" from activites where activites.\"Code du département\" like $value";
+		const sqlRequest = "select distinct \"Nom de la commune\" from activites where \"Code du département\" like $value";
 		const sqlParams = {
 			$value: value
 		};
@@ -154,7 +195,7 @@ class ActiviteDao {
 	}
 
 	listOfNomCommune(value) {
-		const sqlRequest = "select distinct activites.\"Nom de la commune\" from activites where activites.\"Nom de la commune\" like $value";
+		const sqlRequest = "select distinct \"Nom de la commune\" from activites where \"Nom de la commune\" like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -169,7 +210,7 @@ class ActiviteDao {
 	}
 
 	listOfCodeDepartment() {
-		const sqlRequest = "select distinct activites.\"Code du département\" from activites";
+		const sqlRequest = "select distinct \"Code du département\" from activites";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
@@ -181,7 +222,7 @@ class ActiviteDao {
 	}
 
 	listOfNomActivite() {
-		const sqlRequest = "select distinct activites.\"Activité libellé\", activites.\"Activité code\" from activites";
+		const sqlRequest = "select distinct \"Activité libellé\", \"Activité code\" from activites";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
@@ -193,19 +234,12 @@ class ActiviteDao {
 	}
 
 	listOfNiveauActivite() {
-		const sqlRequest = "select distinct activites.\"Niveau de l activité - Classif.\" from activites";
+		const sqlRequest = "select distinct \"Niveau de l activité - Classif.\" from activites";
 
 		return this.common.findAll(sqlRequest).then(rows => {
-
 			let niveaux = [];
-
 			for (const row of rows) {
-				let current = row["Niveau de l activité - Classif."].split(" - ");
-
-				current.forEach((niveau) => {
-					if (niveau.length !== 0)
-						niveaux.push(niveau);
-				});
+				niveaux.push(row["Niveau de l activité - Classif."]);
 			}
 			return niveaux;
 		});

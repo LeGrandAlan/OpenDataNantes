@@ -35,6 +35,10 @@ class InstallationDao {
 		});
 	};
 
+
+	/**         findBy         **/
+
+
 	findByAll(departement, commune, installation, codePostal, installationParticuliere, bus, tram, handicap) {
 		const sqlRequest = "select i.* from installations where " +
 			"(\"Code du département\" = $departement OR $departement IS NULL) and (a.\"Nom de la commune\" = $commune OR $commune IS NULL) and " +
@@ -268,15 +272,25 @@ class InstallationDao {
 	}
 
 
-	findByCoordonnes(latitude, longitude) {
-		const sqlRequest = "SELECT * FROM installations WHERE code_postal LIKE $value";
+	findByCoordonnees(latitude, longitude, rayon) {
+		const sqlRequest = "SELECT *,  111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
+			"                 * COS(RADIANS(latitute)) " +
+			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
+			"                 + SIN(RADIANS($latitude)) " +
+			"                 * SIN(RADIANS(latitute)))) as distance " +
+			"FROM installations where ( 111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
+			"                 * COS(RADIANS(latitute)) " +
+			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
+			"                 + SIN(RADIANS($latitude)) " +
+			"                 * SIN(RADIANS(latitute))))) < $rayon " +
+			"order by distance;";
 		const sqlParams = {
-			$latitude: "%" + latitude + "%",
-			$longitude: "%" + longitude + "%"
+			$latitude: latitude,
+			$longitude: longitude,
+			$rayon: rayon
 		};
 
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
-
 			let installations = [];
 
 			for (const row of rows) {
@@ -284,14 +298,18 @@ class InstallationDao {
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
 					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
 			}
-
 			return installations;
 		});
+
 	}
 
 
+	/**         listOf         **/
+
+
+
 	listOfNomDepartement(value) {
-		const sqlRequest = "select distinct installations.Département from installations where installations.Département like $value";
+		const sqlRequest = "select distinct Département from installations where Département like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -306,7 +324,7 @@ class InstallationDao {
 	}
 
 	listOfNomCommune(value) {
-		const sqlRequest = "select distinct installations.\"Nom de la commune\" from installations where installations.\"Nom de la commune\" like $value";
+		const sqlRequest = "select distinct \"Nom de la commune\" from installations where \"Nom de la commune\" like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -321,7 +339,7 @@ class InstallationDao {
 	}
 
 	listOfNomInstalation(value) {
-		const sqlRequest = "select distinct installations.\"Nom usuel de l installation\" from installations where installations.\"Nom usuel de l installation\" like $value";
+		const sqlRequest = "select distinct \"Nom usuel de l installation\" from installations where \"Nom usuel de l installation\" like $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -336,7 +354,7 @@ class InstallationDao {
 	}
 
 	listOfCodePostal(value) {
-		const sqlRequest = "select distinct installations.\"Code postal\" from installations where installations.\"Code postal\" like $value";
+		const sqlRequest = "select distinct \"Code postal\" from installations where \"Code postal\" like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};

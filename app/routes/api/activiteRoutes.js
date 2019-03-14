@@ -15,6 +15,9 @@ router.get('/', function (req, res) {
 });
 
 /**         findBy         **/
+router.get('/departement/:departement/commune/:commune/activite/:activite/niveau/:niveau/bus/:bus/tram/:tram/handicap/:handicap', function (req, res) {
+	activiteController.findByAll(req, res);
+});
 
 router.get('/code_postal/:code_postal', function (req, res) {
 	activiteController.findByCodePostal(req, res);
@@ -24,8 +27,8 @@ router.get('/equipement/numero_equipement/:value', function (req, res) {
 	activiteController.findByNoEquipement(req, res);
 });
 
-router.get('/departement/:departement/commune/:commune/activite/:activite/niveau/:niveau/bus/:bus/tram/:tram/handicap/:handicap', function (req, res) {
-	activiteController.findByAll(req, res);
+router.get('/latitude/:latitude/longitude/:longitude/rayon/:rayon', function (req, res) {
+	activiteController.findByCoordonnees(req, res);
 });
 
 /**         listOf         **/

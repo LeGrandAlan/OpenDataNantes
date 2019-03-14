@@ -25,6 +25,10 @@ class EquipementController {
 			.catch(this.common.findError(res));
 	};
 
+
+	/**         findBy         **/
+
+
 	findByAll(req, res) {
 		const departement = req.params.departement;
 		const commune = req.params.commune;
@@ -45,6 +49,18 @@ class EquipementController {
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	}
+
+	findByCoordonnees(req, res) {
+		const latitude = req.params.latitude;
+		const longitude = req.params.longitude;
+		const rayon = req.params.rayon;
+		this.equipementDao.findByCoordonnees(latitude,longitude,rayon)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
+	/**         listOf         **/
+
 
 	listOfNomDepartement(req, res) {
 		const value = req.params.value;
