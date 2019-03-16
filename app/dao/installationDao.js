@@ -40,11 +40,11 @@ class InstallationDao {
 
 
 	findByAll(departement, commune, nomInstallation, installationParticuliere, bus, tram, handicap) {
-		const sqlRequest = "select i.* from installations where " +
-			"(\"Code du département\" = $departement OR $departement IS NULL) and (a.\"Nom de la commune\" = $commune OR $commune IS NULL) and " +
-			"(a.\"Installation particulière\" = $instalatlionParticuliere OR $instalatlionParticuliere IS NULL) and " +
-			"(\"Desserte bus\" = $bus OR $bus IS NULL) and (\"Desserte Tram\" = $tram OR $tram IS NULL) and (\"Nom usuel de l installation\" = $nomInstallation OR $nomInstallation IS NULL) and" +
-			" (\"Accessibilité handicapés à mobilité réduite\" = $handicap OR $handicap IS NULL) ;";
+		const sqlRequest = "select i.* from installations as i where " +
+			"(i.\"Code du département\" = $departement OR $departement IS NULL) and (i.\"Nom de la commune\" = $commune OR $commune IS NULL) and " +
+			"(i.\"Installation particulière\" = $instalatlionParticuliere OR $instalatlionParticuliere IS NULL) and " +
+			"(i.\"Desserte bus\" = $bus OR $bus IS NULL) and (i.\"Desserte Tram\" = $tram OR $tram IS NULL) and (i.\"Nom usuel de l installation\" = $nomInstallation OR $nomInstallation IS NULL) and" +
+			" (i.\"Accessibilité handicapés à mobilité réduite\" = $handicap OR $handicap IS NULL) ;";
 
 		const sqlParams = {
 			$departement: departement !== 'null' ? departement : null,
