@@ -378,7 +378,7 @@ class InstallationDao {
 	}
 
 	listOfInstallationsParticulieres() {
-		const sqlRequest = "select distinct \"Nom usuel de l installation\" from installations";
+		const sqlRequest = "select distinct \"Installation particulière\" from installations";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
@@ -390,7 +390,7 @@ class InstallationDao {
 	}
 
 	listOfInstallationParticuliere(value) {
-		const sqlRequest = "select distinct \"Nom usuel de l installation\" from installations where \"Nom usuel de l installation\" like $value";
+		const sqlRequest = "select distinct \"Installation particulière\" from installations where \"Installation particulière\" like $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
