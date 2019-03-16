@@ -34,13 +34,13 @@ class InstallationController {
 	findByAll(req, res) {
 		const departement = req.params.departement;
 		const commune = req.params.commune;
-		const installation = req.params.installation;
+		const nomInstallation = req.params.nom_installation;
 		const codePostal = req.params.codePostal;
 		const installationParticuliere = req.params.installationParticuliere;
 		const bus = req.params.bus;
 		const tram = req.params.tram;
 		const handicap = req.params.handicap;
-		this.installationDao.findByAll(departement, commune, installation, codePostal, installationParticuliere, bus, tram, handicap)
+		this.installationDao.findByAll(departement, commune, nomInstallation, codePostal, installationParticuliere, bus, tram, handicap)
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	};
