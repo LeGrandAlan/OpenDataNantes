@@ -152,6 +152,18 @@ class EquipementDao {
 		});
 	}
 
+	listOfNomsCommunes() {
+		const sqlRequest = "select distinct Commune from Equipements";
+
+		return this.common.findAll(sqlRequest).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Commune"]);
+			}
+			return noms;
+		});
+	}
+
 	listOfNomCommune(value) {
 		const sqlRequest = "select distinct Commune from Equipements where Commune like $value";
 		const sqlParams = {
@@ -167,6 +179,18 @@ class EquipementDao {
 		});
 	}
 
+	listOfNomsEquipements() {
+		const sqlRequest = "select distinct Equipement from Equipements";
+
+		return this.common.findAll(sqlRequest).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Equipement"]);
+			}
+			return noms;
+		});
+	}
+
 	listOfNomEquipement(value) {
 		const sqlRequest = "select distinct Equipement from Equipements where Equipement like $value";
 		const sqlParams = {
@@ -177,6 +201,18 @@ class EquipementDao {
 			let noms = [];
 			for (const row of rows) {
 				noms.push(row["Equipement"]);
+			}
+			return noms;
+		});
+	}
+
+	listOfTypesEquipements() {
+		const sqlRequest = "select distinct \"Type d équipement\" from Equipements";
+
+		return this.common.findAll(sqlRequest).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Type d équipement"]);
 			}
 			return noms;
 		});

@@ -36,12 +36,24 @@ router.get('/liste/nom_departement/:value', function (req, res) {
 	equipementController.listOfNomDepartement(req, res);
 });
 
+router.get('/liste/nom_commune/', function (req, res) {
+	equipementController.listOfNomsCommunes(res);
+});
+
 router.get('/liste/nom_commune/:value', function (req, res) {
 	equipementController.listOfNomCommune(req, res);
 });
 
+router.get('/liste/nom_equipement/', function (req, res) {
+	equipementController.listOfNomsEquipements(res);
+});
+
 router.get('/liste/nom_equipement/:value', function (req, res) {
 	equipementController.listOfNomEquipement(req, res);
+});
+
+router.get('/liste/type_equipement/', function (req, res) {
+	equipementController.listOfTypesEquipements(res);
 });
 
 router.get('/liste/type_equipement/:value', function (req, res) {

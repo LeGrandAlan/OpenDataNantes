@@ -76,7 +76,7 @@ class InstallationController {
 
 	findByNomInstalation(req, res) {
 		const value = req.params.value;
-		this.installationDao.findByNomInstalation(value)
+		this.installationDao.findByNomInstallation(value)
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	}
@@ -88,9 +88,9 @@ class InstallationController {
 			.catch(this.common.findError(res));
 	}
 
-	findByInstalationParticuliere(req, res) {
+	findByInstallationParticuliere(req, res) {
 		const value = req.params.value;
-		this.installationDao.findByInstalationParticuliere(value)
+		this.installationDao.findByInstallationParticuliere(value)
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	}
@@ -135,6 +135,12 @@ class InstallationController {
 			.catch(this.common.findError(res));
 	}
 
+	listOfNomsCommunes(res) {
+		this.installationDao.listOfNomsCommunes()
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
 	listOfNomCommune(req, res) {
 		const value = req.params.value;
 		this.installationDao.listOfNomCommune(value)
@@ -142,9 +148,34 @@ class InstallationController {
 			.catch(this.common.findError(res));
 	}
 
-	listOfNomInstalation(req, res) {
+	listOfNomsInstallations(res) {
+		this.installationDao.listOfNomsInstallations()
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
+	listOfNomInstallation(req, res) {
 		const value = req.params.value;
-		this.installationDao.listOfNomInstalation(value)
+		this.installationDao.listOfNomInstallation(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
+	listOfInstallationsParticulieres(res) {
+		this.installationDao.listOfInstallationsParticulieres()
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
+	listOfInstallationParticuliere(req, res) {
+		const value = req.params.value;
+		this.installationDao.listOfInstallationParticuliere(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
+	listOfCodesPostaux(res) {
+		this.installationDao.listOfCodesPostaux()
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	}

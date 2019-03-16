@@ -46,7 +46,7 @@ router.get('/code_postal/:value', function (req, res) {
 });
 
 router.get('/instalation_particuliere/:value', function (req, res) {
-	installationController.findByInstalationParticuliere(req, res);
+	installationController.findByInstallationParticuliere(req, res);
 });
 
 router.get('/accessiblite_handicapes/:value', function (req, res) {
@@ -71,12 +71,32 @@ router.get('/liste/nom_departement/:value', function (req, res) {
 	installationController.listOfNomDepartement(req, res);
 });
 
+router.get('/liste/nom_commune/', function (req, res) {
+	installationController.listOfNomsCommunes(res);
+});
+
 router.get('/liste/nom_commune/:value', function (req, res) {
 	installationController.listOfNomCommune(req, res);
 });
 
+router.get('/liste/nom_instalation/', function (req, res) {
+	installationController.listOfNomsInstallations(res);
+});
+
 router.get('/liste/nom_instalation/:value', function (req, res) {
-	installationController.listOfNomInstalation(req, res);
+	installationController.listOfNomInstallation(req, res);
+});
+
+router.get('/liste/installations_particuliere/', function (req, res) {
+	installationController.listOfInstallationsParticulieres(res);
+});
+
+router.get('/liste/installations_particuliere/:value', function (req, res) {
+	installationController.listOfInstallationParticuliere(req, res);
+});
+
+router.get('/liste/code_postal/', function (req, res) {
+	installationController.listOfCodesPostaux(res);
 });
 
 router.get('/liste/code_postal/:value', function (req, res) {

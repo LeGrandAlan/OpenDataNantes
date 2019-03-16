@@ -136,7 +136,7 @@ const populateInstallation = function () {
 		});
 
 	})
-}
+};
 
 const populateEquipement = function () {
 	return new Promise(function (resolve, reject) {
@@ -184,7 +184,7 @@ const populateEquipement = function () {
 		});
 
 	})
-}
+};
 
 const populateActivite = function () {
 	return new Promise(function (resolve, reject) {

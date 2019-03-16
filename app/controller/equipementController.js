@@ -54,7 +54,7 @@ class EquipementController {
 		const latitude = req.params.latitude;
 		const longitude = req.params.longitude;
 		const rayon = req.params.rayon;
-		this.equipementDao.findByCoordonnees(latitude,longitude,rayon)
+		this.equipementDao.findByCoordonnees(latitude, longitude, rayon)
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	};
@@ -69,6 +69,12 @@ class EquipementController {
 			.catch(this.common.findError(res));
 	}
 
+	listOfNomsCommunes(res) {
+		this.equipementDao.listOfNomsCommunes()
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
 	listOfNomCommune(req, res) {
 		const value = req.params.value;
 		this.equipementDao.listOfNomCommune(value)
@@ -76,9 +82,21 @@ class EquipementController {
 			.catch(this.common.findError(res));
 	}
 
+	listOfNomsEquipements(res) {
+		this.equipementDao.listOfNomsEquipements()
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
 	listOfNomEquipement(req, res) {
 		const value = req.params.value;
 		this.equipementDao.listOfNomEquipement(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
+	listOfTypesEquipements(res) {
+		this.equipementDao.listOfTypesEquipements()
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	}

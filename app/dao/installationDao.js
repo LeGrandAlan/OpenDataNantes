@@ -150,7 +150,7 @@ class InstallationDao {
 		});
 	}
 
-	findByNomInstalation(value) {
+	findByNomInstallation(value) {
 		const sqlRequest = "SELECT * FROM installations WHERE \"Nom usuel de l installation\" LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
@@ -190,7 +190,7 @@ class InstallationDao {
 		});
 	}
 
-	findByInstalationParticuliere(value) {
+	findByInstallationParticuliere(value) {
 		const sqlRequest = "SELECT * FROM installations WHERE \"Installation particulière\" LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
@@ -323,6 +323,18 @@ class InstallationDao {
 		});
 	}
 
+	listOfNomsCommunes() {
+		const sqlRequest = "select distinct \"Nom de la commune\" from installations";
+
+		return this.common.findAll(sqlRequest).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Nom de la commune"]);
+			}
+			return noms;
+		});
+	}
+
 	listOfNomCommune(value) {
 		const sqlRequest = "select distinct \"Nom de la commune\" from installations where \"Nom de la commune\" like $value";
 		const sqlParams = {
@@ -338,7 +350,19 @@ class InstallationDao {
 		});
 	}
 
-	listOfNomInstalation(value) {
+	listOfNomsInstallations() {
+		const sqlRequest = "select distinct \"Nom usuel de l installation\" from installations";
+
+		return this.common.findAll(sqlRequest).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Nom usuel de l installation"]);
+			}
+			return noms;
+		});
+	}
+
+	listOfNomInstallation(value) {
 		const sqlRequest = "select distinct \"Nom usuel de l installation\" from installations where \"Nom usuel de l installation\" like $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
@@ -350,6 +374,45 @@ class InstallationDao {
 				noms.push(row["Nom usuel de l installation"]);
 			}
 			return noms;
+		});
+	}
+
+	listOfInstallationsParticulieres() {
+		const sqlRequest = "select distinct \"Nom usuel de l installation\" from installations";
+
+		return this.common.findAll(sqlRequest).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Nom usuel de l installation"]);
+			}
+			return noms;
+		});
+	}
+
+	listOfInstallationParticuliere(value) {
+		const sqlRequest = "select distinct \"Nom usuel de l installation\" from installations where \"Nom usuel de l installation\" like $value";
+		const sqlParams = {
+			$value: "%" + value + "%"
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Nom usuel de l installation"]);
+			}
+			return noms;
+		});
+	}
+
+	listOfCodesPostaux() {
+		const sqlRequest = "select distinct \"Code postal\" from installations";
+
+		return this.common.findAll(sqlRequest).then(rows => {
+			let codePostaux = [];
+			for (const row of rows) {
+				codePostaux.push(row["Code postal"]);
+			}
+			return codePostaux;
 		});
 	}
 
