@@ -47,11 +47,9 @@
                 </v-flex>
                 <v-flex xs2>
                     <v-switch v-model="bus" label="Déserte bus"></v-switch>
-                    <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
                 </v-flex>
                 <v-flex xs2>
                     <v-switch v-model="tram" label="Déserte tram"></v-switch>
-                    <!--  v-model="switch1" :label="`Switch 1: ${switch1.toString()}`"  -->
                 </v-flex>
                 <v-flex xs4>
                     <v-card-text>
@@ -92,12 +90,17 @@
                 <v-flex xs2>
                     <v-switch v-model="handi" label="Handi-accessible"></v-switch>
                 </v-flex>
-                <v-flex xs2>
+                <v-flex xs1>
                     <v-btn v-on:click="chargerMarqueursCarte" color="info">Valider</v-btn>
                 </v-flex>
+                <v-flex xs1>
+                    <v-switch v-model="grille" label="Affichage grille"></v-switch>
+                </v-flex>
             </v-layout>
-            <Map v-if="marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
-            <Map v-if="marqueursActivite === null" style="height: 70%; width: 100%;"/>
+            <Map v-if="!grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
+            <Map v-if="!grille && marqueursActivite === null" style="height: 70%; width: 100%;"/>
+            <GridList v-if="grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="width: 100%;"/>
+            <GridList v-if="grille && marqueursActivite === null" style="width: 100%;"/>
         </v-layout>
         <v-snackbar
                 v-model="snackbar"
@@ -123,14 +126,17 @@
 
 <script>
 	import Map from './Map.vue';
+	import GridList from './GridList.vue';
 	import axios from 'axios';
 
 	export default {
 		name: "RechercheActivite",
 		components: {
+			GridList,
 			Map
 		},
 		data: () => ({
+            grille: false,
 			departement: "",
 			departements: null,
 			commune: "",
@@ -158,8 +164,8 @@
 			setTimeout(function () {
 				window.dispatchEvent(new Event('resize'))
 			}, 250);
-			axios.get("http://localhost:3000/api/activite/liste/niveau_activite").then(reponse => {
-				this.niveauxActivite = reponse.data;
+			axios.get("http://localhost:3000/api/activite/liste/niveau_activite").then(response => {
+				this.niveauxActivite = response.data;
 				this.niveauxActivite = this.niveauxActivite.filter((item) => {
 					return item !== "Non défini";
 				});

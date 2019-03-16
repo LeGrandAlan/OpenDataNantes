@@ -47,11 +47,8 @@
 				//url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
 				url: ' https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
 				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-				withPopup: L.latLng(47.209274, -1.648773),
-				withTooltip: L.latLng(47.209274, -1.548773),
 				currentZoom: 12,
 				currentCenter: L.latLng(47.209274, -1.548773),
-				showParagraph: false,
 				mapOptions: {
 					zoomSnap: 0.5
 				}
