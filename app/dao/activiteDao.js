@@ -73,6 +73,27 @@ class ActiviteDao {
 		});
 	}
 
+	findById(id) {
+		const sqlRequest = "select * from activites where \"Activité code\" = $id";
+		const sqlParams = {
+			$id: id
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+
+			let activites = [];
+
+			for (const row of rows) {
+				let values = Object.values(row);
+				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
+					, values[8], values[9], values[10], values[11], values[12], values[13]));
+			}
+
+			return activites;
+		});
+	}
+
+
 	findByCodePostal(codePostal) {
 		const sqlRequest = "select activites.activite_code, activites.activite_libelle, " +
 			"Equipements.numero_de_la_fiche_equipement," +
@@ -239,7 +260,8 @@ class ActiviteDao {
 		return this.common.findAll(sqlRequest).then(rows => {
 			let niveaux = [];
 			for (const row of rows) {
-				niveaux.push(row["Niveau de l activité - Classif."]);
+				if (row["Niveau de l activité - Classif."] !== "")
+					niveaux.push(row["Niveau de l activité - Classif."]);
 			}
 			return niveaux;
 		});

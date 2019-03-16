@@ -15,6 +15,10 @@ router.get('/', function (req, res) {
 });
 
 /**         findBy         **/
+router.get('/id/:id', function (req, res) {
+	activiteController.findById(req, res);
+});
+
 router.get('/departement/:departement/commune/:commune/activite/:activite/niveau/:niveau/bus/:bus/tram/:tram/handicap/:handicap', function (req, res) {
 	activiteController.findByAll(req, res);
 });

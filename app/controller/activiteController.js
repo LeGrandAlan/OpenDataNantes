@@ -26,6 +26,14 @@ class ActiviteController {
 			.catch(this.common.findError(res));
 	};
 
+	findById(req, res) {
+		const id = req.params.id;
+		this.activiteDao.findById(id)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
+
 	findByAll(req, res) {
 		const departement = req.params.departement;
 		const commune = req.params.commune;
