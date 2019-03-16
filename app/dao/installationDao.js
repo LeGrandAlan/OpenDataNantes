@@ -383,7 +383,7 @@ class InstallationDao {
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Nom usuel de l installation"]);
+				noms.push(row["Installation particulière"]);
 			}
 			return noms;
 		});
@@ -398,7 +398,7 @@ class InstallationDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Nom usuel de l installation"]);
+				noms.push(row["Installation particulière"]);
 			}
 			return noms;
 		});
