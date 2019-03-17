@@ -131,9 +131,9 @@ class InstallationDao {
 	}
 
 	findByNumeroInstallation(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Numéro de l installation\" LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE \"Numéro de l installation\" = $value";
 		const sqlParams = {
-			$value: "%" + value + "%"
+			$value: value
 		};
 
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {

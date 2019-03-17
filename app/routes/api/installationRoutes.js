@@ -33,11 +33,11 @@ router.get('/nom_commune/:value', function (req, res) {
 	installationController.findByNomCommune(req, res);
 });
 
-router.get('/numero_instalation/:value', function (req, res) {
+router.get('/numero_installation/:value', function (req, res) {
 	installationController.findByNumeroInstallation(req, res);
 });
 
-router.get('/nom_instalation/:value', function (req, res) {
+router.get('/nom_installation/:value', function (req, res) {
 	installationController.findByNomInstalation(req, res);
 });
 
@@ -45,7 +45,7 @@ router.get('/code_postal/:value', function (req, res) {
 	installationController.findByCodePostal(req, res);
 });
 
-router.get('/instalation_particuliere/:value', function (req, res) {
+router.get('/installation_particuliere/:value', function (req, res) {
 	installationController.findByInstallationParticuliere(req, res);
 });
 
@@ -79,11 +79,11 @@ router.get('/liste/nom_commune/:value', function (req, res) {
 	installationController.listOfNomCommune(req, res);
 });
 
-router.get('/liste/nom_instalation/', function (req, res) {
+router.get('/liste/nom_installation/', function (req, res) {
 	installationController.listOfNomsInstallations(res);
 });
 
-router.get('/liste/nom_instalation/:value', function (req, res) {
+router.get('/liste/nom_installation/:value', function (req, res) {
 	installationController.listOfNomInstallation(req, res);
 });
 
