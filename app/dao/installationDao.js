@@ -28,7 +28,7 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 
 			return installations;
@@ -41,11 +41,11 @@ class InstallationDao {
 
 	findByAll(departement, commune, nomInstallation, installationParticuliere, bus, tram, handicap) {
 		const sqlRequest = "select * from installations where " +
-			"(\"Code du département\" = $departement OR $departement IS NULL) and (\"Nom de la commune\" = $commune OR $commune IS NULL) and " +
-			"(\"Nom usuel de l installation\" like $nomInstallation OR $nomInstallation IS NULL) and" +
-			"(\"Installation particulière\" like $instalatlionParticuliere OR $instalatlionParticuliere IS NULL) and " +
-			"(\"Desserte bus\" = $bus OR $bus IS NULL) and (\"Desserte Tram\" = $tram OR $tram IS NULL) and " +
-			"(\"Accessibilité handicapés à mobilité réduite\" = $handicap OR $handicap IS NULL) ;";
+			"(Code_du_departement = $departement OR $departement IS NULL) and (Nom_de_la_commune = $commune OR $commune IS NULL) and " +
+			"(\"Nom_usuel_de_l-installation\" like $nomInstallation OR $nomInstallation IS NULL) and" +
+			"(Installation_particulierelike $instalatlionParticuliere OR $instalatlionParticuliere IS NULL) and " +
+			"(Desserte_bus = $bus OR $bus IS NULL) and (Desserte_Tram = $tram OR $tram IS NULL) and " +
+			"(Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
 
 		const sqlParams = {
 			$departement: departement !== 'null' ? departement : null,
@@ -64,14 +64,35 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 			return installations;
 		});
 	}
 
+	findById(id) {
+		const sqlRequest = "select * from installations where id = $id";
+		const sqlParams = {
+			$id: id
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+				let installations = [];
+
+				for (const row of rows) {
+					let values = Object.values(row);
+					installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
+						, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
+				}
+				return installations;
+			}
+		);
+
+	}
+
+
 	findByCodeDepartement(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Code du département\" LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Code_du_departement LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -83,7 +104,7 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 
 			return installations;
@@ -103,7 +124,7 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 
 			return installations;
@@ -111,7 +132,7 @@ class InstallationDao {
 	}
 
 	findByNomCommune(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Nom de la commune\" LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Nom_de_la_commune LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -123,7 +144,7 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 
 			return installations;
@@ -131,7 +152,7 @@ class InstallationDao {
 	}
 
 	findByNumeroInstallation(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Numéro de l installation\" = $value";
+		const sqlRequest = "SELECT * FROM installations WHERE \"Numero_de_l-installation\" = $value";
 		const sqlParams = {
 			$value: value
 		};
@@ -143,7 +164,7 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 
 			return installations;
@@ -151,7 +172,7 @@ class InstallationDao {
 	}
 
 	findByNomInstallation(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Nom usuel de l installation\" LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE \"Nom_usuel_de_l-installation\" LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -163,7 +184,7 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 
 			return installations;
@@ -171,7 +192,7 @@ class InstallationDao {
 	}
 
 	findByCodePostal(codePostal) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Code postal\" LIKE $codePostal";
+		const sqlRequest = "SELECT * FROM installations WHERE Code_postal LIKE $codePostal";
 		const sqlParams = {
 			$codePostal: "%" + codePostal + "%"
 		};
@@ -183,7 +204,7 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 
 			return installations;
@@ -191,7 +212,7 @@ class InstallationDao {
 	}
 
 	findByInstallationParticuliere(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Installation particulière\" LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Installation_particuliereLIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -203,7 +224,7 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 
 			return installations;
@@ -211,7 +232,7 @@ class InstallationDao {
 	}
 
 	findByAccessibiliteHandicapes(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Accessibilité handicapés à mobilité réduite\" LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Accessibilite_handicapes_à_mobilite_reduite LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -223,7 +244,7 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 
 			return installations;
@@ -231,7 +252,7 @@ class InstallationDao {
 	}
 
 	findByDesserteBus(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Desserte bus\" LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Desserte_bus LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -243,7 +264,7 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 
 			return installations;
@@ -252,7 +273,7 @@ class InstallationDao {
 
 
 	findByDesserteTram(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Desserte Tram\" LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Desserte_Tram LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -264,7 +285,7 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 
 			return installations;
@@ -274,15 +295,15 @@ class InstallationDao {
 
 	findByCoordonnees(latitude, longitude, rayon) {
 		const sqlRequest = "SELECT *,  111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
-			"                 * COS(RADIANS(latitute)) " +
+			"                 * COS(RADIANS(latitude)) " +
 			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
 			"                 + SIN(RADIANS($latitude)) " +
-			"                 * SIN(RADIANS(latitute)))) as distance " +
+			"                 * SIN(RADIANS(latitude)))) as distance " +
 			"FROM installations where ( 111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
-			"                 * COS(RADIANS(latitute)) " +
+			"                 * COS(RADIANS(latitude)) " +
 			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
 			"                 + SIN(RADIANS($latitude)) " +
-			"                 * SIN(RADIANS(latitute))))) < $rayon " +
+			"                 * SIN(RADIANS(latitude))))) < $rayon " +
 			"order by distance;";
 		const sqlParams = {
 			$latitude: latitude,
@@ -296,12 +317,13 @@ class InstallationDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
 			}
 			return installations;
 		});
 
 	}
+
 
 
 	/**         listOf         **/
@@ -324,19 +346,19 @@ class InstallationDao {
 	}
 
 	listOfNomsCommunes() {
-		const sqlRequest = "select distinct \"Nom de la commune\" from installations";
+		const sqlRequest = "select distinct Nom_de_la_commune from installations";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Nom de la commune"]);
+				noms.push(row["Nom_de_la_commune"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfNomCommune(value) {
-		const sqlRequest = "select distinct \"Nom de la commune\" from installations where \"Nom de la commune\" like $value";
+		const sqlRequest = "select distinct Nom_de_la_commune from installations where Nom_de_la_commune like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -344,26 +366,26 @@ class InstallationDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Nom de la commune"]);
+				noms.push(row["Nom_de_la_commune"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfNomsInstallations() {
-		const sqlRequest = "select distinct \"Nom usuel de l installation\" from installations";
+		const sqlRequest = "select distinct \"Nom_usuel_de_l-installation\" from installations";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Nom usuel de l installation"]);
+				noms.push(row["Nom_usuel_de_l-installation"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfNomInstallation(value) {
-		const sqlRequest = "select distinct \"Nom usuel de l installation\" from installations where \"Nom usuel de l installation\" like $value";
+		const sqlRequest = "select distinct \"Nom_usuel_de_l-installation\" from installations where \"Nom_usuel_de_l-installation\" like $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -371,26 +393,26 @@ class InstallationDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Nom usuel de l installation"]);
+				noms.push(row["Nom_usuel_de_l-installation"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfInstallationsParticulieres() {
-		const sqlRequest = "select distinct \"Installation particulière\" from installations";
+		const sqlRequest = "select distinct Installation_particuliere from installations";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Installation particulière"]);
+				noms.push(row["Installation_particuliere"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfInstallationParticuliere(value) {
-		const sqlRequest = "select distinct \"Installation particulière\" from installations where \"Installation particulière\" like $value";
+		const sqlRequest = "select distinct Installation_particuliere from installations where Installation_particulierelike $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -398,26 +420,26 @@ class InstallationDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Installation particulière"]);
+				noms.push(row["Installation_particuliere"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfCodesPostaux() {
-		const sqlRequest = "select distinct \"Code postal\" from installations";
+		const sqlRequest = "select distinct Code_postal from installations";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let codePostaux = [];
 			for (const row of rows) {
-				codePostaux.push(row["Code postal"]);
+				codePostaux.push(row["Code_postal"]);
 			}
 			return codePostaux;
 		});
 	}
 
 	listOfCodePostal(value) {
-		const sqlRequest = "select distinct \"Code postal\" from installations where \"Code postal\" like $value";
+		const sqlRequest = "select distinct Code_postal from installations where Code_postal like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -425,7 +447,7 @@ class InstallationDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Code postal"]);
+				noms.push(row["Code_postal"]);
 			}
 			return noms;
 		});

@@ -47,13 +47,6 @@ class ActiviteController {
 			.catch(this.common.findError(res));
 	};
 
-	findByCodePostal(req, res) {
-		const codePostal = req.params.code_postal;
-		this.activiteDao.findByCodePostal(codePostal)
-			.then(this.common.findSuccess(res))
-			.catch(this.common.findError(res));
-	}
-
 	findByNoEquipement(req, res) {
 		const value = req.params.value;
 		this.activiteDao.findByNoEquipement(value)

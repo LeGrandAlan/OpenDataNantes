@@ -20,6 +20,11 @@ router.get('/departement/:departement/commune/:commune/nom_equipement/:nom_equip
 	equipementController.findByAll(req, res);
 });
 
+router.get('/id/:id', function (req, res) {
+	equipementController.findById(req, res);
+});
+
+
 //Les  équipements associé à une installation
 router.get('/installation/:no_de_l_installation', function (req, res) {
 	equipementController.findByNoDeLInstallation(req, res);

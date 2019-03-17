@@ -43,6 +43,14 @@ class EquipementController {
 			.catch(this.common.findError(res));
 	};
 
+	findById(req, res) {
+		const id = req.params.id;
+		this.equipementDao.findById(id)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
+
 
 	findByNoDeLInstallation(req, res) {
 		const noDeLInstallation = req.params.no_de_l_installation;

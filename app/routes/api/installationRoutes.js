@@ -21,6 +21,10 @@ router.get('/departement/:departement/commune/:commune/nom_installation/:nom_ins
 	installationController.findByAll(req, res);
 });
 
+router.get('/id/:id', function (req, res) {
+	installationController.findById(req, res);
+});
+
 router.get('/code_departement/:value', function (req, res) {
 	installationController.findByCodeDepartement(req, res);
 });

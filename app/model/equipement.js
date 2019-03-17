@@ -7,7 +7,7 @@
 class Equipement {
 	constructor(codeDepartement, departement, codeINSEE, commune, numeroInstalation, numeroEquipement, nomInstalation
 		, nomEquipement, typeEquipementCode, typeEquipement, proprietairePrincipal, nombreVestiaire, accueilBuvette
-		, longitude, latitude, installation) {
+		, longitude, latitude, id, installation) {
 		this.codeDepartement = codeDepartement;
 		this.departement = departement;
 		this.codeINSEE = codeINSEE;
@@ -23,6 +23,7 @@ class Equipement {
 		this.accueilBuvette = accueilBuvette;
 		this.longitude = longitude;
 		this.latitude = latitude;
+		this.id = id;
 		this.installation = installation;
 	}
 }

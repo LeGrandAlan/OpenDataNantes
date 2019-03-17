@@ -44,6 +44,13 @@ class InstallationController {
 			.catch(this.common.findError(res));
 	};
 
+	findById(req, res) {
+		const id = req.params.id;
+		this.installationDao.findById(id)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	}
+
 
 	findByCodeDepartement(req, res) {
 		const value = req.params.value;
