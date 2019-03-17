@@ -43,7 +43,7 @@ class InstallationDao {
 		const sqlRequest = "select * from installations where " +
 			"(\"Code du département\" = $departement OR $departement IS NULL) and (\"Nom de la commune\" = $commune OR $commune IS NULL) and " +
 			"(\"Nom usuel de l installation\" like $nomInstallation OR $nomInstallation IS NULL) and" +
-			"(\"Installation particulière\" = $instalatlionParticuliere OR $instalatlionParticuliere IS NULL) and " +
+			"(\"Installation particulière\" like $instalatlionParticuliere OR $instalatlionParticuliere IS NULL) and " +
 			"(\"Desserte bus\" = $bus OR $bus IS NULL) and (\"Desserte Tram\" = $tram OR $tram IS NULL) and " +
 			"(\"Accessibilité handicapés à mobilité réduite\" = $handicap OR $handicap IS NULL) ;";
 
@@ -57,6 +57,7 @@ class InstallationDao {
 			$handicap: handicap !== 'null' ? handicap : null
 		};
 
+		console.log(sqlParams);
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let installations = [];
 
