@@ -2,7 +2,7 @@
     <div class="gridlist">
         <v-container v-bind="{'grid-list-md': true}" fluid>
             <v-layout row wrap>
-                <v-flex xs4 v-for="marqueurActivite in marqueursActivite">
+                <v-flex xs4 v-for="(marqueurActivite, index) in marqueursActivite" :key="`activite-${index}`">
                     <v-card flat tile>
                         <v-card-title>
                             {{marqueurActivite.activiteLibelle}}

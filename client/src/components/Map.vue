@@ -12,14 +12,27 @@
                     :url="url"
                     :attribution="attribution"
             />
-            <v-marker-cluster>
-                <l-marker v-for="marqueurActivite in marqueursActivite" :lat-lng="getLatLng(marqueurActivite)">
+            <v-marker-cluster v-if="marqueursActivite">
+                <l-marker v-for="(marqueurActivite, index) in marqueursActivite" :key="`marqueurActivite-${index}`" :lat-lng="getLatLng(marqueurActivite)">
                     <l-popup>
-                        <div @click="innerClick">
+                        <div>
                             <h3>{{marqueurActivite.activiteLibelle}}</h3><br>
                             {{marqueurActivite.niveauDeLActivite}}<br>
                             {{marqueurActivite.nomDeLaCommune}}<br>
                             Nombre d'équipements : {{marqueurActivite.nombreEquipementsIdentiques}}
+                        </div>
+                    </l-popup>
+                </l-marker>
+            </v-marker-cluster>
+            <v-marker-cluster v-if="marqueursInstallation">
+                <l-marker v-for="(marqueurInstallation, index) in marqueursInstallation" :key="`marqueursInstallation-${index}`" :lat-lng="getLatLng(marqueurInstallation)">
+                    <l-popup>
+                        <div>
+                            <h3>{{marqueurInstallation.nomUsuelDeLInstallation}}</h3><br>
+                            {{marqueurInstallation.installationParticuliere}}<br>
+                            {{marqueurInstallation.noDeLaVoie}} {{marqueurInstallation.nomDeLaVoie}} {{marqueurInstallation.nomDeLaCommune}}<br>
+                            Places de parking : {{marqueurInstallation.nombrePlaceParking}}<br>
+                            <a v-on:click="detailsInstallation(marqueurInstallation.noDeLInstallation)">Voir toutes les informations</a>
                         </div>
                     </l-popup>
                 </l-marker>
@@ -55,21 +68,28 @@
 			};
 		},
 		props: {
-			marqueursActivite: Array
+			marqueursActivite: Array,
+			marqueursInstallation: Array
 		},
 		methods: {
+			detailsInstallation(noInstallation) {
+				this.$root.$emit('installationDetailsClicked', noInstallation);
+			},
 			zoomUpdate (zoom) {
 				this.currentZoom = zoom;
 			},
 			centerUpdate (center) {
 				this.currentCenter = center;
 			},
-			innerClick () {
-				alert('Click!');
-			},
-            getLatLng(elem) {
-                return L.latLng(parseFloat(elem.latitude), parseFloat(elem.longitude));
-            }
+			getLatLng(elem) {
+				let latSplit = elem.longitude.split(" ");
+				if(latSplit.length > 1){
+					latSplit = latSplit[1];
+				} else {
+					latSplit = latSplit[0];
+				}
+				return L.latLng(parseFloat(elem.latitude), parseFloat(latSplit));
+			}
 		}
 	};
 </script>

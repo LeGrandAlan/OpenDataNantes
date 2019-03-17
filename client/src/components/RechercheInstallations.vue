@@ -4,7 +4,7 @@
             <v-layout row wrap align-content-start pa-2>
                 <v-flex xs12>
                     <v-card-text>
-                        <h1>Recherche d'activités</h1>
+                        <h1>Recherche d'installations</h1>
                     </v-card-text>
                 </v-flex>
                 <v-flex xs3>
@@ -54,15 +54,15 @@
                 <v-flex xs4>
                     <v-card-text>
                         <v-autocomplete
-                                v-model="activite"
-                                :items="activites"
+                                v-model="installation"
+                                :items="installations"
                                 color="grey"
                                 hide-no-data
                                 hide-selected
                                 item-text="Description"
                                 item-value="API"
-                                label="Activité"
-                                placeholder="Type d'activité"
+                                label="Nom d'installation"
+                                placeholder="Nom de l'installation"
                                 prepend-icon="fas fa-city"
                                 return-object
                                 clearable
@@ -72,15 +72,15 @@
                 <v-flex xs4>
                     <v-card-text>
                         <v-autocomplete
-                                v-model="niveauActivite"
-                                :items="niveauxActivite"
+                                v-model="installationParticuliere"
+                                :items="installationParticulieres"
                                 color="grey"
                                 hide-no-data
                                 hide-selected
                                 item-text="Description"
                                 item-value="API"
-                                label="Niveau"
-                                placeholder="Niveau d'activité"
+                                label="Installation particuliere"
+                                placeholder="Installation particuliere"
                                 prepend-icon="fas fa-city"
                                 return-object
                                 clearable
@@ -97,10 +97,10 @@
                     <v-switch v-model="grille" label="Affichage grille"></v-switch>
                 </v-flex>
             </v-layout>
-            <Map v-if="!grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
-            <Map v-if="!grille && marqueursActivite === null" style="height: 70%; width: 100%;"/>
-            <GridList v-if="grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="width: 100%;"/>
-            <GridList v-if="grille && marqueursActivite === null" style="width: 100%;"/>
+            <Map v-if="!grille && marqueursInstallation !== null" :marqueurs-installation=marqueursInstallation style="height: 70%; width: 100%;"/>
+            <Map v-if="!grille && marqueursInstallation === null" style="height: 70%; width: 100%;"/>
+            <GridList v-if="grille && marqueursInstallation !== null" :marqueurs-installation=marqueursInstallation style="width: 100%;"/>
+            <GridList v-if="grille && marqueursInstallation === null" style="width: 100%;"/>
         </v-layout>
         <v-snackbar
                 v-model="snackbar"
@@ -130,25 +130,25 @@
 	import axios from 'axios';
 
 	export default {
-		name: "RechercheActivite",
+		name: "RechercheInstallations",
 		components: {
 			GridList,
 			Map
 		},
 		data: () => ({
-            grille: false,
+			grille: false,
 			departement: "",
 			departements: null,
 			commune: "",
 			communes: null,
-			activite: "",
-			activites: null,
-			niveauActivite: "",
-			niveauxActivite: null,
+			installation: "",
+			installations: null,
+			installationParticuliere: "",
+			installationParticulieres: null,
 			handi: false,
 			bus: false,
 			tram: false,
-			marqueursActivite: null,
+			marqueursInstallation: null,
 			snackbar: false,
 			y: 'top',
 			x: null,
@@ -160,18 +160,17 @@
 			source: String
 		},
 		mounted() {
-
 			setTimeout(function () {
 				window.dispatchEvent(new Event('resize'))
 			}, 250);
-			axios.get("http://localhost:3000/api/activite/liste/niveau_activite").then(response => {
-				this.niveauxActivite = response.data;
-				this.niveauxActivite = this.niveauxActivite.filter((item) => {
-					return item !== "Non défini";
+			axios.get("http://localhost:3000/api/installation/liste/installations_particuliere/").then(response => {
+				this.installationParticulieres = response.data;
+				this.installationParticulieres = this.installationParticulieres.filter((item) => {
+					return item !== "Non";
 				});
 			});
-			axios.get("http://localhost:3000/api/activite/liste/nom_activite/").then(response => {
-				this.activites = response.data.map(res => res.nom);
+			axios.get("http://localhost:3000/api/installation/liste/nom_installation/").then(response => {
+				this.installations = response.data;
 			});
 			axios.get("http://localhost:3000/api/activite/liste/code_departement/").then(response => {
 				this.departements = response.data;
@@ -179,29 +178,36 @@
 		},
 		methods: {
 			chargerMarqueursCarte() {
-				let niveauActivite = this.niveauActivite === "" || this.niveauActivite === undefined ? "null" : this.niveauActivite;
-				let activite = this.activite === "" || this.activite === undefined ? "null" : this.activite;
-				let commune = this.commune === "" || this.communes === undefined ? "null" : this.commune;
+
+				let installationParticuliere = this.installationParticuliere === "" || this.installationParticuliere === undefined ? "null" : this.installationParticuliere;
+				let installation = this.installation === "" || this.installation === undefined ? "null" : this.installation;
+				let commune = this.commune === "" || this.commune === undefined ? "null" : this.commune;
 				let departement = this.departement === "" || this.departement === undefined ? "null" : this.departement;
 				let bus = this.bus ? "Oui" : "null";
 				let tram = this.tram ? "Oui" : "null";
 				let handi = this.handi ? "Oui" : "null";
 
-				let url = `http://localhost:3000/api/activite/`+
+				let url = `http://localhost:3000/api/installation/`+
 					`departement/${departement}`+
 					`/commune/${commune}`+
-					`/activite/${activite}`+
-					`/niveau/${niveauActivite}`+
+					`/nom_installation/${installation}`+
+					`/installationParticuliere/${installationParticuliere}`+
 					`/bus/${bus}`+
 					`/tram/${tram}`+
 					`/handicap/${handi}`;
 
 				axios.get(url).then(response => {
-					this.marqueursActivite = response.data;
+					this.marqueursInstallation = response.data;
+
+					//TODO: à enlever (il est la en attendant que Maxence supprime la première ligne)
+					this.marqueursInstallation = this.marqueursInstallation.filter(marqueur => {
+						return marqueur.nomUsuelDeLInstallation !== "5";
+					});
+
 					this.text = response.data.length + " résultats !";
 					this.snackbar = true;
 				}).catch(() => {
-					this.marqueursActivite = null;
+					this.marqueursInstallation = null;
 					this.text = "Aucun résultats !";
 					this.snackbar = true;
 				});

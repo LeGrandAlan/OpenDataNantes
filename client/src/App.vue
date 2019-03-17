@@ -16,12 +16,12 @@
                             <v-list-tile-title>Activités</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile>
+                    <v-list-tile v-on:click="currentComponent = 'RechercheInstallations'">
                         <v-list-tile-action>
                             <v-icon>fas fa-warehouse</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
-                            <v-list-tile-title>Equipements</v-list-tile-title>
+                            <v-list-tile-title>Installations</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                 </v-list>
@@ -31,9 +31,10 @@
                 <v-toolbar-title>OpenDataNantes</v-toolbar-title>
             </v-toolbar>
             <v-content>
-                <keep-alive>
-                    <component v-bind:is="currentComponent"></component>
-                </keep-alive>
+                <!--<keep-alive>-->
+                <component v-if="currentComponent === 'DetailsInstallation'" :noInstallation="noInstallation" v-bind:is="currentComponent"></component>
+                <component v-else v-bind:is="currentComponent"></component>
+                <!--</keep-alive>-->
             </v-content>
             <v-footer app fixed>
                 <span>&copy; 2019</span>
@@ -44,15 +45,26 @@
 
 <script>
 	import RechercheActivite from './components/RechercheActivite.vue';
+	import RechercheInstallations from './components/RechercheInstallations.vue';
+	import DetailsInstallation from './components/DetailsInstallation.vue';
 
 	export default {
 		name: 'app',
 		components: {
-			RechercheActivite
+			RechercheActivite,
+			RechercheInstallations,
+			DetailsInstallation
 		},
 		data: () => ({
 			drawer: true,
-			currentComponent: null
-		})
+			currentComponent: null,
+			noInstallation: null
+		}),
+		mounted() {
+			this.$root.$on('installationDetailsClicked', (noInstallation) => {
+				this.currentComponent = 'DetailsInstallation';
+				this.noInstallation = noInstallation;
+			})
+		}
 	}
 </script>
