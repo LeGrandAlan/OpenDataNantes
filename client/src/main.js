@@ -4,6 +4,7 @@ import * as L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster';
 import Vuetify from 'vuetify';
+import VuetifyConfirm from 'vuetify-confirm';
 import '@fortawesome/fontawesome-free/css/all.css';
 import 'vuetify/dist/vuetify.min.css'
 import "leaflet.markercluster/dist/MarkerCluster.css";
@@ -21,6 +22,15 @@ L.Icon.Default.mergeOptions({
 
 Vue.use(Vuetify, {
   iconfont: 'fa'
+});
+Vue.use(VuetifyConfirm, {
+  buttonTrueText: 'Ok',
+  buttonFalseText: 'Annuler',
+  color: 'warning',
+  icon: 'warning',
+  title: 'Warning',
+  width: 350,
+  property: '$confirm'
 });
 Vue.component('v-marker-cluster', Vue2LeafletMarkerCluster);
 

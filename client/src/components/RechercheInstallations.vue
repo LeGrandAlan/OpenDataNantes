@@ -197,15 +197,27 @@
 					`/handicap/${handi}`;
 
 				axios.get(url).then(response => {
-					this.marqueursInstallation = response.data;
 
-					//TODO: à enlever (il est la en attendant que Maxence supprime la première ligne)
-					this.marqueursInstallation = this.marqueursInstallation.filter(marqueur => {
-						return marqueur.nomUsuelDeLInstallation !== "5";
-					});
+					if(response.data.length > 2000) {
+						this.$confirm("Voulez vous vraiment afficher les résultats ?<br>Il y en a " + response.data.length + ".<br><b>C'est fortement déconseillé !</b>").then(res => {
+							if(res) {
+								this.marqueursInstallation = response.data;
 
-					this.text = response.data.length + " résultats !";
-					this.snackbar = true;
+								//TODO: à enlever (il est la en attendant que Maxence supprime la première ligne)
+								this.marqueursInstallation = this.marqueursInstallation.filter(marqueur => {
+									return marqueur.nomUsuelDeLInstallation !== "5";
+								});
+
+								this.text = response.data.length + " résultats !";
+								this.snackbar = true;
+							}
+						});
+					} else {
+						this.marqueursActivite = response.data;
+						this.text = response.data.length + " résultats !";
+						this.snackbar = true;
+                    }
+
 				}).catch(() => {
 					this.marqueursInstallation = null;
 					this.text = "Aucun résultats !";

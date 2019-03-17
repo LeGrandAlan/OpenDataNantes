@@ -136,7 +136,7 @@
 			Map
 		},
 		data: () => ({
-            grille: false,
+			grille: false,
 			departement: "",
 			departements: null,
 			commune: "",
@@ -197,9 +197,21 @@
 					`/handicap/${handi}`;
 
 				axios.get(url).then(response => {
-					this.marqueursActivite = response.data;
-					this.text = response.data.length + " résultats !";
-					this.snackbar = true;
+
+					if(response.data.length > 2000) {
+						this.$confirm("Voulez vous vraiment afficher les résultats ?<br>Il y en a " + response.data.length + ".<br><b>C'est fortement déconseillé !</b>").then(res => {
+							if (res) {
+								this.marqueursActivite = response.data;
+								this.text = response.data.length + " résultats !";
+								this.snackbar = true;
+							}
+						});
+					} else {
+						this.marqueursActivite = response.data;
+						this.text = response.data.length + " résultats !";
+						this.snackbar = true;
+                    }
+
 				}).catch(() => {
 					this.marqueursActivite = null;
 					this.text = "Aucun résultats !";
