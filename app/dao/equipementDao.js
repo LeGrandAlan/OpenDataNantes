@@ -32,9 +32,9 @@ class EquipementDao {
 				let values = Object.values(row);
 				console.log(values);
 				equipements.push(new Equipement(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]
-					, new Installation(values[15], values[16], values[17], values[18], values[19], values[20], values[21], values[22]
-						, values[23], values[24], values[25], values[26], values[27], values[28], values[29], values[30])));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]
+					, new Installation(values[16], values[17], values[18], values[19], values[20], values[21], values[22]
+						, values[23], values[24], values[25], values[26], values[27], values[28], values[29], values[30], values[31])));
 
 			}
 
@@ -46,31 +46,32 @@ class EquipementDao {
 	/**         findBy         **/
 
 
-	findByAll(departement, commune, activite, niveau, bus, tram, handicap) {
-		const sqlRequest = "select a.* from activites a, Equipements e, installations i where " +
-			"(a.\"Code du département\" = $departement OR $departement IS NULL) and (a.\"Nom de la commune\" = $commune OR $commune IS NULL) and " +
-			"(a.\"Activité libellé\" = $activite OR $activite IS NULL) and (a.\"Niveau de l activité - Classif.\" = $niveau OR $niveau IS NULL) and " +
-			"a.\"Numéro de la fiche équipement\"=e.\"Numéro de la fiche équipement\" and e.\"Numéro de l installation\"=i.\"Numéro de l installation\" and " +
+	findByAll(departement, commune, nomEquipement, typeEquipement, buvette, bus, tram, handicap) {
+		const sqlRequest = "select e.* from Equipements e, installations i where " +
+			"(e.\"Code departement\" = $departement OR $departement IS NULL) and (e.Commune = $commune OR $commune IS NULL) and " +
+			"(e.Equipement = $nomEquipement OR $nomEquipement IS NULL) and (e.\"Type d équipement\" = $typeEquipement OR $typeEquipement IS NULL) and " +
+			"(e.\"Accueil buvette\" = $buvette OR $buvette IS NULL) and " +
+			"e.\"Numéro de l installation\" = i.\"Numéro de l installation\" and " +
 			"(i.\"Desserte bus\" = $bus OR $bus IS NULL) and (i.\"Desserte Tram\" = $tram OR $tram IS NULL) and (i.\"Accessibilité handicapés à mobilité réduite\" = $handicap OR $handicap IS NULL) ;";
 
 		const sqlParams = {
 			$departement: departement !== 'null' ? departement : null,
 			$commune: commune !== 'null' ? commune : null,
-			$activite: activite !== 'null' ? activite : null,
-			$niveau: niveau !== 'null' ? niveau : null,
+			$nomEquipement: nomEquipement !== 'null' ? nomEquipement : null,
+			$typeEquipement: typeEquipement !== 'null' ? typeEquipement : null,
+			$buvette: buvette !== 'null' ? buvette : null,
 			$bus: bus !== 'null' ? bus : null,
 			$tram: tram !== 'null' ? tram : null,
 			$handicap: handicap !== 'null' ? handicap : null
 		};
 
-		console.log(sqlParams);
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let equipements = [];
 
 			for (const row of rows) {
 				let values = Object.values(row);
-				equipements.push(new Equipement(values[0], values[1], values[2], values[3],values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]));
+				equipements.push(new Equipement(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
 			}
 			return equipements;
 		});
@@ -125,8 +126,8 @@ class EquipementDao {
 
 			for (const row of rows) {
 				let values = Object.values(row);
-				equipements.push(new Equipement(values[0], values[1], values[2], values[3],values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]));
+				equipements.push(new Equipement(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
 			}
 			return equipements;
 		});
@@ -232,7 +233,6 @@ class EquipementDao {
 			return noms;
 		});
 	}
-
 
 
 }

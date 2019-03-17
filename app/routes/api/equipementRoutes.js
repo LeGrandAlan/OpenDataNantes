@@ -16,7 +16,7 @@ router.get('/', function (req, res) {
 
 /**         findBy         **/
 
-router.get('/departement/:departement/commune/:commune/equipement/:equipement/typeEquipement/:typeEquipement/bus/:bus/tram/:tram/handicap/:handicap', function (req, res) {
+router.get('/departement/:departement/commune/:commune/nom_equipement/:nom_equipement/typeEquipement/:typeEquipement/buvette/:buvette/bus/:bus/tram/:tram/handicap/:handicap', function (req, res) {
 	equipementController.findByAll(req, res);
 });
 

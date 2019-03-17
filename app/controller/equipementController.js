@@ -32,12 +32,13 @@ class EquipementController {
 	findByAll(req, res) {
 		const departement = req.params.departement;
 		const commune = req.params.commune;
-		const activite = req.params.activite;
-		const niveau = req.params.niveau;
+		const nomEquipement = req.params.nom_equipement;
+		const typeEquipement = req.params.typeEquipement;
+		const buvette = req.params.buvette;
 		const bus = req.params.bus;
 		const tram = req.params.tram;
 		const handicap = req.params.handicap;
-		this.equipementDao.findByAll(departement, commune, activite, niveau, bus, tram, handicap)
+		this.equipementDao.findByAll(departement, commune, nomEquipement, typeEquipement, buvette, bus, tram, handicap)
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	};

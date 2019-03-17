@@ -5,13 +5,15 @@
  */
 
 class Equipement {
-	constructor(codeDepartement, departement, codeINSEE, commune, numeroEquipement, nomEquipement
-		, typeEquipementCode, typeEquipement, proprietairePrincipal, nombreVestiaire, accueilBuvette
+	constructor(codeDepartement, departement, codeINSEE, commune, numeroInstalation, numeroEquipement, nomInstalation
+		, nomEquipement, typeEquipementCode, typeEquipement, proprietairePrincipal, nombreVestiaire, accueilBuvette
 		, longitude, latitude, installation) {
 		this.codeDepartement = codeDepartement;
 		this.departement = departement;
 		this.codeINSEE = codeINSEE;
 		this.commune = commune;
+		this.numeroInstalation = numeroInstalation;
+		this.nomInstalation = nomInstalation;
 		this.numeroEquipement = numeroEquipement;
 		this.nomEquipement = nomEquipement;
 		this.typeEquipementCode = typeEquipementCode;
