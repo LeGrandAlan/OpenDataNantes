@@ -83,6 +83,10 @@ router.get('/liste/nom_commune/:value', function (req, res) {
 	installationController.listOfNomCommune(req, res);
 });
 
+router.get('/liste/departement/:value/nom_commune', function (req, res) {
+	installationController.listOfNomCommuneByDepartement(req, res);
+});
+
 router.get('/liste/nom_installation/', function (req, res) {
 	installationController.listOfNomsInstallations(res);
 });

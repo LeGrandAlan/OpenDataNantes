@@ -154,6 +154,13 @@ class InstallationController {
 			.catch(this.common.findError(res));
 	}
 
+	listOfNomCommuneByDepartement(req, res) {
+		const value = req.params.value;
+		this.installationDao.listOfNomCommuneByDepartement(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
 	listOfNomsInstallations(res) {
 		this.installationDao.listOfNomsInstallations()
 			.then(this.common.findSuccess(res))

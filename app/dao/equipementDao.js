@@ -201,6 +201,21 @@ class EquipementDao {
 		});
 	}
 
+	listOfNomCommuneByDepartement(value) {
+		const sqlRequest = "select distinct Commune from Equipements where Code_departement like $value";
+		const sqlParams = {
+			$value: value
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Commune"]);
+			}
+			return noms;
+		});
+	}
+
 	listOfNomsEquipements() {
 		const sqlRequest = "select distinct nom_equipement from Equipements";
 

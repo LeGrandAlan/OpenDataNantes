@@ -49,6 +49,10 @@ router.get('/liste/nom_commune/:value', function (req, res) {
 	equipementController.listOfNomCommune(req, res);
 });
 
+router.get('/liste/departement/:value/nom_commune', function (req, res) {
+	equipementController.listOfNomCommuneByDepartement(req, res);
+});
+
 router.get('/liste/nom_equipement/', function (req, res) {
 	equipementController.listOfNomsEquipements(res);
 });

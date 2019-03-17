@@ -42,8 +42,8 @@ class InstallationDao {
 	findByAll(departement, commune, nomInstallation, installationParticuliere, bus, tram, handicap) {
 		const sqlRequest = "select * from installations where " +
 			"(Code_du_departement = $departement OR $departement IS NULL) and (Nom_de_la_commune = $commune OR $commune IS NULL) and " +
-			"(\"Nom_usuel_de_l-installation\" like $nomInstallation OR $nomInstallation IS NULL) and" +
-			"(Installation_particulierelike $instalatlionParticuliere OR $instalatlionParticuliere IS NULL) and " +
+			"(\"Nom_usuel_de_l-installation\" like $nomInstallation OR $nomInstallation IS NULL) and " +
+			"(Installation_particuliere like $installatlionParticuliere OR $installatlionParticuliere IS NULL) and " +
 			"(Desserte_bus = $bus OR $bus IS NULL) and (Desserte_Tram = $tram OR $tram IS NULL) and " +
 			"(Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
 
@@ -51,13 +51,12 @@ class InstallationDao {
 			$departement: departement !== 'null' ? departement : null,
 			$commune: commune !== 'null' ? commune : null,
 			$nomInstallation: nomInstallation !== 'null' ? "%" + nomInstallation + "%" : null,
-			$instalatlionParticuliere: installationParticuliere !== 'null' ? installationParticuliere : null,
+			$installatlionParticuliere: installationParticuliere !== 'null' ? installationParticuliere : null,
 			$bus: bus !== 'null' ? bus : null,
 			$tram: tram !== 'null' ? tram : null,
 			$handicap: handicap !== 'null' ? handicap : null
 		};
 
-		console.log(sqlParams);
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let installations = [];
 
@@ -331,7 +330,7 @@ class InstallationDao {
 
 
 	listOfNomDepartement(value) {
-		const sqlRequest = "select distinct Département from installations where Département like $value";
+		const sqlRequest = "select distinct Departement from installations where Departement like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -339,7 +338,7 @@ class InstallationDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Département"]);
+				noms.push(row["Departement"]);
 			}
 			return noms;
 		});
@@ -371,6 +370,22 @@ class InstallationDao {
 			return noms;
 		});
 	}
+
+	listOfNomCommuneByDepartement(value) {
+		const sqlRequest = "select distinct Nom_de_la_commune from installations where Code_du_departement like $value";
+		const sqlParams = {
+			$value: value
+		};
+
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let noms = [];
+			for (const row of rows) {
+				noms.push(row["Nom_de_la_commune"]);
+			}
+			return noms;
+		});
+	}
+
 
 	listOfNomsInstallations() {
 		const sqlRequest = "select distinct \"Nom_usuel_de_l-installation\" from installations";

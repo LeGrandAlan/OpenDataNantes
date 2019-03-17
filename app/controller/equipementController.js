@@ -91,6 +91,13 @@ class EquipementController {
 			.catch(this.common.findError(res));
 	}
 
+	listOfNomCommuneByDepartement(req, res) {
+		const value = req.params.value;
+		this.equipementDao.listOfNomCommuneByDepartement(value)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
 	listOfNomsEquipements(res) {
 		this.equipementDao.listOfNomsEquipements()
 			.then(this.common.findSuccess(res))
