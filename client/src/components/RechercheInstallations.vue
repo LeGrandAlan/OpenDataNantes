@@ -213,10 +213,16 @@
 							}
 						});
 					} else {
-						this.marqueursActivite = response.data;
+						this.marqueursInstallation = response.data;
+
+						//TODO: à enlever (il est la en attendant que Maxence supprime la première ligne)
+						this.marqueursInstallation = this.marqueursInstallation.filter(marqueur => {
+							return marqueur.nomUsuelDeLInstallation !== "5";
+						});
+
 						this.text = response.data.length + " résultats !";
 						this.snackbar = true;
-                    }
+					}
 
 				}).catch(() => {
 					this.marqueursInstallation = null;
