@@ -22,7 +22,7 @@ class ActiviteDao {
 	 * @return {Promise} all entities
 	 */
 	findAll() {
-		const sqlRequest = "select * from activites inner join Equipements on activites.\"Numéro de la fiche équipement\" = Equipements.\"Numéro de la fiche équipement\";";
+		const sqlRequest = "select * from activites inner join Equipements on activites.Numero_de_la_fiche_equipement = Equipements.Numero_de_la_fiche_equipement;";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 
@@ -31,9 +31,9 @@ class ActiviteDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13]
-					, new Equipement(values[14], values[15], values[16], values[17], values[18], values[19], values[20], values[21], values[22]
-						, values[23], values[24], values[25], values[26], values[27], values[28])));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]
+					, new Equipement(values[15], values[16], values[17], values[18], values[19], values[20], values[21], values[22]
+						, values[23], values[24], values[25], values[26], values[27], values[28], values[29])));
 			}
 			return activites;
 		});
@@ -46,10 +46,10 @@ class ActiviteDao {
 
 	findByAll(departement, commune, activite, niveau, bus, tram, handicap) {
 		const sqlRequest = "select a.* from activites a, Equipements e, installations i where " +
-			"(a.\"Code du département\" = $departement OR $departement IS NULL) and (a.\"Nom de la commune\" like $commune OR $commune IS NULL) and " +
-			"(a.\"Activité libellé\" = $activite OR $activite IS NULL) and (a.\"Niveau de l activité - Classif.\" = $niveau OR $niveau IS NULL) and " +
-			"a.\"Numéro de la fiche équipement\" = e.\"Numéro de la fiche équipement\" and e.\"Numéro de l installation\" = i.\"Numéro de l installation\" and " +
-			"(i.\"Desserte bus\" = $bus OR $bus IS NULL) and (i.\"Desserte Tram\" = $tram OR $tram IS NULL) and (i.\"Accessibilité handicapés à mobilité réduite\" = $handicap OR $handicap IS NULL) ;";
+			"(a.Code_du_departement = $departement OR $departement IS NULL) and (a.Nom_de_la_commune like $commune OR $commune IS NULL) and " +
+			"(a.Activite_libelle = $activite OR $activite IS NULL) and (a.\"Niveau_de_l-activite_-_Classif.\" = $niveau OR $niveau IS NULL) and " +
+			"a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement and e.\"Numero_de_l-installation\" = i.\"Numero_de_l-installation\" and " +
+			"(i.Desserte_bus = $bus OR $bus IS NULL) and (i.Desserte_Tram = $tram OR $tram IS NULL) and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
 
 		const sqlParams = {
 			$departement: departement !== 'null' ? departement : null,
@@ -67,14 +67,14 @@ class ActiviteDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]));
 			}
 			return activites;
 		});
 	}
 
 	findById(id) {
-		const sqlRequest = "select * from activites where \"Activité code\" = $id";
+		const sqlRequest = "select * from activites where id = $id";
 		const sqlParams = {
 			$id: id
 		};
@@ -82,52 +82,20 @@ class ActiviteDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 
 			let activites = [];
-
+			console.log(rows);
 			for (const row of rows) {
 				let values = Object.values(row);
 				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]));
 			}
 
 			return activites;
 		});
 	}
-
-
-	findByCodePostal(codePostal) {
-		const sqlRequest = "select activites.activite_code, activites.activite_libelle, " +
-			"Equipements.numero_de_la_fiche_equipement," +
-			"installations.numero_de_l_installation, installations.nom_usuel_de_l_installation, installations.nom_de_la_commune, installations.code_postal " +
-			"from activites " +
-			"inner join Equipements on Equipements.numero_de_la_fiche_equipement = activites.numero_de_la_fiche_equipement " +
-			"inner join installations on installations.numero_de_l_installation = Equipements.numero_de_l_installation " +
-			"where installations.code_postal = $codePostal";
-
-		const sqlParams = {
-			$codePostal: codePostal
-		};
-
-
-		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
-
-			let activites = [];
-
-			for (const row of rows) {
-
-				activites.push(
-					new Activite(row.activite_code, row.activite_libelle,
-						new Equipement(row.numero_de_la_fiche_equipement,
-							new Installation(row.numero_de_l_installation, row.nom_usuel_de_l_installation, row.code_postal, row.nom_de_la_commune))));
-
-			}
-			return activites;
-		});
-	}
-
 
 	findByNoEquipement(value) {
-		const sqlRequest = "select * from activites inner join Equipements on activites.\"Numéro de la fiche équipement\" = Equipements.\"Numéro de la fiche équipement\" " +
-			"where Equipements.\"Numéro de la fiche équipement\" = $value;";
+		const sqlRequest = "select * from activites inner join Equipements on activites.Numero_de_la_fiche_equipement = Equipements.Numero_de_la_fiche_equipement " +
+			"where Equipements.Numero_de_la_fiche_equipement = $value;";
 		const sqlParams = {
 			$value: value
 		};
@@ -139,9 +107,9 @@ class ActiviteDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13]
-					, new Equipement(values[14], values[15], values[16], values[17], values[18], values[19], values[20], values[21], values[22]
-						, values[23], values[24], values[25], values[26], values[27], values[28])));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]
+					, new Equipement(values[15], values[16], values[17], values[18], values[19], values[20], values[21], values[22]
+						, values[23], values[24], values[25], values[26], values[27], values[28], values[29])));
 			}
 
 			return activites;
@@ -173,7 +141,7 @@ class ActiviteDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]));
 			}
 
 			return activites;
@@ -186,7 +154,7 @@ class ActiviteDao {
 
 
 	listOfNomDepartement(value) {
-		const sqlRequest = "select distinct \"Libellé du département\" from activites where \"Libellé du département\" like $value";
+		const sqlRequest = "select distinct Libelle_du_departement from activites where Libelle_du_departement like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -194,14 +162,14 @@ class ActiviteDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Libellé du département"]);
+				noms.push(row["Libelle_du_departement"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfNomCommuneByDepartement(value) {
-		const sqlRequest = "select distinct \"Nom de la commune\" from activites where \"Code du département\" like $value";
+		const sqlRequest = "select distinct Nom_de_la_commune from activites where Code_du_departement like $value";
 		const sqlParams = {
 			$value: value
 		};
@@ -209,14 +177,14 @@ class ActiviteDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Nom de la commune"]);
+				noms.push(row["Nom_de_la_commune"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfNomCommune(value) {
-		const sqlRequest = "select distinct \"Nom de la commune\" from activites where \"Nom de la commune\" like $value";
+		const sqlRequest = "select distinct Nom_de_la_commune from activites where Nom_de_la_commune like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -224,44 +192,44 @@ class ActiviteDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Nom de la commune"]);
+				noms.push(row["Nom_de_la_commune"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfCodeDepartment() {
-		const sqlRequest = "select distinct \"Code du département\" from activites";
+		const sqlRequest = "select distinct Code_du_departement from activites";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Code du département"]);
+				noms.push(row["Code_du_departement"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfNomActivite() {
-		const sqlRequest = "select distinct \"Activité libellé\", \"Activité code\" from activites";
+		const sqlRequest = "select distinct Activite_libelle, Activite_code from activites";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push({nom: row["Activité libellé"], code: row["Activité code"]});
+				noms.push({nom: row["Activite_libelle"], code: row["Activite_code"]});
 			}
 			return noms;
 		});
 	}
 
 	listOfNiveauActivite() {
-		const sqlRequest = "select distinct \"Niveau de l activité - Classif.\" from activites";
+		const sqlRequest = "select distinct \"Niveau_de_l-activite_-_Classif.\" from activites";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let niveaux = [];
 			for (const row of rows) {
-				if (row["Niveau de l activité - Classif."] !== "")
-					niveaux.push(row["Niveau de l activité - Classif."]);
+				if (row["Niveau_de_l-activite_-_Classif."] !== "")
+					niveaux.push(row["Niveau_de_l-activite_-_Classif."]);
 			}
 			return niveaux;
 		});

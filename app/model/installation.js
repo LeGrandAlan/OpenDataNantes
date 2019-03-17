@@ -7,7 +7,7 @@
 class Installation {
 	constructor(codeDepartement, departement, nomDeLaCommune, noDeLInstallation, nomUsuelDeLInstallation, noDeLaVoie
 		, nomDeLaVoie, nomDuLieuDit, codePostal, installationParticuliere, accHandicapes, nombrePlaceParking
-		, desserteBus, desserteTram, latitude, longitude) {
+		, desserteBus, desserteTram, latitude, id, longitude) {
 
 		this.codeDepartement = codeDepartement;
 		this.departement = departement;
@@ -24,6 +24,7 @@ class Installation {
 		this.desserteBus = desserteBus;
 		this.desserteTram = desserteTram;
 		this.latitude = latitude;
+		this.id = id;
 		this.longitude = longitude;
 	}
 }
