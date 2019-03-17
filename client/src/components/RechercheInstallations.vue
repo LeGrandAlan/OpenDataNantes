@@ -183,9 +183,9 @@
 				let installation = this.installation === "" || this.installation === undefined ? "null" : this.installation;
 				let commune = this.commune === "" || this.commune === undefined ? "null" : this.commune;
 				let departement = this.departement === "" || this.departement === undefined ? "null" : this.departement;
-				let bus = this.bus ? "Oui" : "null";
-				let tram = this.tram ? "Oui" : "null";
-				let handi = this.handi ? "Oui" : "null";
+				let bus = this.bus ? true : "null";
+				let tram = this.tram ? true : "null";
+				let handi = this.handi ? true : "null";
 
 				let url = `http://localhost:3000/api/installation/`+
 					`departement/${departement}`+
