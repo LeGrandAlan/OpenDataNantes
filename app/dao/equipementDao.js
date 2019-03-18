@@ -21,7 +21,7 @@ class EquipementDao {
 	 * @return {Promise} all entities
 	 */
 	findAll() {
-		const sqlRequest = "SELECT * FROM Equipements inner join installations on Equipements.\"Numero_de_l-installation\" = installations.\"Numero_de_l-installation\";";
+		const sqlRequest = "SELECT * FROM Equipements inner join installations on Equipements.Numero_de_linstallation = installations.Numero_de_linstallation;";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 
@@ -49,10 +49,10 @@ class EquipementDao {
 	findByAll(departement, commune, nomEquipement, typeEquipement, buvette, bus, tram, handicap) {
 		const sqlRequest = "select e.* from Equipements e, installations i where " +
 			"(e.Code_departement = $departement OR $departement IS NULL) and (e.Commune = $commune OR $commune IS NULL) and " +
-			"(nom_equipement = $nomEquipement OR $nomEquipement IS NULL) and (e.\"Type_d-equipement\" = $typeEquipement OR $typeEquipement IS NULL) and " +
+			"(Nom_equipement = $nomEquipement OR $nomEquipement IS NULL) and (e.Type_dequipement = $typeEquipement OR $typeEquipement IS NULL) and " +
 			"(e.Accueil_buvette = $buvette OR $buvette IS NULL) and " +
-			"e.\"Numero_de_l-installation\" = i.\"Numero_de_l-installation\" and " +
-			"(i.Desserte_bus = $bus OR $bus IS NULL) and (i.\"Desserte Tram\" = $tram OR $tram IS NULL) and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
+			"e.Numero_de_linstallation = i.Numero_de_linstallation and " +
+			"(i.Desserte_bus = $bus OR $bus IS NULL) and (i.Desserte_Tram = $tram OR $tram IS NULL) and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
 
 		const sqlParams = {
 			$departement: departement !== 'null' ? departement : null,
@@ -100,8 +100,8 @@ class EquipementDao {
 
 
 	findByNoDeLInstallation(noDeLInstallation) {
-		const sqlRequest = "SELECT * FROM Equipements inner join installations on Equipements.\"Numero_de_l-installation\" = installations.\"Numero_de_l-installation\" " +
-			"where installations.\"Numero_de_l-installation\" = $noDeLInstallation;";
+		const sqlRequest = "SELECT * FROM Equipements inner join installations on Equipements.Numero_de_linstallation = installations.Numero_de_linstallation " +
+			"where installations.Numero_de_linstallation = $noDeLInstallation;";
 		const sqlParams = {
 			$noDeLInstallation: noDeLInstallation
 		};
@@ -217,19 +217,19 @@ class EquipementDao {
 	}
 
 	listOfNomsEquipements() {
-		const sqlRequest = "select distinct nom_equipement from Equipements";
+		const sqlRequest = "select distinct Nom_equipement from Equipements";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["nom_equipement"]);
+				noms.push(row["Nom_equipement"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfNomEquipement(value) {
-		const sqlRequest = "select distinct nom_equipement from Equipements where Equipement like $value";
+		const sqlRequest = "select distinct Nom_equipement from Equipements where Equipement like $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -237,26 +237,26 @@ class EquipementDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["nom_equipement"]);
+				noms.push(row["Nom_equipement"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfTypesEquipements() {
-		const sqlRequest = "select distinct \"Type_d-equipement\" from Equipements";
+		const sqlRequest = "select distinct Type_dequipement from Equipements";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Type_d-equipement"]);
+				noms.push(row["Type_dequipement"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfTypeEquipement(value) {
-		const sqlRequest = "select distinct \"Type_d-equipement\" from Equipements where \"Type_d-equipement\" like $value";
+		const sqlRequest = "select distinct Type_dequipement from Equipements where Type_dequipement like $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};

@@ -42,7 +42,7 @@ class InstallationDao {
 	findByAll(departement, commune, nomInstallation, installationParticuliere, bus, tram, handicap) {
 		const sqlRequest = "select * from installations where " +
 			"(Code_du_departement = $departement OR $departement IS NULL) and (Nom_de_la_commune = $commune OR $commune IS NULL) and " +
-			"(\"Nom_usuel_de_l-installation\" like $nomInstallation OR $nomInstallation IS NULL) and " +
+			"(Nom_usuel_de_linstallation like $nomInstallation OR $nomInstallation IS NULL) and " +
 			"(Installation_particuliere like $installatlionParticuliere OR $installatlionParticuliere IS NULL) and " +
 			"(Desserte_bus = $bus OR $bus IS NULL) and (Desserte_Tram = $tram OR $tram IS NULL) and " +
 			"(Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
@@ -151,7 +151,7 @@ class InstallationDao {
 	}
 
 	findByNumeroInstallation(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Numero_de_l-installation\" = $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Numero_de_linstallation = $value";
 		const sqlParams = {
 			$value: value
 		};
@@ -171,7 +171,7 @@ class InstallationDao {
 	}
 
 	findByNomInstallation(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE \"Nom_usuel_de_l-installation\" LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Nom_usuel_de_linstallation LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -211,7 +211,7 @@ class InstallationDao {
 	}
 
 	findByInstallationParticuliere(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Installation_particuliereLIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Installation_particuliere LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -231,9 +231,9 @@ class InstallationDao {
 	}
 
 	findByAccessibiliteHandicapes(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Accessibilite_handicapes_à_mobilite_reduite LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Accessibilite_handicapes_à_mobilite_reduite = $value";
 		const sqlParams = {
-			$value: "%" + value + "%"
+			$value: value
 		};
 
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
@@ -251,9 +251,9 @@ class InstallationDao {
 	}
 
 	findByDesserteBus(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Desserte_bus LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Desserte_bus = $value";
 		const sqlParams = {
-			$value: "%" + value + "%"
+			$value: value
 		};
 
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
@@ -272,9 +272,9 @@ class InstallationDao {
 
 
 	findByDesserteTram(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Desserte_Tram LIKE $value";
+		const sqlRequest = "SELECT * FROM installations WHERE Desserte_Tram = $value";
 		const sqlParams = {
-			$value: "%" + value + "%"
+			$value: value
 		};
 
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
@@ -388,19 +388,19 @@ class InstallationDao {
 
 
 	listOfNomsInstallations() {
-		const sqlRequest = "select distinct \"Nom_usuel_de_l-installation\" from installations";
+		const sqlRequest = "select distinct Nom_usuel_de_linstallation from installations";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Nom_usuel_de_l-installation"]);
+				noms.push(row["Nom_usuel_de_linstallation"]);
 			}
 			return noms;
 		});
 	}
 
 	listOfNomInstallation(value) {
-		const sqlRequest = "select distinct \"Nom_usuel_de_l-installation\" from installations where \"Nom_usuel_de_l-installation\" like $value";
+		const sqlRequest = "select distinct Nom_usuel_de_linstallation from installations where Nom_usuel_de_linstallation like $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -408,7 +408,7 @@ class InstallationDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Nom_usuel_de_l-installation"]);
+				noms.push(row["Nom_usuel_de_linstallation"]);
 			}
 			return noms;
 		});

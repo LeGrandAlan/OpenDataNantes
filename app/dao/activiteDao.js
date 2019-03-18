@@ -47,10 +47,9 @@ class ActiviteDao {
 	findByAll(departement, commune, activite, niveau, bus, tram, handicap) {
 		const sqlRequest = "select a.* from activites a, Equipements e, installations i where " +
 			"(a.Code_du_departement = $departement OR $departement IS NULL) and (a.Nom_de_la_commune like $commune OR $commune IS NULL) and " +
-			"(a.Activite_libelle = $activite OR $activite IS NULL) and (a.\"Niveau_de_l-activite_-_Classif.\" = $niveau OR $niveau IS NULL) and " +
-			"a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement and e.\"Numero_de_l-installation\" = i.\"Numero_de_l-installation\" and " +
+			"(a.Activite_libelle = $activite OR $activite IS NULL) and (a.Niveau_de_lactivite = $niveau OR $niveau IS NULL) and " +
+			"a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement and e.Numero_de_linstallation = i.Numero_de_linstallation and " +
 			"(i.Desserte_bus = $bus OR $bus IS NULL) and (i.Desserte_Tram = $tram OR $tram IS NULL) and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
-
 		const sqlParams = {
 			$departement: departement !== 'null' ? departement : null,
 			$commune: commune !== 'null' ? commune : null,
@@ -223,13 +222,13 @@ class ActiviteDao {
 	}
 
 	listOfNiveauActivite() {
-		const sqlRequest = "select distinct \"Niveau_de_l-activite_-_Classif.\" from activites";
+		const sqlRequest = "select distinct Niveau_de_lactivite from activites";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let niveaux = [];
 			for (const row of rows) {
-				if (row["Niveau_de_l-activite_-_Classif."] !== "")
-					niveaux.push(row["Niveau_de_l-activite_-_Classif."]);
+				if (row["Niveau_de_lactivite"] !== "")
+					niveaux.push(row["Niveau_de_lactivite"]);
 			}
 			return niveaux;
 		});
