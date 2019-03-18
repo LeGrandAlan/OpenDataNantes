@@ -23,7 +23,10 @@ const db = new sqlite.Database(dbPath, (err) => {
     console.log('Connected to my database.');
 });
 
-
+/**
+ * Crée la table activité
+ * @returns {Promise<>}
+ */
 const createActiviteTable = function () {
     return new Promise(function (resolve, reject) {
         let parser = parse({delimiter: ';'}, function (err, data) {//4 is primary key
@@ -44,6 +47,7 @@ const createActiviteTable = function () {
     \`longitude\` TEXT,
     "id" INTEGER PRIMARY KEY AUTOINCREMENT
      )`;
+            // noinspection RegExpSingleCharAlternation
             sqlCreateTable = sqlCreateTable.replace(new RegExp('é|è|ê|ë', 'gi'), 'e');
             sqlCreateTable = sqlCreateTable.split('\'').join('');
             sqlCreateTable = sqlCreateTable.split('\.').join('');
@@ -61,6 +65,10 @@ const createActiviteTable = function () {
     });
 };
 
+/**
+ * Peuple la table activité
+ * @returns {Promise<>}
+ */
 const populateActivite = function () {
     console.log('--> Début de populate activitée');
     return new Promise(function (resolve, reject) {
@@ -110,6 +118,10 @@ const populateActivite = function () {
     })
 };
 
+/**
+ * Crée la table équipement
+ * @returns {Promise<>}
+ */
 const createEquipementTable = function () {
     return new Promise(function (resolve, reject) {
         let parser = parse({delimiter: ';'}, function (err, data) { //4 is primary key but disable for insert because of time taking
@@ -130,7 +142,8 @@ const createEquipementTable = function () {
     \`${data[0][195].split(' ').join('_')}\` TEXT DEFAULT null,
    \`${data[0][196].split(' ').join('_')}\` TEXT DEFAULT null,
    "id" INTEGER PRIMARY KEY AUTOINCREMENT
-     )`; //LATITUDE LONGITUDE 195 196
+     )`;
+            // noinspection RegExpSingleCharAlternation
             sqlCreateTable = sqlCreateTable.replace(new RegExp('é|è|ê|ë', 'gi'), 'e');
             sqlCreateTable = sqlCreateTable.split('\'').join('');
             sqlCreateTable = sqlCreateTable.split('\.').join('');
@@ -148,6 +161,10 @@ const createEquipementTable = function () {
     });
 };
 
+/**
+ * Peuple la table équipement
+ * @returns {Promise<>}
+ */
 const populateEquipement = function () {
     console.log('--> Début de populate équipement');
 
@@ -199,6 +216,10 @@ const populateEquipement = function () {
     })
 };
 
+/**
+ * Crée la table installation
+ * @returns {Promise<>}
+ */
 const createInstallationTable = function () {
     return new Promise(function (resolve, reject) {
         let parser = parse({delimiter: ';'}, function (err, data) { //4 is primary key but disable for insert because of time taking
@@ -221,6 +242,7 @@ const createInstallationTable = function () {
     "longitude",
     "id" INTEGER PRIMARY KEY AUTOINCREMENT
      )`; //LATITUDE LONGITUDE 34
+            // noinspection RegExpSingleCharAlternation
             sqlCreateTable = sqlCreateTable.replace(new RegExp('é|è|ê|ë', 'gi'), 'e');
             sqlCreateTable = sqlCreateTable.split('\'').join('');
             sqlCreateTable = sqlCreateTable.split('\.').join('');
@@ -238,11 +260,13 @@ const createInstallationTable = function () {
     });
 };
 
+/**
+ * peuple la table installation
+ * @returns {Promise<>}
+ */
 const populateInstallation = function () {
     console.log('--> Début de populate installation');
     return new Promise(function (resolve, reject) {
-        let call;
-
         let stream = fs.createReadStream(INSTALLATIONFILEPATH, {encoding: 'utf8'});
         let parser = parse({
             delimiter: ';',
@@ -291,7 +315,11 @@ const populateInstallation = function () {
     })
 };
 
+/**
+ *  Gestion du script
+ */
 const init = function () {
+    // noinspection JSUnresolvedFunction
     db.serialize(() => {
         console.log("Création des tables et importation des données");
         createActiviteTable()
