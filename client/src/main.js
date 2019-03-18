@@ -24,11 +24,11 @@ Vue.use(Vuetify, {
   iconfont: 'fa'
 });
 Vue.use(VuetifyConfirm, {
-  buttonTrueText: 'Ok',
-  buttonFalseText: 'Annuler',
+  buttonTrueText: 'On a dit non',
+  buttonFalseText: 'Bon d\'accord',
   color: 'warning',
   icon: 'warning',
-  title: 'Warning',
+  title: 'Attention',
   width: 350,
   property: '$confirm'
 });
