@@ -33,7 +33,6 @@ class ActiviteController {
 			.catch(this.common.findError(res));
 	}
 
-
 	findByAll(req, res) {
 		const departement = req.params.departement;
 		const commune = req.params.commune;
@@ -43,6 +42,20 @@ class ActiviteController {
 		const tram = req.params.tram;
 		const handicap = req.params.handicap;
 		this.activiteDao.findByAll(departement, commune, activite, niveau, bus, tram, handicap)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
+	findByAllAndCoordonnees(req, res) {
+		const latitude = req.params.latitude;
+		const longitude = req.params.longitude;
+		const rayon = req.params.rayon;
+		const activite = req.params.activite;
+		const niveau = req.params.niveau;
+		const bus = req.params.bus;
+		const tram = req.params.tram;
+		const handicap = req.params.handicap;
+		this.activiteDao.findByAllAndCoordonnees(latitude, longitude, rayon, activite, niveau, bus, tram, handicap)
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	};

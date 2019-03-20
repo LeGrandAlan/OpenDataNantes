@@ -50,6 +50,7 @@ class ActiviteDao {
 			"(a.Activite_libelle = $activite OR $activite IS NULL) and (a.Niveau_de_lactivite = $niveau OR $niveau IS NULL) and " +
 			"a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement and e.Numero_de_linstallation = i.Numero_de_linstallation and " +
 			"(i.Desserte_bus = $bus OR $bus IS NULL) and (i.Desserte_Tram = $tram OR $tram IS NULL) and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
+
 		const sqlParams = {
 			$departement: departement !== 'null' ? departement : null,
 			$commune: commune !== 'null' ? commune : null,
@@ -67,6 +68,52 @@ class ActiviteDao {
 				let values = Object.values(row);
 				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
 					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]));
+			}
+			return activites;
+		});
+	}
+
+	findByAllAndCoordonnees(latitude,longitude, rayon, activite, niveau, bus, tram, handicap) {
+		const sqlRequest = "select a.*, " +
+			"       ((($latitude - a.latitude) * ($latitude - a.latitude)) + " +
+			"        (($longitude - a.longitude) * ($longitude - a.longitude))) as distance " +
+			"from activites a, " +
+			"     Equipements e, " +
+			"     installations i " +
+			"where (a.Code_du_departement = $departement OR $departement IS NULL) " +
+			"  and (a.Nom_de_la_commune like $commune OR $commune IS NULL) " +
+			"  and (a.Activite_libelle = $activite OR $activite IS NULL) " +
+			"  and (a.Niveau_de_lactivite = $niveau OR $niveau IS NULL) " +
+			"  and a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement " +
+			"  and e.Numero_de_linstallation = i.Numero_de_linstallation " +
+			"  and (i.Desserte_bus = $bus OR $bus IS NULL) " +
+			"  and (i.Desserte_Tram = $tram OR $tram IS NULL) " +
+			"  and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) " +
+			"  and (((($latitude - a.latitude) * ($latitude - a.latitude)) + " +
+			"       (($longitude - a.longitude) * ($longitude - a.longitude))) < $rayon ) " +
+			"order by distance;";
+
+		const sqlParams = {
+			$latitude: Number(latitude),
+			$longitude: Number(longitude),
+			$rayon: Number(rayon),
+			$activite: activite !== 'null' ? activite : null,
+			$niveau: niveau !== 'null' ? niveau : null,
+			$bus: bus !== 'null' ? bus : null,
+			$tram: tram !== 'null' ? tram : null,
+			$handicap: handicap !== 'null' ? handicap : null
+		};
+		console.log(sqlParams);
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let activites = [];
+
+			for (const row of rows) {
+				let values = Object.values(row);
+				activites.push({
+					activite: new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
+						, values[8], values[9], values[10], values[11], values[12], values[13], values[14]),
+					distance: Math.sqrt(values[15])
+				});
 			}
 			return activites;
 		});
@@ -117,15 +164,15 @@ class ActiviteDao {
 
 	findByCoordonnees(latitude, longitude, rayon) {
 		const sqlRequest = "SELECT *,  111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
-			"                 * COS(RADIANS(latitute)) " +
+			"                 * COS(RADIANS(latitude)) " +
 			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
 			"                 + SIN(RADIANS($latitude)) " +
-			"                 * SIN(RADIANS(latitute)))) as distance " +
+			"                 * SIN(RADIANS(latitude)))) as distance " +
 			"FROM activites where ( 111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
-			"                 * COS(RADIANS(latitute)) " +
+			"                 * COS(RADIANS(latitude)) " +
 			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
 			"                 + SIN(RADIANS($latitude)) " +
-			"                 * SIN(RADIANS(latitute))))) < $rayon " +
+			"                 * SIN(RADIANS(latitude))))) < $rayon " +
 			"order by distance;";
 		const sqlParams = {
 			$latitude: latitude,

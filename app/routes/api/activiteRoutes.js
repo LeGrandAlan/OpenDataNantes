@@ -20,6 +20,10 @@ router.get('/departement/:departement/commune/:commune/activite/:activite/niveau
 	activiteController.findByAll(req, res);
 });
 
+router.get('/latitude/:latitude/longitude/:longitude/rayon/:rayon/activite/:activite/niveau/:niveau/bus/:bus/tram/:tram/handicap/:handicap', function (req, res) {
+	activiteController.findByAllAndCoordonnees(req, res);
+});
+
 router.get('/id/:id', function (req, res) {
 	activiteController.findById(req, res);
 });
