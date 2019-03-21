@@ -97,7 +97,7 @@
                     <v-switch v-model="grille" label="Affichage grille"></v-switch>
                 </v-flex>
             </v-layout>
-            <Map v-if="!grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
+            <Map v-if="!grille && marqueursActivite !== null" :calculated-zoom="zoom" :calculated-center="center" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
             <Map v-if="!grille && marqueursActivite === null" style="height: 70%; width: 100%;"/>
             <GridList v-if="grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="width: 100%;"/>
             <GridList v-if="grille && marqueursActivite === null" style="width: 100%;"/>
@@ -128,6 +128,7 @@
 	import Map from './Map.vue';
 	import GridList from './GridList.vue';
 	import axios from 'axios';
+	import * as L from "leaflet";
 
 	export default {
 		name: "RechercheActivite",
@@ -154,7 +155,9 @@
 			x: null,
 			mode: '',
 			timeout: 4000,
-			text: ''
+			text: '',
+			center: null,
+			zoom: null
 		}),
 		props: {
 			source: String
@@ -181,7 +184,7 @@
 			chargerMarqueursCarte() {
 				let niveauActivite = this.niveauActivite === "" || this.niveauActivite === undefined ? "null" : this.niveauActivite;
 				let activite = this.activite === "" || this.activite === undefined ? "null" : this.activite;
-				let commune = this.commune === "" || this.communes === undefined ? "null" : this.commune;
+				let commune = this.commune === "" || this.commune === undefined ? "null" : this.commune;
 				let departement = this.departement === "" || this.departement === undefined ? "null" : this.departement;
 				let bus = this.bus ? true : "null";
 				let tram = this.tram ? true : "null";
@@ -210,7 +213,39 @@
 						this.marqueursActivite = response.data;
 						this.text = response.data.length + " résultats !";
 						this.snackbar = true;
-                    }
+
+						//recherche du centre
+						let latitudes = 0;
+						let longitudes = 0;
+						let total = 0;
+						this.marqueursActivite.forEach((marqueur, index) => {
+							latitudes += parseFloat(marqueur.latitude);
+							longitudes += parseFloat(marqueur.longitude);
+							total = index;
+						});
+
+						latitudes /= total;
+						longitudes /= total;
+
+						let minLongitude = Math.min(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.longitude)));
+						let maxLongitude = Math.max(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.longitude)));
+						let minLatitude = Math.min(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.latitude)));
+						let maxLatitude = Math.max(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.latitude)));
+
+						//TODO : calculer un niveau de zoom (defaultZoom = 12)
+
+                        const indice = Math.max((maxLongitude - minLongitude), (maxLatitude - minLatitude));
+
+						if(indice > 0.5) {
+							this.zoom = 8;
+						} else if(indice > 0.3) {
+							this.zoom = 10;
+                        } else {
+							this.zoom = 12;
+                        }
+
+						this.center = L.latLng(latitudes, longitudes);
+					}
 
 				}).catch(() => {
 					this.marqueursActivite = null;
