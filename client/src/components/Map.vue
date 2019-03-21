@@ -68,8 +68,20 @@
 			};
 		},
 		props: {
+			calculatedCenter: Object,
+			calculatedZoom: Number,
 			marqueursActivite: Array,
 			marqueursInstallation: Array
+		},
+		watch: {
+			calculatedCenter: function (newVal) {
+                this.center = newVal;
+                console.log("nouveau centre : " + newVal);
+			},
+			calculatedZoom: function (newVal) {
+                this.zoom = newVal;
+                console.log("nouveau zoom : " + newVal);
+			}
 		},
 		methods: {
 			detailsInstallation(noInstallation) {
