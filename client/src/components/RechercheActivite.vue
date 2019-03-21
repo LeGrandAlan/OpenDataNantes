@@ -4,21 +4,25 @@
             <v-layout row wrap align-content-start pa-2>
                 <v-flex xs12>
                     <v-card-text>
-                        <h1>Recherche d'activités</h1>
+                        <h1 style="display: inline-block; margin-right: 10px;">Recherche d'activités</h1>
+                        <v-icon v-if="geolocalisation" v-on:click="changerStatusGeolocalisation()" style="font-size: 34px; color: blue;">far fa-compass</v-icon>
+                        <v-icon v-else v-on:click="changerStatusGeolocalisation()" style="font-size: 34px; color: grey;">far fa-compass</v-icon>
+                        (Géolocalisation <span v-if="geolocalisation">activée</span><span v-else>désactivée</span>)
                     </v-card-text>
                 </v-flex>
-                <v-flex xs3>
+                <v-flex xs2>
                     <v-card-text>
                         <v-autocomplete
                                 v-model="departement"
                                 :items="departements"
+                                :disabled="geolocalisation"
                                 color="grey"
                                 hide-no-data
                                 hide-selected
                                 item-text="Description"
                                 item-value="API"
                                 label="Département"
-                                placeholder="Nom du département"
+                                placeholder="Nom du dép.    "
                                 prepend-icon="fas fa-city"
                                 return-object
                                 v-on:change="chargerCommunes()"
@@ -26,12 +30,12 @@
                         ></v-autocomplete>
                     </v-card-text>
                 </v-flex>
-                <v-flex xs4>
+                <v-flex xs3>
                     <v-card-text>
                         <v-autocomplete
                                 v-model="commune"
                                 :items="communes"
-                                :disabled="departement === ''"
+                                :disabled="(departement === '' || departement === undefined) || geolocalisation"
                                 color="grey"
                                 hide-no-data
                                 hide-selected
@@ -157,7 +161,8 @@
 			timeout: 4000,
 			text: '',
 			center: null,
-			zoom: null
+			zoom: null,
+			geolocalisation: null
 		}),
 		props: {
 			source: String
@@ -181,6 +186,102 @@
 			});
 		},
 		methods: {
+			changerStatusGeolocalisation() {
+				this.geolocalisation = !this.geolocalisation;
+			},
+			getGeolocalisation() {
+				return new Promise(function (resolve, reject) {
+					if (navigator.geolocation) {
+						navigator.geolocation.getCurrentPosition(
+							(position) => {
+								resolve(position);
+							},
+							function (error) {
+								reject(error.message);
+							}, {
+								enableHighAccuracy: true
+								, timeout: 5000
+							}
+						);
+					} else {
+						reject("La géolocalisation n'est pas suportée par votre navigateur.");
+					}
+				});
+			},
+			chargerMarqueursCarteGeolocalisation(niveauActivite, activite, bus, tram, handi) {
+
+				this.getGeolocalisation()
+					.then((gelocalisation) => {
+
+						let url = `http://localhost:3000/api/activite/`+
+							`latitude/${gelocalisation.coords.latitude}`+
+							`/longitude/${gelocalisation.coords.longitude}`+
+							`/rayon/5`+
+							`/activite/${activite}`+
+							`/niveau/${niveauActivite}`+
+							`/bus/${bus}`+
+							`/tram/${tram}`+
+							`/handicap/${handi}`;
+
+						axios.get(url).then(response => { //TODO: catch si recoit une réponse mais vide
+							if(response.data.length > 2000) {
+								this.$confirm("Voulez vous vraiment afficher les résultats ?<br>Il y en a " + response.data.length + ".<br><b>C'est fortement déconseillé !</b>").then(res => {
+									if (res) {
+										this.marqueursActivite = response.data.map(el => {return el.activite});
+										this.text = response.data.length + " résultats !";
+										this.snackbar = true;
+									}
+								});
+							} else {
+								this.marqueursActivite = response.data.map(el => {return el.activite});
+								this.text = response.data.length + " résultats !";
+								this.snackbar = true;
+
+								//recherche du centre
+								let latitudes = 0;
+								let longitudes = 0;
+								let total = 0;
+								this.marqueursActivite.forEach((marqueur, index) => {
+									latitudes += parseFloat(marqueur.latitude);
+									longitudes += parseFloat(marqueur.longitude);
+									total = index;
+								});
+
+								latitudes /= total;
+								longitudes /= total;
+
+								let minLongitude = Math.min(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.longitude)));
+								let maxLongitude = Math.max(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.longitude)));
+								let minLatitude = Math.min(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.latitude)));
+								let maxLatitude = Math.max(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.latitude)));
+
+								//TODO : calculer un niveau de zoom (defaultZoom = 12)
+
+								const indice = Math.max((maxLongitude - minLongitude), (maxLatitude - minLatitude));
+
+								if(indice > 0.5) {
+									this.zoom = 8;
+								} else if(indice > 0.3) {
+									this.zoom = 10;
+								} else {
+									this.zoom = 12;
+								}
+
+								this.center = L.latLng(latitudes, longitudes);
+							}
+
+						}).catch(() => {
+							this.marqueursActivite = null;
+							this.text = "Aucun résultats !";
+							this.snackbar = true;
+						});
+
+					})
+					.catch((erreur) => {
+						alert(erreur);
+					});
+
+			},
 			chargerMarqueursCarte() {
 				let niveauActivite = this.niveauActivite === "" || this.niveauActivite === undefined ? "null" : this.niveauActivite;
 				let activite = this.activite === "" || this.activite === undefined ? "null" : this.activite;
@@ -189,6 +290,12 @@
 				let bus = this.bus ? true : "null";
 				let tram = this.tram ? true : "null";
 				let handi = this.handi ? true : "null";
+
+				if(this.geolocalisation) {
+					this.chargerMarqueursCarteGeolocalisation(niveauActivite, activite, bus, tram, handi);
+					return;
+				}
+
 
 				let url = `http://localhost:3000/api/activite/`+
 					`departement/${departement}`+
@@ -234,15 +341,15 @@
 
 						//TODO : calculer un niveau de zoom (defaultZoom = 12)
 
-                        const indice = Math.max((maxLongitude - minLongitude), (maxLatitude - minLatitude));
+						const indice = Math.max((maxLongitude - minLongitude), (maxLatitude - minLatitude));
 
 						if(indice > 0.5) {
 							this.zoom = 8;
 						} else if(indice > 0.3) {
 							this.zoom = 10;
-                        } else {
+						} else {
 							this.zoom = 12;
-                        }
+						}
 
 						this.center = L.latLng(latitudes, longitudes);
 					}
