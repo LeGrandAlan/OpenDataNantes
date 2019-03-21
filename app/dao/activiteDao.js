@@ -6,6 +6,7 @@ const Installation = require('../model/installation');
 
 /* Load DAO Common functions */
 const daoCommon = require('./commons/daoCommon');
+const DaoError = require('./commons/daoError');
 
 /**
  * Activite Data Access Object
@@ -15,7 +16,6 @@ class ActiviteDao {
 	constructor() {
 		this.common = new daoCommon();
 	}
-
 
 	/**
 	 * Finds all entities.
@@ -39,17 +39,25 @@ class ActiviteDao {
 		});
 	};
 
-
 	/**         findBy         **/
 
 
 
 	findByAll(departement, commune, activite, niveau, bus, tram, handicap) {
-		const sqlRequest = "select a.* from activites a, Equipements e, installations i where " +
-			"(a.Code_du_departement = $departement OR $departement IS NULL) and (a.Nom_de_la_commune like $commune OR $commune IS NULL) and " +
-			"(a.Activite_libelle = $activite OR $activite IS NULL) and (a.Niveau_de_lactivite = $niveau OR $niveau IS NULL) and " +
-			"a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement and e.Numero_de_linstallation = i.Numero_de_linstallation and " +
-			"(i.Desserte_bus = $bus OR $bus IS NULL) and (i.Desserte_Tram = $tram OR $tram IS NULL) and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
+		const sqlRequest =
+			"select a.* " +
+			"from activites a, " +
+			"     Equipements e, " +
+			"     installations i " +
+			"where (a.Code_du_departement = $departement OR $departement IS NULL)" +
+			"  and (a.Nom_de_la_commune like $commune OR $commune IS NULL)" +
+			"  and (a.Activite_libelle = $activite OR $activite IS NULL)" +
+			"  and (a.Niveau_de_lactivite = $niveau OR $niveau IS NULL)" +
+			"  and a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement" +
+			"  and e.Numero_de_linstallation = i.Numero_de_linstallation" +
+			"  and (i.Desserte_bus = $bus OR $bus IS NULL)" +
+			"  and (i.Desserte_Tram = $tram OR $tram IS NULL)" +
+			"  and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
 
 		const sqlParams = {
 			$departement: departement !== 'null' ? departement : null,
@@ -73,37 +81,53 @@ class ActiviteDao {
 		});
 	}
 
-	findByAllAndCoordonnees(latitude,longitude, rayon, activite, niveau, bus, tram, handicap) {
-		const sqlRequest = "select a.*, " +
-			"       ((($latitude - a.latitude) * ($latitude - a.latitude)) + " +
-			"        (($longitude - a.longitude) * ($longitude - a.longitude))) as distance " +
-			"from activites a, " +
-			"     Equipements e, " +
+	findByAllAndCoordonnees(latitude, longitude, rayon, activite, niveau, bus, tram, handicap) {
+		const sqlRequest =
+			"select a.* " +
+			"from activites a," +
+			"     Equipements e," +
 			"     installations i " +
-			"where (a.Code_du_departement = $departement OR $departement IS NULL) " +
-			"  and (a.Nom_de_la_commune like $commune OR $commune IS NULL) " +
-			"  and (a.Activite_libelle = $activite OR $activite IS NULL) " +
-			"  and (a.Niveau_de_lactivite = $niveau OR $niveau IS NULL) " +
-			"  and a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement " +
-			"  and e.Numero_de_linstallation = i.Numero_de_linstallation " +
-			"  and (i.Desserte_bus = $bus OR $bus IS NULL) " +
-			"  and (i.Desserte_Tram = $tram OR $tram IS NULL) " +
-			"  and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) " +
-			"  and (((($latitude - a.latitude) * ($latitude - a.latitude)) + " +
-			"       (($longitude - a.longitude) * ($longitude - a.longitude))) < $rayon ) " +
-			"order by distance;";
+			"where (a.Activite_libelle = $activite OR $activite IS NULL)" +
+			"  and (a.Niveau_de_lactivite = $niveau OR $niveau IS NULL)" +
+			"  and a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement" +
+			"  and e.Numero_de_linstallation = i.Numero_de_linstallation" +
+			"  and (i.Desserte_bus = $bus OR $bus IS NULL)" +
+			"  and (i.Desserte_Tram = $tram OR $tram IS NULL)" +
+			"  and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL)" +
+			"  and a.latitude > $latitudeMin and a.latitude < $latitudeMax" +
+			"  and a.longitude > $longitudeMin and a.longitude < $longitudeMax ;";
 
+		latitude = Number(latitude);
+		longitude = Number(longitude);
+		rayon = Number(rayon) * 1000;
+		if (typeof (Number.prototype.toRad) === "undefined") {
+			Number.prototype.toRad = function () {
+				return this * Math.PI / 180;
+			}
+		}
+		const distance = (lon1, lat1, lon2, lat2) => {
+			let R = 6371;
+			let dLat = (lat2 - lat1).toRad();
+			let dLon = (lon2 - lon1).toRad();
+			let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+				Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
+				Math.sin(dLon / 2) * Math.sin(dLon / 2);
+			let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+			return R * c;
+		};
 		const sqlParams = {
-			$latitude: Number(latitude),
-			$longitude: Number(longitude),
-			$rayon: Number(rayon),
+			$latitudeMin: latitude - (rayon / (111132.954 - 559.822 * Math.cos(2 * latitude) + 1.175 * Math.cos(4 * latitude))),
+			$latitudeMax: latitude + (rayon / (111132.954 - 559.822 * Math.cos(2 * latitude) + 1.175 * Math.cos(4 * latitude))),
+			$longitudeMin: longitude - (rayon / (111132.954 * Math.cos(latitude))),
+			$longitudeMax: longitude + (rayon / (111132.954 * Math.cos(latitude))),
 			$activite: activite !== 'null' ? activite : null,
 			$niveau: niveau !== 'null' ? niveau : null,
 			$bus: bus !== 'null' ? bus : null,
 			$tram: tram !== 'null' ? tram : null,
 			$handicap: handicap !== 'null' ? handicap : null
 		};
-		console.log(sqlParams);
+
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let activites = [];
 
@@ -112,10 +136,16 @@ class ActiviteDao {
 				activites.push({
 					activite: new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
 						, values[8], values[9], values[10], values[11], values[12], values[13], values[14]),
-					distance: Math.sqrt(values[15])
+					distance: distance(latitude, longitude, Number(values[12]), Number(values[13]))
 				});
 			}
-			return activites;
+			activites.sort((a, b) => {
+				return a.distance - b.distance;
+			});
+			activites = activites.filter((value) => {
+				return value.distance <= (rayon / 1000);
+			});
+			return activites.length > 0 ? activites : new DaoError(21, "Entity not found");
 		});
 	}
 
@@ -161,40 +191,6 @@ class ActiviteDao {
 			return activites;
 		});
 	}
-
-	findByCoordonnees(latitude, longitude, rayon) {
-		const sqlRequest = "SELECT *,  111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
-			"                 * COS(RADIANS(latitude)) " +
-			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
-			"                 + SIN(RADIANS($latitude)) " +
-			"                 * SIN(RADIANS(latitude)))) as distance " +
-			"FROM activites where ( 111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
-			"                 * COS(RADIANS(latitude)) " +
-			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
-			"                 + SIN(RADIANS($latitude)) " +
-			"                 * SIN(RADIANS(latitude))))) < $rayon " +
-			"order by distance;";
-		const sqlParams = {
-			$latitude: latitude,
-			$longitude: longitude,
-			$rayon: rayon
-		};
-
-		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
-
-			let activites = [];
-
-			for (const row of rows) {
-				let values = Object.values(row);
-				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]));
-			}
-
-			return activites;
-		});
-
-	}
-
 
 	/**         listOf         **/
 

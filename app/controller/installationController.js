@@ -44,6 +44,20 @@ class InstallationController {
 			.catch(this.common.findError(res));
 	};
 
+	findByAllAndCoordonnees(req, res) {
+		const latitude = req.params.latitude;
+		const longitude = req.params.longitude;
+		const rayon = req.params.rayon;
+		const nomInstallation = req.params.nom_installation;
+		const installationParticuliere = req.params.installationParticuliere;
+		const bus = req.params.bus;
+		const tram = req.params.tram;
+		const handicap = req.params.handicap;
+		this.installationDao.findByAllAndCoordonnees(latitude, longitude, rayon, nomInstallation, installationParticuliere, bus, tram, handicap)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
 	findById(req, res) {
 		const id = req.params.id;
 		this.installationDao.findById(id)
@@ -118,15 +132,6 @@ class InstallationController {
 	findByDesserteTram(req, res) {
 		const value = req.params.value;
 		this.installationDao.findByDesserteTram(value)
-			.then(this.common.findSuccess(res))
-			.catch(this.common.findError(res));
-	}
-
-	findByCoordonnes(req, res) {
-		const latitude = req.params.latitude;
-		const longitude = req.params.longitude;
-		const rayon = req.params.rayon;
-		this.installationDao.findByCoordonnees(latitude, longitude, rayon)
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	}

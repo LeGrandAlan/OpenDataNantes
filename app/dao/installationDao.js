@@ -4,6 +4,7 @@ const Installation = require('../model/installation');
 
 /* Load DAO Common functions */
 const daoCommon = require('./commons/daoCommon');
+const DaoError = require('./commons/daoError');
 
 /**
  * Car Data Access Object
@@ -40,12 +41,15 @@ class InstallationDao {
 
 
 	findByAll(departement, commune, nomInstallation, installationParticuliere, bus, tram, handicap) {
-		const sqlRequest = "select * from installations where " +
-			"(Code_du_departement = $departement OR $departement IS NULL) and (Nom_de_la_commune = $commune OR $commune IS NULL) and " +
-			"(Nom_usuel_de_linstallation like $nomInstallation OR $nomInstallation IS NULL) and " +
-			"(Installation_particuliere like $installatlionParticuliere OR $installatlionParticuliere IS NULL) and " +
-			"(Desserte_bus = $bus OR $bus IS NULL) and (Desserte_Tram = $tram OR $tram IS NULL) and " +
-			"(Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
+		const sqlRequest =
+			"select * " +
+			"from installations " +
+			"where (Code_du_departement = $departement OR $departement IS NULL)" +
+			"  and (Nom_de_la_commune = $commune OR $commune IS NULL)" +
+			"  and (Nom_usuel_de_linstallation like $nomInstallation OR $nomInstallation IS NULL)" +
+			"  and Installation_particuliere like $installatlionParticuliere OR $installatlionParticuliere IS NULL)" +
+			"  and (Desserte_bus = $bus OR $bus IS NULL) and (Desserte_Tram = $tram OR $tram IS NULL)" +
+			"  and (Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
 
 		const sqlParams = {
 			$departement: departement !== 'null' ? departement : null,
@@ -68,6 +72,74 @@ class InstallationDao {
 			return installations;
 		});
 	}
+
+	findByAllAndCoordonnees(latitude, longitude, rayon, nomInstallation, installationParticuliere, bus, tram, handicap) {
+		const sqlRequest =
+			"select * " +
+			"from installations " +
+			"where (Nom_usuel_de_linstallation like $nomInstallation OR $nomInstallation IS NULL) " +
+			"  and (Installation_particuliere like $installatlionParticuliere OR $installatlionParticuliere IS NULL) " +
+			"  and (Desserte_bus = $bus OR $bus IS NULL) " +
+			"  and (Desserte_Tram = $tram OR $tram IS NULL) " +
+			"  and (Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) " +
+			"  and cast(latitude as real) > $latitudeMin" +
+			"  and cast(latitude as real) < $latitudeMax " +
+			"  and cast(longitude as real) > $longitudeMin" +
+			"  and cast(longitude as real) < $longitudeMax ;";
+
+		latitude = Number(latitude);
+		longitude = Number(longitude);
+		rayon = Number(rayon) * 1000;
+		if (typeof (Number.prototype.toRad) === "undefined") {
+			Number.prototype.toRad = function () {
+				return this * Math.PI / 180;
+			}
+		}
+		const distance = (lon1, lat1, lon2, lat2) => {
+			let R = 6371;
+			let dLat = (lat2 - lat1).toRad();
+			let dLon = (lon2 - lon1).toRad();
+			let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+				Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
+				Math.sin(dLon / 2) * Math.sin(dLon / 2);
+			let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+			return R * c;
+		};
+		const sqlParams = {
+			$latitudeMin: latitude - (rayon / (111132.954 - 559.822 * Math.cos(2 * latitude) + 1.175 * Math.cos(4 * latitude))),
+			$latitudeMax: latitude + (rayon / (111132.954 - 559.822 * Math.cos(2 * latitude) + 1.175 * Math.cos(4 * latitude))),
+			$longitudeMin: longitude - (rayon / (111132.954 * Math.cos(latitude))),
+			$longitudeMax: longitude + (rayon / (111132.954 * Math.cos(latitude))),
+			$nomInstallation: nomInstallation !== 'null' ? "%" + nomInstallation + "%" : null,
+			$installatlionParticuliere: installationParticuliere !== 'null' ? installationParticuliere : null,
+			$bus: bus !== 'null' ? bus : null,
+			$tram: tram !== 'null' ? tram : null,
+			$handicap: handicap !== 'null' ? handicap : null
+		};
+		console.log(sqlParams);
+		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
+			let installations = [];
+
+			for (const row of rows) {
+				let values = Object.values(row);
+				installations.push({
+					installation: new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
+						, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]),
+					distance: distance(latitude, longitude, Number(values[14]), Number(values[15]))
+				});
+			}
+
+			installations.sort((a, b) => {
+				return a.distance - b.distance;
+			});
+			// installations = installations.filter((value) => {
+			// 	return value.distance <= (rayon / 1000);
+			// });
+			return installations.length > 0 ? installations : new DaoError(21, "Entity not found");
+		});
+	}
+
 
 	findById(id) {
 		const sqlRequest = "select * from installations where id = $id";
@@ -290,39 +362,6 @@ class InstallationDao {
 			return installations;
 		});
 	}
-
-
-	findByCoordonnees(latitude, longitude, rayon) {
-		const sqlRequest = "SELECT *,  111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
-			"                 * COS(RADIANS(latitude)) " +
-			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
-			"                 + SIN(RADIANS($latitude)) " +
-			"                 * SIN(RADIANS(latitude)))) as distance " +
-			"FROM installations where ( 111.045* DEGREES(ACOS(COS(RADIANS($latitude)) " +
-			"                 * COS(RADIANS(latitude)) " +
-			"                 * COS(RADIANS($longitude) - RADIANS(longitude)) " +
-			"                 + SIN(RADIANS($latitude)) " +
-			"                 * SIN(RADIANS(latitude))))) < $rayon " +
-			"order by distance;";
-		const sqlParams = {
-			$latitude: latitude,
-			$longitude: longitude,
-			$rayon: rayon
-		};
-
-		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
-			let installations = [];
-
-			for (const row of rows) {
-				let values = Object.values(row);
-				installations.push(new Installation(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]));
-			}
-			return installations;
-		});
-
-	}
-
 
 
 	/**         listOf         **/

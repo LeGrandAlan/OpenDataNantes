@@ -21,6 +21,10 @@ router.get('/departement/:departement/commune/:commune/nom_installation/:nom_ins
 	installationController.findByAll(req, res);
 });
 
+router.get('/latitude/:latitude/longitude/:longitude/rayon/:rayon/nom_installation/:nom_installation/installationParticuliere/:installationParticuliere/bus/:bus/tram/:tram/handicap/:handicap', function (req, res) {
+	installationController.findByAllAndCoordonnees(req, res);
+});
+
 router.get('/id/:id', function (req, res) {
 	installationController.findById(req, res);
 });
@@ -63,10 +67,6 @@ router.get('/desserte_bus/:value', function (req, res) {
 
 router.get('/desserte_tram/:value', function (req, res) {
 	installationController.findByDesserteTram(req, res);
-});
-
-router.get('/latitude/:latitude/longitude/:longitude/rayon/:rayon', function (req, res) {
-	installationController.findByCoordonnes(req, res);
 });
 
 /**     listOf     **/

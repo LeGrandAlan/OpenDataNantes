@@ -43,6 +43,21 @@ class EquipementController {
 			.catch(this.common.findError(res));
 	};
 
+	findByAllAndCoordonnees(req, res) {
+		const latitude = req.params.latitude;
+		const longitude = req.params.longitude;
+		const rayon = req.params.rayon;
+		const nomEquipement = req.params.nom_equipement;
+		const typeEquipement = req.params.typeEquipement;
+		const buvette = req.params.buvette;
+		const bus = req.params.bus;
+		const tram = req.params.tram;
+		const handicap = req.params.handicap;
+		this.equipementDao.findByAllAndCoordonnees(latitude, longitude, rayon, nomEquipement, typeEquipement, buvette, bus, tram, handicap)
+			.then(this.common.findSuccess(res))
+			.catch(this.common.findError(res));
+	};
+
 	findById(req, res) {
 		const id = req.params.id;
 		this.equipementDao.findById(id)
@@ -50,23 +65,12 @@ class EquipementController {
 			.catch(this.common.findError(res));
 	}
 
-
-
 	findByNoDeLInstallation(req, res) {
 		const noDeLInstallation = req.params.no_de_l_installation;
 		this.equipementDao.findByNoDeLInstallation(noDeLInstallation)
 			.then(this.common.findSuccess(res))
 			.catch(this.common.findError(res));
 	}
-
-	findByCoordonnees(req, res) {
-		const latitude = req.params.latitude;
-		const longitude = req.params.longitude;
-		const rayon = req.params.rayon;
-		this.equipementDao.findByCoordonnees(latitude, longitude, rayon)
-			.then(this.common.findSuccess(res))
-			.catch(this.common.findError(res));
-	};
 
 	/**         listOf         **/
 
