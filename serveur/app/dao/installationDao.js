@@ -159,7 +159,6 @@ class InstallationDao {
 				return installations;
 			}
 		);
-
 	}
 
 

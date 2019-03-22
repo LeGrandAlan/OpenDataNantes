@@ -32,10 +32,6 @@ router.get('/equipement/numero_equipement/:value', function (req, res) {
 	activiteController.findByNoEquipement(req, res);
 });
 
-router.get('/latitude/:latitude/longitude/:longitude/rayon/:rayon', function (req, res) {
-	activiteController.findByCoordonnees(req, res);
-});
-
 /**         listOf         **/
 
 router.get('/liste/nom_departement/:value', function (req, res) {

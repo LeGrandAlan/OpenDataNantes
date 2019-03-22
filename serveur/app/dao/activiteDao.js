@@ -209,7 +209,25 @@ class ActiviteDao {
 	}
 
 	findByNoEquipement(value) {
-		const sqlRequest = "select * from activites inner join Equipements on activites.Numero_de_la_fiche_equipement = Equipements.Numero_de_la_fiche_equipement " +
+		const sqlRequest = "select a.*," +
+			"       e.Code_departement              as E_Code_departement, " +
+			"       e.Departement                   as E_Departement, " +
+			"       e.Code_INSEE                    as E_Code_INSEE, " +
+			"       e.Commune                       as E_Commune, " +
+			"       e.Numero_de_linstallation       as E_Numero_de_linstallation, " +
+			"       e.Nom_usuel_de_linstallation    as E_Nom_usuel_de_linstallation, " +
+			"       e.Numero_de_la_fiche_equipement as E_Numero_de_la_fiche_equipement, " +
+			"       e.nom_equipement                as E_nom_equipement, " +
+			"       e.Type_dequipement_Code         as E_Type_dequipement_Code, " +
+			"       e.Type_dequipement              as E_Type_dequipement, " +
+			"       e.Proprietaire_principal        as E_Proprietaire_principal, " +
+			"       e.Nombre_de_vestiaire_sportif   as E_Nombre_de_vestiaire_sportif, " +
+			"       e.Accueil_buvette               as E_Accueil_buvette, " +
+			"       e.Coordonnees_GPS_longitude     as E_Coordonnees_GPS_longitude, " +
+			"       e.Coordonnees_GPS_latitude      as E_Coordonnees_GPS_latitude, " +
+			"       e.id                            as E_id  " +
+			"from activites a " +
+			"   inner join Equipements on activites.Numero_de_la_fiche_equipement = Equipements.Numero_de_la_fiche_equipement " +
 			"where Equipements.Numero_de_la_fiche_equipement = $value;";
 		const sqlParams = {
 			$value: value
