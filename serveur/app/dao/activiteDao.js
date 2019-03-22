@@ -33,7 +33,7 @@ class ActiviteDao {
 				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
 					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]
 					, new Equipement(values[15], values[16], values[17], values[18], values[19], values[20], values[21], values[22]
-						, values[23], values[24], values[25], values[26], values[27], values[28], values[29])));
+						, values[23], values[24], values[25], values[26], values[27])));
 			}
 			return activites;
 		});
@@ -45,10 +45,26 @@ class ActiviteDao {
 
 	findByAll(departement, commune, activite, niveau, bus, tram, handicap) {
 		const sqlRequest =
-			"select a.* " +
+			"select a.*, " +
+			"       e.Code_departement              as E_Code_departement, " +
+			"       e.Departement                   as E_Departement, " +
+			"       e.Code_INSEE                    as E_Code_INSEE, " +
+			"       e.Commune                       as E_Commune, " +
+			"       e.Numero_de_linstallation       as E_Numero_de_linstallation, " +
+			"       e.Nom_usuel_de_linstallation    as E_Nom_usuel_de_linstallation, " +
+			"       e.Numero_de_la_fiche_equipement as E_Numero_de_la_fiche_equipement, " +
+			"       e.nom_equipement                as E_nom_equipement, " +
+			"       e.Type_dequipement_Code         as E_Type_dequipement_Code, " +
+			"       e.Type_dequipement              as E_Type_dequipement, " +
+			"       e.Proprietaire_principal        as E_Proprietaire_principal, " +
+			"       e.Nombre_de_vestiaire_sportif   as E_Nombre_de_vestiaire_sportif, " +
+			"       e.Accueil_buvette               as E_Accueil_buvette, " +
+			"       e.Coordonnees_GPS_longitude     as E_Coordonnees_GPS_longitude, " +
+			"       e.Coordonnees_GPS_latitude      as E_Coordonnees_GPS_latitude, " +
+			"       e.id                            as E_id  " +
 			"from activites a, " +
-			"     Equipements e, " +
 			"     installations i " +
+			"       inner join Equipements e on a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement " +
 			"where (a.Code_du_departement = $departement OR $departement IS NULL)" +
 			"  and (a.Nom_de_la_commune like $commune OR $commune IS NULL)" +
 			"  and (a.Activite_libelle = $activite OR $activite IS NULL)" +
@@ -75,7 +91,9 @@ class ActiviteDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]
+					, new Equipement(values[15], values[16], values[17], values[18], values[19], values[20], values[21], values[22]
+						, values[23], values[24], values[25], values[26], values[27], values[28], values[29], values[30])));
 			}
 			return activites;
 		});
@@ -83,19 +101,36 @@ class ActiviteDao {
 
 	findByAllAndCoordonnees(latitude, longitude, rayon, activite, niveau, bus, tram, handicap) {
 		const sqlRequest =
-			"select a.* " +
+			"select a.*, " +
+			"       e.Code_departement              as E_Code_departement, " +
+			"       e.Departement                   as E_Departement, " +
+			"       e.Code_INSEE                    as E_Code_INSEE, " +
+			"       e.Commune                       as E_Commune, " +
+			"       e.Numero_de_linstallation       as E_Numero_de_linstallation, " +
+			"       e.Nom_usuel_de_linstallation    as E_Nom_usuel_de_linstallation, " +
+			"       e.Numero_de_la_fiche_equipement as E_Numero_de_la_fiche_equipement, " +
+			"       e.nom_equipement                as E_nom_equipement, " +
+			"       e.Type_dequipement_Code         as E_Type_dequipement_Code, " +
+			"       e.Type_dequipement              as E_Type_dequipement, " +
+			"       e.Proprietaire_principal        as E_Proprietaire_principal, " +
+			"       e.Nombre_de_vestiaire_sportif   as E_Nombre_de_vestiaire_sportif, " +
+			"       e.Accueil_buvette               as E_Accueil_buvette, " +
+			"       e.Coordonnees_GPS_longitude     as E_Coordonnees_GPS_longitude, " +
+			"       e.Coordonnees_GPS_latitude      as E_Coordonnees_GPS_latitude, " +
+			"       e.id                            as E_id  " +
 			"from activites a," +
-			"     Equipements e," +
 			"     installations i " +
+			"       inner join Equipements e on a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement " +
 			"where (a.Activite_libelle = $activite OR $activite IS NULL)" +
 			"  and (a.Niveau_de_lactivite = $niveau OR $niveau IS NULL)" +
-			"  and a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement" +
 			"  and e.Numero_de_linstallation = i.Numero_de_linstallation" +
 			"  and (i.Desserte_bus = $bus OR $bus IS NULL)" +
 			"  and (i.Desserte_Tram = $tram OR $tram IS NULL)" +
 			"  and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL)" +
-			"  and a.latitude > $latitudeMin and a.latitude < $latitudeMax" +
-			"  and a.longitude > $longitudeMin and a.longitude < $longitudeMax ;";
+			"  and cast(e.Coordonnees_GPS_latitude as reel) > $latitudeMin" +
+			"  and cast(e.Coordonnees_GPS_latitude as reel) < $latitudeMax" +
+			"  and cast(e.Coordonnees_GPS_longitude as reel) > $longitudeMin" +
+			"  and cast(e.Coordonnees_GPS_longitude as reel) < $longitudeMax;";
 
 		latitude = Number(latitude);
 		longitude = Number(longitude);
@@ -117,10 +152,10 @@ class ActiviteDao {
 			return R * c;
 		};
 		const sqlParams = {
-			$latitudeMin: latitude - (rayon / (111132.954 - 559.822 * Math.cos(2 * latitude) + 1.175 * Math.cos(4 * latitude))),
-			$latitudeMax: latitude + (rayon / (111132.954 - 559.822 * Math.cos(2 * latitude) + 1.175 * Math.cos(4 * latitude))),
-			$longitudeMin: longitude - (rayon / (111132.954 * Math.cos(latitude))),
-			$longitudeMax: longitude + (rayon / (111132.954 * Math.cos(latitude))),
+			$latitudeMin: latitude - (rayon / 110754),
+			$latitudeMax: latitude + (rayon / 110754),
+			$longitudeMin: longitude - Math.abs(rayon / (111132.954 * Math.cos(latitude))),
+			$longitudeMax: longitude + Math.abs(rayon / (111132.954 * Math.cos(latitude))),
 			$activite: activite !== 'null' ? activite : null,
 			$niveau: niveau !== 'null' ? niveau : null,
 			$bus: bus !== 'null' ? bus : null,
@@ -133,10 +168,14 @@ class ActiviteDao {
 
 			for (const row of rows) {
 				let values = Object.values(row);
+				if (values.length !== 31)
+					console.log(values.length);
 				activites.push({
 					activite: new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-						, values[8], values[9], values[10], values[11], values[12], values[13], values[14]),
-					distance: distance(latitude, longitude, Number(values[12]), Number(values[13]))
+						, values[8], values[9], values[10], values[11], values[12], values[13], values[14]
+						, new Equipement(values[15], values[16], values[17], values[18], values[19], values[20], values[21], values[22]
+							, values[23], values[24], values[25], values[26], values[27], values[28], values[29], values[30])),
+					distance: distance(latitude, longitude, Number(values[29]), Number(values[28]))
 				});
 			}
 			activites.sort((a, b) => {

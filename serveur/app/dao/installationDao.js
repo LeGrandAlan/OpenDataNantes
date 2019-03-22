@@ -47,8 +47,9 @@ class InstallationDao {
 			"where (Code_du_departement = $departement OR $departement IS NULL)" +
 			"  and (Nom_de_la_commune = $commune OR $commune IS NULL)" +
 			"  and (Nom_usuel_de_linstallation like $nomInstallation OR $nomInstallation IS NULL)" +
-			"  and Installation_particuliere like $installatlionParticuliere OR $installatlionParticuliere IS NULL)" +
-			"  and (Desserte_bus = $bus OR $bus IS NULL) and (Desserte_Tram = $tram OR $tram IS NULL)" +
+			"  and (Installation_particuliere like $installatlionParticuliere OR $installatlionParticuliere IS NULL)" +
+			"  and (Desserte_bus = $bus OR $bus IS NULL)" +
+			"  and (Desserte_Tram = $tram OR $tram IS NULL)" +
 			"  and (Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) ;";
 
 		const sqlParams = {
@@ -60,7 +61,7 @@ class InstallationDao {
 			$tram: tram !== 'null' ? tram : null,
 			$handicap: handicap !== 'null' ? handicap : null
 		};
-
+		console.log(sqlParams);
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let installations = [];
 
@@ -82,10 +83,10 @@ class InstallationDao {
 			"  and (Desserte_bus = $bus OR $bus IS NULL) " +
 			"  and (Desserte_Tram = $tram OR $tram IS NULL) " +
 			"  and (Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) " +
-			"  and cast(latitude as real) > $latitudeMin" +
-			"  and cast(latitude as real) < $latitudeMax " +
-			"  and cast(longitude as real) > $longitudeMin" +
-			"  and cast(longitude as real) < $longitudeMax ;";
+			"  and cast(latitude as reel) > $latitudeMin " +
+			"  and cast(latitude as reel) < $latitudeMax " +
+			"  and cast(longitude as reel) > $longitudeMin " +
+			"  and cast(longitude as reel) < $longitudeMax;";
 
 		latitude = Number(latitude);
 		longitude = Number(longitude);
@@ -107,17 +108,17 @@ class InstallationDao {
 			return R * c;
 		};
 		const sqlParams = {
-			$latitudeMin: latitude - (rayon / (111132.954 - 559.822 * Math.cos(2 * latitude) + 1.175 * Math.cos(4 * latitude))),
-			$latitudeMax: latitude + (rayon / (111132.954 - 559.822 * Math.cos(2 * latitude) + 1.175 * Math.cos(4 * latitude))),
-			$longitudeMin: longitude - (rayon / (111132.954 * Math.cos(latitude))),
-			$longitudeMax: longitude + (rayon / (111132.954 * Math.cos(latitude))),
+			$latitudeMin: latitude - (rayon / 110754),
+			$latitudeMax: latitude + (rayon / 110754),
+			$longitudeMin: longitude - Math.abs(rayon / (111132.954 * Math.cos(latitude))),
+			$longitudeMax: longitude + Math.abs(rayon / (111132.954 * Math.cos(latitude))),
 			$nomInstallation: nomInstallation !== 'null' ? "%" + nomInstallation + "%" : null,
 			$installatlionParticuliere: installationParticuliere !== 'null' ? installationParticuliere : null,
 			$bus: bus !== 'null' ? bus : null,
 			$tram: tram !== 'null' ? tram : null,
 			$handicap: handicap !== 'null' ? handicap : null
 		};
-		console.log(sqlParams);
+
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let installations = [];
 
@@ -133,9 +134,9 @@ class InstallationDao {
 			installations.sort((a, b) => {
 				return a.distance - b.distance;
 			});
-			// installations = installations.filter((value) => {
-			// 	return value.distance <= (rayon / 1000);
-			// });
+			installations = installations.filter((value) => {
+				return value.distance <= (rayon / 1000);
+			});
 			return installations.length > 0 ? installations : new DaoError(21, "Entity not found");
 		});
 	}

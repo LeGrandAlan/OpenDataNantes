@@ -96,10 +96,10 @@ class EquipementDao {
 			"  and e.Numero_de_linstallation = i.Numero_de_linstallation" +
 			"  and (i.Desserte_Tram = $tram OR $tram IS NULL) " +
 			"  and (i.Accessibilite_handicapes_à_mobilite_reduite = $handicap OR $handicap IS NULL) " +
-			"  and e.Coordonnees_GPS_latitude > $latitudeMin" +
-			"  and e.Coordonnees_GPS_latitude < $latitudeMax " +
-			"  and e.Coordonnees_GPS_longitude > $longitudeMin" +
-			"  and e.Coordonnees_GPS_longitude < $longitudeMax ;";
+			"  and cast(e.Coordonnees_GPS_latitude as reel) > $latitudeMin " +
+			"  and cast(e.Coordonnees_GPS_latitude as reel) < $latitudeMax " +
+			"  and cast(e.Coordonnees_GPS_longitude as reel) > $longitudeMin " +
+			"  and cast(e.Coordonnees_GPS_longitude as reel) < $longitudeMax;";
 
 		latitude = Number(latitude);
 		longitude = Number(longitude);
@@ -121,10 +121,10 @@ class EquipementDao {
 			return R * c;
 		};
 		const sqlParams = {
-			$latitudeMin: latitude - (rayon / (111132.954 - 559.822 * Math.cos(2 * latitude) + 1.175 * Math.cos(4 * latitude))),
-			$latitudeMax: latitude + (rayon / (111132.954 - 559.822 * Math.cos(2 * latitude) + 1.175 * Math.cos(4 * latitude))),
-			$longitudeMin: longitude - (rayon / (111132.954 * Math.cos(latitude))),
-			$longitudeMax: longitude + (rayon / (111132.954 * Math.cos(latitude))),
+			$latitudeMin: latitude - (rayon / 110754),
+			$latitudeMax: latitude + (rayon / 110754),
+			$longitudeMin: longitude - Math.abs(rayon / (111132.954 * Math.cos(latitude))),
+			$longitudeMax: longitude + Math.abs(rayon / (111132.954 * Math.cos(latitude))),
 			$nomEquipement: nomEquipement !== 'null' ? nomEquipement : null,
 			$typeEquipement: typeEquipement !== 'null' ? typeEquipement : null,
 			$buvette: buvette !== 'null' ? buvette : null,

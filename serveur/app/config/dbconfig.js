@@ -14,7 +14,7 @@ const EQUIPEMENTPATH = ("./data/234400034_004-011_fiches-equipements-rpdl.csv");
 const EQUIPEMENTTABLENAME = "equipements";
 
 // open database in memory
-const db = new sqlite.Database('database.db', (err) => {
+const db = new sqlite.Database('./database.db', (err) => {
 	if (err)
 		return console.error(err.message);
 	console.log('Connected to my database.');
