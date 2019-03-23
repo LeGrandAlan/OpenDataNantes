@@ -1,5 +1,5 @@
 {
-  "name": "Projet openDataNantes",
+  "name": "projet-open-data-nantes",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -15,13 +15,12 @@
     "csv-parse": "^4.3.4",
     "debug": "~2.6.9",
     "ejs": "*",
-    "express": "*",
+    "express": "^4.16.4",
+    "graphql": "^14.1.1",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
+    "package.json": "^2.0.1",
     "path": "^0.12.7",
     "sqlite3": "^4.0.6"
-  },
-  "devDependencies": {
-    "leaflet": "^1.4.0"
   }
 }
