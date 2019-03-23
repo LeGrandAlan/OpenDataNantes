@@ -5,16 +5,16 @@ const sqlite = require('sqlite3').verbose();
 const parse = require('csv-parse');
 
 const ACTIVITEFILEPATH = ("./data/normal/234400034_004-009_activites-des-fiches-equipements-rpdl.csv");
-// const ACTIVITEFILEPATH = ("./data/TestXS/234400034_004-009_activites-des-fiches-equipements-rpdl_small.csv");
+// const ACTIVITEFILEPATH = ("./data/small/234400034_004-009_activites-des-fiches-equipements-rpdl_small.csv");
 const ACTIVITETABLENAME = "activites";
 
 const INSTALLATIONFILEPATH = ("./data/normal/234400034_004-010_fiches-installations-rpdl.csv");
-// const INSTALLATIONFILEPATH = ("./data/TestXS/234400034_004-010_fiches-installations-rpdl_small.csv");
+// const INSTALLATIONFILEPATH = ("./data/small/234400034_004-010_fiches-installations-rpdl_small.csv");
 const INSTALLATIONTABLENAME = "installations";
 
 const EQUIPEMENTPATH = ("./data/normal/234400034_004-011_fiches-equipements-rpdl.csv");
-// const EQUIPEMENTPATH = ("./data/TestXS/234400034_004-011_fiches-equipements-rpdl_small.csv");
-const EQUIPEMENTTABLENAME = "Equipements";
+// const EQUIPEMENTPATH = ("./data/small/234400034_004-011_fiches-equipements-rpdl_small.csv");
+const EQUIPEMENTTABLENAME = "equipements";
 // open database in memory
 const db = new sqlite.Database('./database.db', (err) => {
 	if (err)
@@ -324,6 +324,7 @@ const populateInstallation = function () {
  */
 const init = function () {
 	// noinspection JSUnresolvedFunction
+	console.time("Initialisation effectuée en ");
 	db.serialize(() => {
 		console.log("Création des tables et importation des données");
 		createActiviteTable()
@@ -341,12 +342,11 @@ const init = function () {
 		).then(
 			() => populateInstallation() //installation
 		).then(() => {
-			// db.close();
 			console.log("Fin de l'importation");
-			// process.exit();
+			console.timeEnd("Initialisation effectuée en ");
+
 		}).catch((err) => {
 			console.error(err)
-
 		});
 	});
 };

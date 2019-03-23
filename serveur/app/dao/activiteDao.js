@@ -40,8 +40,8 @@ class ActiviteDao {
 			"       e.Coordonnees_GPS_longitude     as E_Coordonnees_GPS_longitude, " +
 			"       e.Coordonnees_GPS_latitude      as E_Coordonnees_GPS_latitude, " +
 			"       e.id                            as E_id  " +
-			"from activites " +
-			"   inner join Equipements on activites.Numero_de_la_fiche_equipement = Equipements.Numero_de_la_fiche_equipement;";
+			"from activites a" +
+			"   inner join equipements e on a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement;";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 
@@ -69,7 +69,7 @@ class ActiviteDao {
 			"       e.Coordonnees_GPS_latitude," +
 			"       e.Coordonnees_GPS_longitude " +
 			"from activites a, " +
-			"     Equipements e," +
+			"     equipements e," +
 			"     installations i " +
 			"where (a.Code_du_departement = $departement OR $departement IS NULL)" +
 			"  and (a.Nom_de_la_commune like $commune OR $commune IS NULL)" +
@@ -110,7 +110,7 @@ class ActiviteDao {
 			"       e.Coordonnees_GPS_latitude," +
 			"       e.Coordonnees_GPS_longitude " +
 			"from activites a," +
-			"     Equipements e," +
+			"     equipements e," +
 			"     installations i " +
 			"where (a.Activite_libelle = $activite OR $activite IS NULL)" +
 			"  and (a.Niveau_de_lactivite = $niveau OR $niveau IS NULL)" +
@@ -185,7 +185,6 @@ class ActiviteDao {
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 
 			let activites = [];
-			console.log(rows);
 			for (const row of rows) {
 				let values = Object.values(row);
 				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
@@ -215,7 +214,7 @@ class ActiviteDao {
 			"       e.Coordonnees_GPS_latitude      as E_Coordonnees_GPS_latitude, " +
 			"       e.id                            as E_id  " +
 			"from activites a " +
-			"   inner join Equipements e on a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement " +
+			"   inner join equipements e on a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement " +
 			"where e.Numero_de_la_fiche_equipement = $value;";
 		const sqlParams = {
 			$value: value
@@ -256,7 +255,7 @@ class ActiviteDao {
 	}
 
 	listOfNomCommuneByDepartement(value) {
-		const sqlRequest = "select distinct Nom_de_la_commune from activites where Code_du_departement like $value";
+		const sqlRequest = "select distinct Nom_de_la_commune from activites where Code_du_departement = $value";
 		const sqlParams = {
 			$value: value
 		};

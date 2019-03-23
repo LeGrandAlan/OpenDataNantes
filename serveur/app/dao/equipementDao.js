@@ -41,16 +41,14 @@ class EquipementDao {
 			"       i.latitude                                    as I_latitude," +
 			"       i.longitude                                   as I_longitude," +
 			"       i.id                                          as I_id " +
-			"from Equipements e" +
+			"from equipements e" +
 			"       inner join installations i on e.Numero_de_linstallation = i.Numero_de_linstallation;";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let equipements = [];
 
 			for (const row of rows) {
-				console.log(row);
 				let values = Object.values(row);
-				console.log(values);
 				equipements.push(new Equipement(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
 					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]
 					, new Installation(values[17], values[18], values[19], values[20], values[21], values[22], values[23]
@@ -68,7 +66,7 @@ class EquipementDao {
 	findByAll(departement, commune, nomEquipement, typeEquipement, buvette, bus, tram, handicap) {
 		const sqlRequest =
 			"select e.* " +
-			"from Equipements e," +
+			"from equipements e," +
 			"     installations i " +
 			"where (e.Code_departement = $departement OR $departement IS NULL)" +
 			"  and (e.Commune = $commune OR $commune IS NULL)" +
@@ -106,7 +104,7 @@ class EquipementDao {
 	findByAllAndCoordonnees(latitude, longitude, rayon, nomEquipement, typeEquipement, buvette, bus, tram, handicap) {
 		const sqlRequest =
 			"select e.* " +
-			"from Equipements e, " +
+			"from equipements e, " +
 			"     installations i " +
 			"where (Nom_equipement = $nomEquipement OR $nomEquipement IS NULL) " +
 			"  and (e.Type_dequipement = $typeEquipement OR $typeEquipement IS NULL) " +
@@ -175,7 +173,7 @@ class EquipementDao {
 
 
 	findById(id) {
-		const sqlRequest = "select * from Equipements where id = $id";
+		const sqlRequest = "select * from equipements where id = $id";
 		const sqlParams = {
 			$id: id
 		};
@@ -198,7 +196,7 @@ class EquipementDao {
 	findByNoDeLInstallation(noDeLInstallation) {
 		const sqlRequest =
 			"select * " +
-			"from Equipements e " +
+			"from equipements e " +
 			"   inner join installations i on e.Numero_de_linstallation = i.Numero_de_linstallation " +
 			"where i.Numero_de_linstallation = $noDeLInstallation;";
 		const sqlParams = {
@@ -226,7 +224,7 @@ class EquipementDao {
 
 
 	listOfNomDepartement(value) {
-		const sqlRequest = "select distinct Departement from Equipements where Departement like $value";
+		const sqlRequest = "select distinct Departement from equipements where Departement like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -241,7 +239,7 @@ class EquipementDao {
 	}
 
 	listOfNomsCommunes() {
-		const sqlRequest = "select distinct Commune from Equipements";
+		const sqlRequest = "select distinct Commune from equipements";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
@@ -253,7 +251,7 @@ class EquipementDao {
 	}
 
 	listOfNomCommune(value) {
-		const sqlRequest = "select distinct Commune from Equipements where Commune like $value";
+		const sqlRequest = "select distinct Commune from equipements where Commune like $value";
 		const sqlParams = {
 			$value: value + "%"
 		};
@@ -268,7 +266,7 @@ class EquipementDao {
 	}
 
 	listOfNomCommuneByDepartement(value) {
-		const sqlRequest = "select distinct Commune from Equipements where Code_departement like $value";
+		const sqlRequest = "select distinct Commune from equipements where Code_departement = $value";
 		const sqlParams = {
 			$value: value
 		};
@@ -283,7 +281,7 @@ class EquipementDao {
 	}
 
 	listOfNomsEquipements() {
-		const sqlRequest = "select distinct Nom_equipement from Equipements";
+		const sqlRequest = "select distinct Nom_equipement from equipements";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
@@ -295,7 +293,7 @@ class EquipementDao {
 	}
 
 	listOfNomEquipement(value) {
-		const sqlRequest = "select distinct Nom_equipement from Equipements where Equipement like $value";
+		const sqlRequest = "select distinct Nom_equipement from equipements where Equipement like $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -310,7 +308,7 @@ class EquipementDao {
 	}
 
 	listOfTypesEquipements() {
-		const sqlRequest = "select distinct Type_dequipement from Equipements";
+		const sqlRequest = "select distinct Type_dequipement from equipements";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
@@ -322,7 +320,7 @@ class EquipementDao {
 	}
 
 	listOfTypeEquipement(value) {
-		const sqlRequest = "select distinct Type_dequipement from Equipements where Type_dequipement like $value";
+		const sqlRequest = "select distinct Type_dequipement from equipements where Type_dequipement like $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};

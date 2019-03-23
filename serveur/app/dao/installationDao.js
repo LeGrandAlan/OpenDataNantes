@@ -61,7 +61,7 @@ class InstallationDao {
 			$tram: tram !== 'null' ? tram : null,
 			$handicap: handicap !== 'null' ? handicap : null
 		};
-		console.log(sqlParams);
+
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 			let installations = [];
 
@@ -163,9 +163,9 @@ class InstallationDao {
 
 
 	findByCodeDepartement(value) {
-		const sqlRequest = "select * from installations where Code_du_departement LIKE $value";
+		const sqlRequest = "select * from installations where Code_du_departement = $value";
 		const sqlParams = {
-			$value: "%" + value + "%"
+			$value: value
 		};
 
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
@@ -263,9 +263,9 @@ class InstallationDao {
 	}
 
 	findByCodePostal(codePostal) {
-		const sqlRequest = "select * from installations where Code_postal LIKE $codePostal";
+		const sqlRequest = "select * from installations where Code_postal = $codePostal";
 		const sqlParams = {
-			$codePostal: "%" + codePostal + "%"
+			$codePostal: codePostal
 		};
 
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
