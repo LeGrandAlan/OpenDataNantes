@@ -197,30 +197,15 @@ class ActiviteDao {
 	}
 
 	findByNoEquipement(value) {
-		const sqlRequest = "select a.*," +
-			"       e.Code_departement              as E_Code_departement, " +
-			"       e.Departement                   as E_Departement, " +
-			"       e.Code_INSEE                    as E_Code_INSEE, " +
-			"       e.Commune                       as E_Commune, " +
-			"       e.Numero_de_linstallation       as E_Numero_de_linstallation, " +
-			"       e.Nom_usuel_de_linstallation    as E_Nom_usuel_de_linstallation, " +
-			"       e.Numero_de_la_fiche_equipement as E_Numero_de_la_fiche_equipement, " +
-			"       e.nom_equipement                as E_nom_equipement, " +
-			"       e.Type_dequipement_Code         as E_Type_dequipement_Code, " +
-			"       e.Type_dequipement              as E_Type_dequipement, " +
-			"       e.Proprietaire_principal        as E_Proprietaire_principal, " +
-			"       e.Nombre_de_vestiaire_sportif   as E_Nombre_de_vestiaire_sportif, " +
-			"       e.Accueil_buvette               as E_Accueil_buvette, " +
-			"       e.Coordonnees_GPS_longitude     as E_Coordonnees_GPS_longitude, " +
-			"       e.Coordonnees_GPS_latitude      as E_Coordonnees_GPS_latitude, " +
-			"       e.id                            as E_id  " +
+		const sqlRequest =
+			"select a.* " +
 			"from activites a " +
 			"   inner join equipements e on a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement " +
 			"where e.Numero_de_la_fiche_equipement = $value;";
 		const sqlParams = {
 			$value: value
 		};
-
+		console.log(sqlParams);
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 
 			let activites = [];
@@ -228,9 +213,7 @@ class ActiviteDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]
-					, new Equipement(values[15], values[16], values[17], values[18], values[19], values[20], values[21], values[22]
-						, values[23], values[24], values[25], values[26], values[27], values[28], values[29])));
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14]));
 			}
 
 			return activites;

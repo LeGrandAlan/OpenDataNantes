@@ -37,12 +37,12 @@ router.get('/code_departement/:value', function (req, res) {
 	installationController.findByCodeDepartement(req, res);
 });
 
-// retourne toutes les installations du département dont le nom est passé en paramètre
+// retourne toutes les installations du département dont le nom contient la valeur passée en paramètre
 router.get('/departement/:value', function (req, res) {
 	installationController.findByDepartement(req, res);
 });
 
-// retourne toutes les installations d'une communedont le nom est passé en paramètre
+// retourne toutes les installations dont le nom de la commune commune contient la valeur passée en paramètre
 router.get('/nom_commune/:value', function (req, res) {
 	installationController.findByNomCommune(req, res);
 });
@@ -62,7 +62,7 @@ router.get('/code_postal/:value', function (req, res) {
 	installationController.findByCodePostal(req, res);
 });
 
-// retourne toutes les installations dont l'installation particulère est la valeur passée en paramètre
+// retourne toutes les installations dont l'installation particulère contient la valeur passée en paramètre
 router.get('/installation_particuliere/:value', function (req, res) {
 	installationController.findByInstallationParticuliere(req, res);
 });
@@ -109,7 +109,7 @@ router.get('/liste/nom_installation/', function (req, res) {
 	installationController.listOfNomsInstallations(res);
 });
 
-// retourne la liste des noms d'installations commencant par la valeur passé en paramètre
+// retourne la liste des noms d'installations contiennent la valeur passé en paramètre
 router.get('/liste/nom_installation/:value', function (req, res) {
 	installationController.listOfNomInstallation(req, res);
 });
@@ -119,7 +119,7 @@ router.get('/liste/installations_particuliere/', function (req, res) {
 	installationController.listOfInstallationsParticulieres(res);
 });
 
-// retourne la liste des installations partiluclières commencant par la valeur passée en paramètre
+// retourne la liste des installations partiluclières contiennent la valeur passée en paramètre
 router.get('/liste/installations_particuliere/:value', function (req, res) {
 	installationController.listOfInstallationParticuliere(req, res);
 });
