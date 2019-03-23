@@ -22,10 +22,29 @@ class EquipementDao {
 	 * @return {Promise} all entities
 	 */
 	findAll() {
-		const sqlRequest = "SELECT * FROM Equipements inner join installations on Equipements.Numero_de_linstallation = installations.Numero_de_linstallation;";
+		const sqlRequest =
+			"select e.*," +
+			"       i.Code_du_departement                         as I_Code_du_departement," +
+			"       i.Departement                                 as I_Departement," +
+			"       i.Nom_de_la_commune                           as I_Nom_de_la_commune," +
+			"       i.Numero_de_linstallation                     as I_Numero_de_linstallation," +
+			"       i.Nom_usuel_de_linstallation                  as I_Nom_usuel_de_linstallation," +
+			"       i.Numero_de_la_voie                           as I_Numero_de_la_voie," +
+			"       i.Nom_de_la_voie                              as I_Nom_de_la_voie," +
+			"       i.Nom_du_lieu_dit                             as I_Nom_du_lieu_dit," +
+			"       i.Code_postal                                 as I_Code_postal," +
+			"       i.Installation_particuliere                   as I_Installation_particuliere," +
+			"       i.Accessibilite_handicapes_à_mobilite_reduite as I_Accessibilite_handicapes_à_mobilite_reduite," +
+			"       i.Nombre_total_de_place_de_parking            as I_Nombre_total_de_place_de_parking," +
+			"       i.Desserte_bus                                as I_Desserte_bus," +
+			"       i.Desserte_Tram                               as I_Desserte_Tram," +
+			"       i.latitude                                    as I_latitude," +
+			"       i.longitude                                   as I_longitude," +
+			"       i.id                                          as I_id " +
+			"from Equipements e" +
+			"       inner join installations i on e.Numero_de_linstallation = i.Numero_de_linstallation;";
 
 		return this.common.findAll(sqlRequest).then(rows => {
-
 			let equipements = [];
 
 			for (const row of rows) {
@@ -38,7 +57,6 @@ class EquipementDao {
 						, values[24], values[25], values[26], values[27], values[28], values[29], values[30], values[31], values[32])));
 
 			}
-
 			return equipements;
 		});
 	};
@@ -86,7 +104,8 @@ class EquipementDao {
 	}
 
 	findByAllAndCoordonnees(latitude, longitude, rayon, nomEquipement, typeEquipement, buvette, bus, tram, handicap) {
-		const sqlRequest = "select e.* " +
+		const sqlRequest =
+			"select e.* " +
 			"from Equipements e, " +
 			"     installations i " +
 			"where (Nom_equipement = $nomEquipement OR $nomEquipement IS NULL) " +
@@ -168,7 +187,7 @@ class EquipementDao {
 					let values = Object.values(row);
 					equipements.push(new Equipement(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
 						, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]));
-}
+				}
 				return equipements;
 			}
 		);
@@ -177,8 +196,11 @@ class EquipementDao {
 
 
 	findByNoDeLInstallation(noDeLInstallation) {
-		const sqlRequest = "SELECT * FROM Equipements inner join installations on Equipements.Numero_de_linstallation = installations.Numero_de_linstallation " +
-			"where installations.Numero_de_linstallation = $noDeLInstallation;";
+		const sqlRequest =
+			"select * " +
+			"from Equipements e " +
+			"   inner join installations i on e.Numero_de_linstallation = i.Numero_de_linstallation " +
+			"where i.Numero_de_linstallation = $noDeLInstallation;";
 		const sqlParams = {
 			$noDeLInstallation: noDeLInstallation
 		};
@@ -190,7 +212,7 @@ class EquipementDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				equipements.push(new Equipement(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], values[16]
+					, values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15]
 					, new Installation(values[17], values[18], values[19], values[20], values[21], values[22], values[23]
 						, values[24], values[25], values[26], values[27], values[28], values[29], values[30], values[31], values[32])));
 
