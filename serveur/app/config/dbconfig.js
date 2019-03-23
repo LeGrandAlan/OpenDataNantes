@@ -4,23 +4,28 @@ const fs = require('fs');
 const sqlite = require('sqlite3').verbose();
 const parse = require('csv-parse');
 
-const ACTIVITEFILEPATH = ("./data/234400034_004-009_activites-des-fiches-equipements-rpdl.csv");
+const ACTIVITEFILEPATH = ("./data/normal/234400034_004-009_activites-des-fiches-equipements-rpdl.csv");
 // const ACTIVITEFILEPATH = ("./data/TestXS/234400034_004-009_activites-des-fiches-equipements-rpdl_small.csv");
 const ACTIVITETABLENAME = "activites";
 
-const INSTALLATIONFILEPATH = ("./data/234400034_004-010_fiches-installations-rpdl.csv");
+const INSTALLATIONFILEPATH = ("./data/normal/234400034_004-010_fiches-installations-rpdl.csv");
 // const INSTALLATIONFILEPATH = ("./data/TestXS/234400034_004-010_fiches-installations-rpdl_small.csv");
 const INSTALLATIONTABLENAME = "installations";
 
-const EQUIPEMENTPATH = ("./data/234400034_004-011_fiches-equipements-rpdl.csv");
+const EQUIPEMENTPATH = ("./data/normal/234400034_004-011_fiches-equipements-rpdl.csv");
 // const EQUIPEMENTPATH = ("./data/TestXS/234400034_004-011_fiches-equipements-rpdl_small.csv");
-const EQUIPEMENTTABLENAME = "equipements";
+const EQUIPEMENTTABLENAME = "Equipements";
 // open database in memory
 const db = new sqlite.Database('./database.db', (err) => {
 	if (err)
 		return console.error(err.message);
 	console.log('Connected to my database.');
 });
+
+db.get("PRAGMA foreign_keys = ON");
+db.get("PRAGMA synchronous = OFF");
+db.get("PRAGMA temp_store = MEMORY");
+
 
 /**
  * Crée la table activité
