@@ -4,6 +4,7 @@
                 id="map-map"
                 :zoom="zoom"
                 :center="center"
+                :bounds="bounds"
                 :options="mapOptions"
                 @update:center="centerUpdate"
                 @update:zoom="zoomUpdate"
@@ -64,23 +65,28 @@
 				currentCenter: L.latLng(47.209274, -1.548773),
 				mapOptions: {
 					zoomSnap: 0.5
-				}
+				},
+                bounds: null
 			};
 		},
 		props: {
-			calculatedCenter: Object,
-			calculatedZoom: Number,
 			marqueursActivite: Array,
 			marqueursInstallation: Array
 		},
 		watch: {
-			calculatedCenter: function (newVal) {
-                this.center = newVal;
-                console.log("nouveau centre : " + newVal);
+			marqueursActivite: function (newVal) {
+				let latLngList= [];
+				newVal.forEach(element => {
+                    latLngList.push([this.getLatLng(element).lat, this.getLatLng(element).lng]);
+                });
+				this.bounds = L.latLngBounds(latLngList);
 			},
-			calculatedZoom: function (newVal) {
-                this.zoom = newVal;
-                console.log("nouveau zoom : " + newVal);
+			marqueursInstallation: function (newVal) {
+				let latLngList= [];
+				newVal.forEach(element => {
+					latLngList.push([this.getLatLng(element).lat, this.getLatLng(element).lng]);
+				});
+				this.bounds = L.latLngBounds(latLngList);
 			}
 		},
 		methods: {

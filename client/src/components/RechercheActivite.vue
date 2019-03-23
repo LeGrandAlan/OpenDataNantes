@@ -236,38 +236,6 @@
 								this.marqueursActivite = response.data.map(el => {return el.activite});
 								this.text = response.data.length + " résultats !";
 								this.snackbar = true;
-
-								//recherche du centre
-								let latitudes = 0;
-								let longitudes = 0;
-								let total = 0;
-								this.marqueursActivite.forEach((marqueur, index) => {
-									latitudes += parseFloat(marqueur.latitude);
-									longitudes += parseFloat(marqueur.longitude);
-									total = index;
-								});
-
-								latitudes /= total;
-								longitudes /= total;
-
-								let minLongitude = Math.min(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.longitude)));
-								let maxLongitude = Math.max(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.longitude)));
-								let minLatitude = Math.min(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.latitude)));
-								let maxLatitude = Math.max(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.latitude)));
-
-								//TODO : calculer un niveau de zoom (defaultZoom = 12)
-
-								const indice = Math.max((maxLongitude - minLongitude), (maxLatitude - minLatitude));
-
-								if(indice > 0.5) {
-									this.zoom = 8;
-								} else if(indice > 0.3) {
-									this.zoom = 10;
-								} else {
-									this.zoom = 12;
-								}
-
-								this.center = L.latLng(latitudes, longitudes);
 							}
 
 						}).catch(() => {
@@ -320,38 +288,6 @@
 						this.marqueursActivite = response.data;
 						this.text = response.data.length + " résultats !";
 						this.snackbar = true;
-
-						//recherche du centre
-						let latitudes = 0;
-						let longitudes = 0;
-						let total = 0;
-						this.marqueursActivite.forEach((marqueur, index) => {
-							latitudes += parseFloat(marqueur.latitude);
-							longitudes += parseFloat(marqueur.longitude);
-							total = index;
-						});
-
-						latitudes /= total;
-						longitudes /= total;
-
-						let minLongitude = Math.min(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.longitude)));
-						let maxLongitude = Math.max(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.longitude)));
-						let minLatitude = Math.min(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.latitude)));
-						let maxLatitude = Math.max(...this.marqueursActivite.map(marqueur => parseFloat(marqueur.latitude)));
-
-						//TODO : calculer un niveau de zoom (defaultZoom = 12)
-
-						const indice = Math.max((maxLongitude - minLongitude), (maxLatitude - minLatitude));
-
-						if(indice > 0.5) {
-							this.zoom = 8;
-						} else if(indice > 0.3) {
-							this.zoom = 10;
-						} else {
-							this.zoom = 12;
-						}
-
-						this.center = L.latLng(latitudes, longitudes);
 					}
 
 				}).catch(() => {
