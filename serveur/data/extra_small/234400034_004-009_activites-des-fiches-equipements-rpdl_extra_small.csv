@@ -1,0 +1,448 @@
+Code du département;Libellé du département;Code INSEE;Nom de la commune;Numéro de la fiche équipement;Nombre d'équipements identiques;Activité code;Activité libellé;Activité praticable;Activité pratiquée;Dans salle spécialisable;Niveau de l'activité - Classif.;localisation
+44;Loire-Atlantique;44007;Avessac;282045;1;1001;Fosse universelle;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;282045;1;1002;Parcours de chasse;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.635436304, -1.97050871505
+44;Loire-Atlantique;44008;Barbechat;287664;1;1001;Fosse universelle;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129760;1;701;Badminton, Jeu de volant;Oui;Oui;Non;Compétition départementale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129760;1;1101;Basket-Ball;Oui;Oui;Non;Compétition départementale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129760;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Scolaire;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129760;1;7901;Tennis;Oui;Oui;Non;Compétition départementale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129760;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Compétition départementale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44009;Basse-Goulaine;132673;1;701;Badminton, Jeu de volant;Oui;Oui;Non;Compétition régionale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;132673;1;1101;Basket-Ball;Oui;Oui;Non;Compétition régionale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;132673;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Scolaire;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;132673;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Scolaire;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44011;Belligné;132859;1;701;Badminton, Jeu de volant;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44011;Belligné;132859;1;1101;Basket-Ball;Oui;Oui;Non;Compétition départementale;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44011;Belligné;132859;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Entrainement;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44011;Belligné;132859;1;7901;Tennis;Oui;Non;Non;;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44011;Belligné;132859;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Non;Non;Non défini;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44010;Batz-sur-Mer;179883;1;1101;Basket-Ball;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;179883;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44009;Basse-Goulaine;204302;1;701;Badminton, Jeu de volant;Oui;Oui;Oui;Compétition régionale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;204302;1;1101;Basket-Ball;Oui;Oui;Non;Compétition départementale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;204302;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Compétition départementale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;204302;1;8201;Tir à l'arc;Oui;Oui;Non;Compétition départementale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;204302;1;8401;Twirling bâton;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;204302;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Compétition départementale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;204321;2;1101;Basket-Ball;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;204321;2;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44003;Ancenis;211994;1;701;Badminton, Jeu de volant;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;211994;1;1101;Basket-Ball;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;211994;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;211994;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44006;Assérac;271205;1;1101;Basket-Ball;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;271205;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;271205;1;3701;Handball / Mini hand / Handball de plage;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;271205;1;7901;Tennis;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;271205;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44010;Batz-sur-Mer;283973;1;1101;Basket-Ball;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;283973;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;283973;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;283973;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44009;Basse-Goulaine;287156;2;1101;Basket-Ball;Oui;Oui;Non;Scolaire;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44001;Abbaretz;287645;2;1101;Basket-Ball;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44001;Abbaretz;287645;2;7901;Tennis;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44008;Barbechat;292174;1;1101;Basket-Ball;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44008;Barbechat;292174;1;2901;Football / Football en salle (Futsal);Oui;Non;Non;;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44008;Barbechat;292174;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44008;Barbechat;292175;1;1101;Basket-Ball;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44008;Barbechat;292175;1;7901;Tennis;Oui;Non;Non;;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44009;Basse-Goulaine;317924;1;1101;Basket-Ball;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;317924;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;317924;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44003;Ancenis;318893;1;1101;Basket-Ball;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353728;1;1101;Basket-Ball;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353728;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353728;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353728;1;7901;Tennis;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353728;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353729;1;1101;Basket-Ball;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353729;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353729;1;7901;Tennis;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353729;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;358106;1;503;Course sur piste;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;358106;1;1101;Basket-Ball;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;358106;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;358106;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;358297;1;701;Badminton, Jeu de volant;Oui;Oui;Non;Compétition départementale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;358297;1;1101;Basket-Ball;Oui;Oui;Non;Compétition régionale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;358297;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Compétition départementale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;358297;1;7901;Tennis;Oui;Oui;Non;Compétition départementale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;358297;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Compétition départementale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44010;Batz-sur-Mer;67651;1;701;Badminton, Jeu de volant;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;67651;1;1101;Basket-Ball;Oui;Oui;Non;Compétition départementale;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;67651;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;67651;1;3701;Handball / Mini hand / Handball de plage;Oui;Non;Non;Compétition départementale;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;67651;1;4401;Karaté/Karaté jutsu/Goshin jutsu/Kobudo/Nihon Tai-jutsu/Taijitsu/Nambudo/Ninjutsu/Nunchaku/...;Oui;Oui;Non;Compétition départementale;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;67651;1;7901;Tennis;Oui;Non;Non;Compétition départementale;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;67651;1;8001;Tennis de table;Oui;Oui;Non;Scolaire;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;67651;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Non;Non;Compétition départementale;47.2844487793, -2.474374647
+44;Loire-Atlantique;44012;Bernerie-en-Retz;67707;1;1101;Basket-Ball;Oui;Oui;Non;Scolaire;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;67707;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;67707;1;3501;Gymnastique volontaire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;67707;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Scolaire;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;67707;1;7901;Tennis;Oui;Oui;Non;Compétition départementale;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;67707;1;8001;Tennis de table;Oui;Oui;Non;Compétition départementale;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;67707;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44003;Ancenis;67731;1;701;Badminton, Jeu de volant;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;67731;1;1101;Basket-Ball;Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;67731;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;67731;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;67732;2;1101;Basket-Ball;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;67732;2;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;67732;2;7901;Tennis;Oui;Non;Non;Non défini;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;70882;1;701;Badminton, Jeu de volant;Oui;Oui;Non;Compétition départementale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;70882;1;1101;Basket-Ball;Oui;Oui;Non;Compétition départementale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;70882;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Compétition départementale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;70882;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44005;Arthon-en-Retz;71148;1;401;Aikido / Aikibudo / Budo;Oui;Oui;Non;Entrainement;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;71148;1;1101;Basket-Ball;Oui;Oui;Non;Compétition départementale;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;71148;1;3501;Gymnastique volontaire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;71148;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Scolaire;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;71148;1;7701;Taekwondo / Hapkido / Tang-soo-do / Soo bahk do / Sin moo hapkido / Hapkido jin jung kwan;Oui;Oui;Non;Entrainement;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;71148;1;7901;Tennis;Oui;Oui;Non;Compétition départementale;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44009;Basse-Goulaine;71393;1;1101;Basket-Ball;Oui;Oui;Non;Compétition régionale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;71393;1;3404;Expression gymnique;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;71393;1;7901;Tennis;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;71393;1;8001;Tennis de table;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;71393;1;8201;Tir à l'arc;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;71393;1;8401;Twirling bâton;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44007;Avessac;71816;1;1101;Basket-Ball;Oui;Oui;Non;Scolaire;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;71816;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Entrainement;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;71816;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Scolaire;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;71816;1;7901;Tennis;Oui;Oui;Non;Compétition départementale;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;71816;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Scolaire;47.635436304, -1.97050871505
+44;Loire-Atlantique;44003;Ancenis;318869;1;1201;Billard (Français (carambole),Snooker,Anglais,Américain);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;135224;1;1401;Boxe Anglaise;Oui;Non;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;135224;1;3101;Full contact (boxe américaine)/Light contact/First full/Full défense/Super fight/Semi-contact;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;252824;1;1701;Canoë de randonnée;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;252824;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44007;Avessac;272729;1;1701;Canoë de randonnée;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;272729;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;272729;1;8502;Dériveur / Multicoques / Courses océaniques / au large / Voile modèle / traditionnelle /match racing;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.635436304, -1.97050871505
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;288494;1;1701;Canoë de randonnée;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44004;Anetz;291803;1;1701;Canoë de randonnée;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;291803;1;5001;Motonautisme / Jet hydrojet / Aéroglisseur;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;291803;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;291803;1;6902;Ski nautique classique / Course / à figures libres / nupieds / Kneeboard / Wake-board;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;291804;1;1701;Canoë de randonnée;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;291804;1;5001;Motonautisme / Jet hydrojet / Aéroglisseur;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;291804;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;291804;1;6902;Ski nautique classique / Course / à figures libres / nupieds / Kneeboard / Wake-board;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;291871;1;1701;Canoë de randonnée;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;291871;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44003;Ancenis;68607;1;1701;Canoë de randonnée;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;68607;1;5001;Motonautisme / Jet hydrojet / Aéroglisseur;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;68607;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44006;Assérac;257686;1;1708;Wave-ski;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;257686;1;1710;Kayak de mer;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;257686;1;8501;Planche à Voile;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;257686;1;8502;Dériveur / Multicoques / Courses océaniques / au large / Voile modèle / traditionnelle /match racing;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;257686;1;8702;Cerf volant de traction (glisse aérotractée) et kitesurf;Oui;Oui;Non;Compétition régionale;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44010;Batz-sur-Mer;289877;1;1710;Kayak de mer;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;289877;1;7601;Surf;Oui;Oui;Non;Compétition nationale;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;300265;1;1710;Kayak de mer;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;300265;1;7601;Surf;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44006;Assérac;312199;1;1710;Kayak de mer;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;312199;1;8502;Dériveur / Multicoques / Courses océaniques / au large / Voile modèle / traditionnelle /match racing;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44001;Abbaretz;312133;1;2001;Course d'orientation - Vtt;Oui;Oui;Non;Compétition départementale;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44001;Abbaretz;312133;1;2002;Course d'orientation - Pédestre;Oui;Oui;Non;Compétition départementale;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44003;Ancenis;353619;1;2002;Course d'orientation - Pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;203349;1;201;Formule racer / Vol à moteur / Voltige aérienne/Rallye aérien/Pilotage précision;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;203349;1;6101;Planeur ULM / Multiaxe / Pendulaire / Paramoteur / Motorisations auxiliaires / Autogire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44008;Barbechat;204480;1;2202;Bicross (BMX);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;275133;1;2202;Bicross (BMX);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;275133;1;6303;Roller acrobatique;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;275133;1;6306;Planche à roulettes (Skate);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44011;Belligné;295211;1;2202;Bicross (BMX);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44011;Belligné;295211;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44004;Anetz;312399;1;2202;Bicross (BMX);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44003;Ancenis;353731;1;2202;Bicross (BMX);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44010;Batz-sur-Mer;188832;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;188832;1;6201;Randonnée pédestre;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44004;Anetz;189276;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;189276;1;2608;Randonnée équestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;189276;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;189288;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;189288;1;2608;Randonnée équestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;189288;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;189297;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;189297;1;2608;Randonnée équestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;189297;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;189310;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;189310;1;2608;Randonnée équestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;189310;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44001;Abbaretz;197752;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44001;Abbaretz;197752;1;6201;Randonnée pédestre;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44010;Batz-sur-Mer;201866;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;201866;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44008;Barbechat;206894;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44012;Bernerie-en-Retz;213367;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;213367;1;2301;Cyclotourisme;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;213367;1;2608;Randonnée équestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;213367;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44005;Arthon-en-Retz;216017;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;216017;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;217498;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;217498;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44004;Anetz;280539;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;280539;1;2301;Cyclotourisme;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;280539;1;2608;Randonnée équestre;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;280539;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44001;Abbaretz;312136;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Entrainement;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44001;Abbaretz;312136;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44005;Arthon-en-Retz;316721;1;2204;Vtt (Cross Country/ Descente/ Trial/ Rallye/ Four Cross) / Vélo trial;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;316721;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44004;Anetz;194428;1;2301;Cyclotourisme;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;194428;1;2608;Randonnée équestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;194428;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;194437;1;2301;Cyclotourisme;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;194437;1;2608;Randonnée équestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44004;Anetz;194437;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129802;1;2402;Autres Danses;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129802;1;3501;Gymnastique volontaire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129802;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44003;Ancenis;132115;1;2402;Autres Danses;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;132115;1;3403;Gymnastique Aérobic;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;132115;1;3501;Gymnastique volontaire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;132115;1;8001;Tennis de table;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;132115;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;267458;1;2402;Autres Danses;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44009;Basse-Goulaine;317933;1;2402;Autres Danses;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;317933;1;3501;Gymnastique volontaire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;317933;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;317934;1;2402;Autres Danses;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;317934;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44001;Abbaretz;343682;1;701;Badminton, Jeu de volant;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44001;Abbaretz;343682;1;2402;Autres Danses;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44001;Abbaretz;343682;1;3404;Expression gymnique;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44001;Abbaretz;343682;1;8901;Activités de forme et de santé;Oui;Oui;Non;Scolaire;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44003;Ancenis;70881;1;701;Badminton, Jeu de volant;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;70881;1;2402;Autres Danses;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;70881;1;3501;Gymnastique volontaire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44005;Arthon-en-Retz;71149;1;401;Aikido / Aikibudo / Budo;Oui;Oui;Non;Entrainement;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;71149;1;2402;Autres Danses;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;71149;1;3501;Gymnastique volontaire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;71149;1;7701;Taekwondo / Hapkido / Tang-soo-do / Soo bahk do / Sin moo hapkido / Hapkido jin jung kwan;Oui;Oui;Non;Entrainement;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;318126;1;2501;Echecs;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;318127;1;2501;Echecs;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;318128;1;2501;Echecs;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;68587;1;2501;Echecs;Oui;Oui;Oui;Compétition nationale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;68587;1;8001;Tennis de table;Oui;Oui;Non;Compétition départementale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;137089;1;2601;Equitation;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;137089;1;2603;Dressage;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;137089;1;2604;Saut d'obstacle;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;137095;1;2601;Equitation;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;137095;1;2603;Dressage;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;137095;1;2604;Saut d'obstacle;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;137095;1;2605;Attelage;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;137095;1;2608;Randonnée équestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44009;Basse-Goulaine;137975;1;2601;Equitation;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;137975;1;2604;Saut d'obstacle;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;137992;1;2601;Equitation;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;137992;1;2604;Saut d'obstacle;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;137992;1;2608;Randonnée équestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44007;Avessac;260840;1;2601;Equitation;Oui;Oui;Non;Entrainement;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;260840;1;2608;Randonnée équestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;286976;1;2601;Equitation;Oui;Oui;Non;Entrainement;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;286976;1;2604;Saut d'obstacle;Oui;Oui;Non;Entrainement;47.635436304, -1.97050871505
+44;Loire-Atlantique;44009;Basse-Goulaine;320022;1;2601;Equitation;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44007;Avessac;323541;1;2601;Equitation;Oui;Oui;Non;Compétition départementale;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;286980;1;2603;Dressage;Oui;Oui;Non;Entrainement;47.635436304, -1.97050871505
+44;Loire-Atlantique;44007;Avessac;286981;1;2603;Dressage;Oui;Oui;Non;Entrainement;47.635436304, -1.97050871505
+44;Loire-Atlantique;44001;Abbaretz;247310;1;2804;Plongée subaquatique (Plongée libre);Oui;Oui;Non;Entrainement;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44001;Abbaretz;247310;1;6902;Ski nautique classique / Course / à figures libres / nupieds / Kneeboard / Wake-board;Oui;Oui;Non;Compétition régionale;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44005;Arthon-en-Retz;127785;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition régionale;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;127800;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition régionale;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;127809;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Entrainement;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44001;Abbaretz;129515;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44007;Avessac;131039;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.635436304, -1.97050871505
+44;Loire-Atlantique;44003;Ancenis;131585;2;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44010;Batz-sur-Mer;132701;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;132701;1;3801;Hockey en salle / Hockey sur gazon;Oui;Oui;Non;Scolaire;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;132701;1;8201;Tir à l'arc;Oui;Oui;Non;Scolaire;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;132704;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;132704;1;3801;Hockey en salle / Hockey sur gazon;Oui;Oui;Non;Scolaire;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;132704;1;8201;Tir à l'arc;Oui;Oui;Non;Scolaire;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;132707;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Entrainement;47.2844487793, -2.474374647
+44;Loire-Atlantique;44011;Belligné;132854;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44012;Bernerie-en-Retz;211223;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44005;Arthon-en-Retz;216036;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;284246;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44003;Ancenis;318864;2;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;318894;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;318894;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;318897;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;318897;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;67730;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;67730;1;6401;Rugby à 15 / Rugby à 7;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;68588;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;68591;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;68591;1;6401;Rugby à 15 / Rugby à 7;Oui;Oui;Non;Scolaire;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44001;Abbaretz;69849;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44008;Barbechat;71141;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44004;Anetz;71384;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44009;Basse-Goulaine;71394;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition régionale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;71396;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition régionale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;71397;1;502;Lancer;Oui;Oui;Non;Scolaire;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;71397;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44006;Assérac;71474;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;71476;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44007;Avessac;71817;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.635436304, -1.97050871505
+44;Loire-Atlantique;44003;Ancenis;72415;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;72415;1;6401;Rugby à 15 / Rugby à 7;Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44011;Belligné;72790;1;2901;Football / Football en salle (Futsal);Oui;Oui;Non;Compétition départementale;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44003;Ancenis;290453;1;301;Aérostation;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353827;1;3302;Swing;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44009;Basse-Goulaine;287155;1;3401;Gymnastique Artistique;Oui;Oui;Oui;Compétition départementale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;287155;1;8201;Tir à l'arc;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44012;Bernerie-en-Retz;310566;1;3401;Gymnastique Artistique;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;310566;1;3501;Gymnastique volontaire;Oui;Oui;Non;Entrainement;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;310566;1;8001;Tennis de table;Oui;Oui;Non;Entrainement;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;310566;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44003;Ancenis;71841;1;3401;Gymnastique Artistique;Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;71841;1;3402;Gymnastique Rythmique;Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;71841;1;3408;Gymnastique Acrobatique;Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44010;Batz-sur-Mer;319428;1;3404;Expression gymnique;Oui;Oui;Non;Scolaire;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;319428;1;3501;Gymnastique volontaire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;319428;1;4401;Karaté/Karaté jutsu/Goshin jutsu/Kobudo/Nihon Tai-jutsu/Taijitsu/Nambudo/Ninjutsu/Nunchaku/...;Oui;Oui;Non;Entrainement;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;319428;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44003;Ancenis;353832;1;3404;Expression gymnique;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44009;Basse-Goulaine;204311;1;3408;Gymnastique Acrobatique;Oui;Oui;Non;Scolaire;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;204311;1;8001;Tennis de table;Oui;Oui;Non;Compétition régionale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;287154;1;3501;Gymnastique volontaire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44010;Batz-sur-Mer;319443;1;3501;Gymnastique volontaire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;319443;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44005;Arthon-en-Retz;329411;1;3501;Gymnastique volontaire;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129794;1;3602;Musculation;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129794;1;3603;Culturisme;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44003;Ancenis;184142;1;3602;Musculation;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;184142;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;131656;1;3701;Handball / Mini hand / Handball de plage;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;131656;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44009;Basse-Goulaine;132648;1;401;Aikido / Aikibudo / Budo;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;132648;1;4301;Judo / Jujitsu / Taïso;Oui;Oui;Non;Compétition départementale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;132648;1;7801;Tai chi chuan / Chi gong;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44005;Arthon-en-Retz;71150;1;401;Aikido / Aikibudo / Budo;Oui;Oui;Non;Entrainement;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44005;Arthon-en-Retz;71150;1;8001;Tennis de table;Oui;Oui;Non;Compétition départementale;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44003;Ancenis;71840;1;4301;Judo / Jujitsu / Taïso;Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;71840;1;4401;Karaté/Karaté jutsu/Goshin jutsu/Kobudo/Nihon Tai-jutsu/Taijitsu/Nambudo/Ninjutsu/Nunchaku/...;Oui;Oui;Non;Compétition départementale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129785;1;4701;Lutte traditionnelle / olympique libre / olympique gréco-romaine /� bretonne / féminine;Oui;Oui;Non;Compétition nationale;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;129785;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44003;Ancenis;277371;1;4802;Escalade;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;321464;1;4802;Escalade;Oui;Oui;Non;Compétition départementale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353773;1;4802;Escalade;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;358301;1;4802;Escalade;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44008;Barbechat;204453;1;4903;Motocross / Enduro;Oui;Oui;Non;Entrainement;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44008;Barbechat;204453;1;4905;Quad;Oui;Oui;Non;Entrainement;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44003;Ancenis;279954;1;501;Saut;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44009;Basse-Goulaine;317930;1;501;Saut;Oui;Oui;Non;Scolaire;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44003;Ancenis;353732;1;501;Saut;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;67729;1;501;Saut;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;67729;1;502;Lancer;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;67729;1;503;Course sur piste;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44009;Basse-Goulaine;317932;1;502;Lancer;Oui;Oui;Non;Scolaire;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44003;Ancenis;279953;1;503;Course sur piste;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44009;Basse-Goulaine;317935;1;503;Course sur piste;Oui;Oui;Non;Scolaire;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;71392;1;503;Course sur piste;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44003;Ancenis;72414;1;503;Course sur piste;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44012;Bernerie-en-Retz;310569;1;5201;Natation course sportive;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44003;Ancenis;70611;1;5201;Natation course sportive;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;70611;1;5206;Baignade loisirs;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44010;Batz-sur-Mer;179873;1;5206;Baignade loisirs;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;179878;1;5206;Baignade loisirs;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;258267;1;5206;Baignade loisirs;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;258366;1;5206;Baignade loisirs;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44009;Basse-Goulaine;350962;3;5206;Baignade loisirs;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;350962;3;5208;Aquagym;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;350963;3;5206;Baignade loisirs;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;350963;3;5208;Aquagym;Oui;Oui;Non;Non défini;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44003;Ancenis;70612;1;5206;Baignade loisirs;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;352178;1;5208;Aquagym;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44009;Basse-Goulaine;258890;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;258915;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44003;Ancenis;271041;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Compétition départementale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44011;Belligné;274838;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;284250;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44001;Abbaretz;344269;1;5501;Pêche au coup en eau douce;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44012;Bernerie-en-Retz;213342;1;5601;Pêche en mer;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;213342;1;8501;Planche à Voile;Oui;Oui;Non;Compétition départementale;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;213342;1;8502;Dériveur / Multicoques / Courses océaniques / au large / Voile modèle / traditionnelle /match racing;Oui;Oui;Non;Compétition départementale;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44009;Basse-Goulaine;132596;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Compétition départementale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44010;Batz-sur-Mer;179863;2;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44011;Belligné;295212;3;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44007;Avessac;300199;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.635436304, -1.97050871505
+44;Loire-Atlantique;44009;Basse-Goulaine;317936;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;317937;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44003;Ancenis;318872;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Compétition départementale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44010;Batz-sur-Mer;319426;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;319467;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;319468;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44005;Arthon-en-Retz;329410;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44001;Abbaretz;343672;1;6001;Pétanque et jeu provencal;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44001;Abbaretz;344268;2;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44003;Ancenis;353807;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;358117;1;6001;Pétanque et jeu provencal;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44006;Assérac;188425;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44003;Ancenis;188706;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;203945;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;203963;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44011;Belligné;206558;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44012;Bernerie-en-Retz;213363;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44012;Bernerie-en-Retz;213384;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44007;Avessac;218513;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.635436304, -1.97050871505
+44;Loire-Atlantique;44011;Belligné;308404;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4785440295, -1.02618318963
+44;Loire-Atlantique;44006;Assérac;312194;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;312195;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44008;Barbechat;344353;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44008;Barbechat;347304;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44010;Batz-sur-Mer;351507;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;351509;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44003;Ancenis;353613;1;6201;Randonnée pédestre;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44010;Batz-sur-Mer;319458;1;6302;Patinage de course;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44006;Assérac;271208;1;6303;Roller acrobatique;Oui;Non;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44006;Assérac;271208;1;6306;Planche à roulettes (Skate);Oui;Non;Non;Loisir - Entretien - Remise en forme;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44009;Basse-Goulaine;287158;1;6303;Roller acrobatique;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44003;Ancenis;289795;1;6303;Roller acrobatique;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;289795;1;6306;Planche à roulettes (Skate);Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353774;1;6401;Rugby à 15 / Rugby à 7;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44005;Arthon-en-Retz;290351;1;6902;Ski nautique classique / Course / à figures libres / nupieds / Kneeboard / Wake-board;Oui;Oui;Non;Entrainement;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44003;Ancenis;68670;1;7102;Karting;Oui;Oui;Non;Compétition nationale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44010;Batz-sur-Mer;132757;1;7203;Sports boules;Oui;Oui;Non;Compétition départementale;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;319425;1;7203;Sports boules;Oui;Oui;Non;Compétition départementale;47.2844487793, -2.474374647
+44;Loire-Atlantique;44003;Ancenis;289796;1;7204;Boules traditionnelles;Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;68589;1;7204;Boules traditionnelles;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44005;Arthon-en-Retz;127769;3;7901;Tennis;Oui;Oui;Non;Compétition départementale;47.1592162214, -1.95412512421
+44;Loire-Atlantique;44007;Avessac;131041;2;7901;Tennis;Oui;Oui;Non;Compétition départementale;47.635436304, -1.97050871505
+44;Loire-Atlantique;44010;Batz-sur-Mer;132740;3;7901;Tennis;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;184840;2;7901;Tennis;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44012;Bernerie-en-Retz;213319;2;7901;Tennis;Oui;Oui;Non;Compétition départementale;47.0856704602, -2.03170205961
+44;Loire-Atlantique;44009;Basse-Goulaine;287157;2;7901;Tennis;Oui;Oui;Non;Compétition départementale;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44004;Anetz;291801;1;7901;Tennis;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3812710821, -1.0932910037
+44;Loire-Atlantique;44003;Ancenis;353614;2;7901;Tennis;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;68590;2;7901;Tennis;Oui;Oui;Non;Entrainement;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44003;Ancenis;70883;2;7901;Tennis;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44009;Basse-Goulaine;71391;2;7901;Tennis;Oui;Oui;Non;Entrainement;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44003;Ancenis;71842;2;7901;Tennis;Oui;Oui;Non;Compétition nationale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;135231;1;8001;Tennis de table;Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;318870;1;8101;Carabine (hors 300m) / Pistolet / Plateaux;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353828;1;8101;Carabine (hors 300m) / Pistolet / Plateaux;Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;353828;1;8102;Cible Mobile / Carabine 300m;Oui;Oui;Non;Compétition régionale;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;131665;1;8201;Tir à l'arc;Oui;Oui;Non;Entrainement;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44010;Batz-sur-Mer;319463;1;8501;Planche à Voile;Oui;Oui;Non;Entrainement;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;319463;1;8502;Dériveur / Multicoques / Courses océaniques / au large / Voile modèle / traditionnelle /match racing;Oui;Oui;Non;Entrainement;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;319462;1;8502;Dériveur / Multicoques / Courses océaniques / au large / Voile modèle / traditionnelle /match racing;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44010;Batz-sur-Mer;179849;1;8801;Volley-ball / Volley-ball de plage (beach-volley) / Green-Volley;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2844487793, -2.474374647
+44;Loire-Atlantique;44003;Ancenis;184152;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44008;Barbechat;204483;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2820568846, -1.29827542127
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;284240;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44009;Basse-Goulaine;317938;1;8901;Activités de forme et de santé;Oui;Oui;Non;Scolaire;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44009;Basse-Goulaine;317939;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44002;Aigrefeuille-sur-Maine;318142;1;8901;Activités de forme et de santé;Oui;Oui;Non;Scolaire;47.0719256611, -1.41556455507
+44;Loire-Atlantique;44003;Ancenis;318892;1;8901;Activités de forme et de santé;Oui;Oui;Non;Scolaire;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44003;Ancenis;318896;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
+44;Loire-Atlantique;44010;Batz-sur-Mer;319459;1;8901;Activités de forme et de santé;Oui;Oui;Non;Scolaire;47.2844487793, -2.474374647
+44;Loire-Atlantique;44009;Basse-Goulaine;322620;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.2120137336, -1.46246852595
+44;Loire-Atlantique;44001;Abbaretz;343679;1;8901;Activités de forme et de santé;Oui;Oui;Non;Scolaire;47.5560384833, -1.49327262094
+44;Loire-Atlantique;44006;Assérac;344350;1;8901;Activités de forme et de santé;Oui;Oui;Non;Scolaire;47.4379772072, -2.41272577216
+44;Loire-Atlantique;44003;Ancenis;353618;1;8901;Activités de forme et de santé;Oui;Oui;Non;Loisir - Entretien - Remise en forme;47.3833270209, -1.18241880879
