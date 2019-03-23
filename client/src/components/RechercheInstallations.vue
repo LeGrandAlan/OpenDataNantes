@@ -49,7 +49,7 @@
                         ></v-autocomplete>
                     </v-card-text>
                 </v-flex>
-                <v-flex xs2 pa-4>
+                <v-flex xs2 style="margin: 0 20px;">
                     <v-slider
                             :disabled="!geolocalisation"
                             prepend-icon="fas fa-road"

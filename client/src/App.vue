@@ -68,3 +68,9 @@
 		}
 	}
 </script>
+
+<style>
+    .v-card__text {
+        padding: 8px !important;
+    }
+</style>
