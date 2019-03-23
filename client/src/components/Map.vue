@@ -17,9 +17,9 @@
                 <l-marker v-for="(marqueurActivite, index) in marqueursActivite" :key="`marqueurActivite-${index}`" v-if="getLatLng(marqueurActivite) !== null" :lat-lng="getLatLng(marqueurActivite)">
                     <l-popup>
                         <div>
-                            <h3>{{marqueurActivite.activiteLibelle}}</h3><br>
-                            {{marqueurActivite.niveauDeLActivite}}<br>
-                            {{marqueurActivite.nomDeLaCommune}}<br>
+                            <h3>{{marqueurActivite.equipement}} : {{marqueurActivite.activiteLibelle}}</h3><br>
+                            <span v-if="marqueurActivite.niveauDeLActivite">Niveau : {{marqueurActivite.niveauDeLActivite}}<br></span>
+                            Ville : {{marqueurActivite.nomDeLaCommune}}<br>
                             Nombre d'équipements : {{marqueurActivite.nombreEquipementsIdentiques}}
                         </div>
                     </l-popup>

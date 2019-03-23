@@ -37,7 +37,7 @@
                 <!--</keep-alive>-->
             </v-content>
             <v-footer app fixed>
-                <span>&copy; 2019</span>
+                <span style="margin-left: 8px;">&copy;2019 par Alan Le Grand, Etienne Lécrivain et Maxence Dominici</span>
             </v-footer>
         </v-app>
     </div>

@@ -65,7 +65,7 @@ class ActiviteDao {
 	findByAll(departement, commune, activite, niveau, bus, tram, handicap) {
 		const sqlRequest =
 			"select a.*," +
-			"       e.nom_equipement," +
+			"       e.Nom_usuel_de_linstallation," +
 			"       e.Coordonnees_GPS_latitude," +
 			"       e.Coordonnees_GPS_longitude " +
 			"from activites a, " +
@@ -106,7 +106,7 @@ class ActiviteDao {
 	findByAllAndCoordonnees(latitude, longitude, rayon, activite, niveau, bus, tram, handicap) {
 		const sqlRequest =
 			"select a.*," +
-			"       e.nom_equipement," +
+			"       e.Nom_usuel_de_linstallation," +
 			"       e.Coordonnees_GPS_latitude," +
 			"       e.Coordonnees_GPS_longitude " +
 			"from activites a," +
