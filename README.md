@@ -1,6 +1,6 @@
 # OpenDataNantes
 
-Projet universitaire dans le cadre du cours deTechnologies pour la production de 
+Projet universitaire dans le cadre du cours de Technologies pour la production de 
 logiciels (M4105C). Ce travail à été fait par le groupe Groupe_2-04 : Alan Le Grand, 
 Etienne Lécrivain et Maxence Dominici.
 
@@ -47,7 +47,7 @@ Pour le client, il faut se déplacer dans le répertoire client.
 ```
 cd ./client/
 ```
-Là encore, il fauti nstaller les packages nécésaires au fonctionnement du client.
+Là encore, il faut installer les packages nécésaires au fonctionnement du client.
 ```
 npm install
 ```

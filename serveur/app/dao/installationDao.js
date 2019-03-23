@@ -137,7 +137,10 @@ class InstallationDao {
 			installations = installations.filter((value) => {
 				return value.distance <= (rayon / 1000);
 			});
-			return installations.length > 0 ? installations : new DaoError(21, "Entity not found");
+			if (installations.length === 0)
+				throw new DaoError(21, "Entity not found");
+
+			return installations;
 		});
 	}
 

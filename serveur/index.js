@@ -4,19 +4,18 @@ const express = require("express");
 const cors = require('cors');
 const app = express();
 const bodyParser = require("body-parser");
-
-/* BJF Current PATH */
-//const path = require('path');
-//global.appRoot = path.resolve(__dirname); //espacede nommage global
+const helmet = require('helmet');
+const compression = require('compression');
 
 /* Database configuration */
 const database = require('./app/config/dbconfig');
 
 /* Init database */
-// database.init();
+if (process.argv[2] === "init")
+	database.init();
 
 /* Init server listening */
-const port = process.argv[2] || 3000;
+const port = 3000;
 app.listen(port, () => {
 	console.log("Server listening on port : " + port);
 });
@@ -25,6 +24,10 @@ app.listen(port, () => {
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(compression());
+/* Express security   */
+app.use(helmet());
+app.disable('x-powered-by');
 
 /* Router configuration */
 app.use('/api', require('./app/routes/router'));

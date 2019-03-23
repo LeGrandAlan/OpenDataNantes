@@ -2,7 +2,6 @@
 /* Load Activite entity */
 const Activite = require('../model/activite');
 const Equipement = require('../model/equipement');
-const Installation = require('../model/installation');
 
 /* Load DAO Common functions */
 const daoCommon = require('./commons/daoCommon');
@@ -162,7 +161,7 @@ class ActiviteDao {
 				let values = Object.values(row);
 				activites.push({
 					activite: new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-						, values[8], values[9], values[10], values[11], values[16], values[17], values[14],values[15]),
+						, values[8], values[9], values[10], values[11], values[16], values[17], values[14], values[15]),
 					distance: distance(latitude, longitude, Number(values[16]), Number(values[17]))
 				});
 			}
@@ -172,7 +171,9 @@ class ActiviteDao {
 			activites = activites.filter((value) => {
 				return value.distance <= (rayon / 1000);
 			});
-			return activites.length > 0 ? activites : new DaoError(21, "Entity not found");
+			if (activites.length === 0)
+				throw new DaoError(21, "Entity not found");
+			return activites;
 		});
 	}
 
