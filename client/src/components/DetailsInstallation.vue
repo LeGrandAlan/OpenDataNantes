@@ -71,7 +71,7 @@
 			}).then(() => {
 				//Récupération des activitées de chaque équipement de l'installation
 				this.equipements.forEach(equipement => {
-					axios.get("http://localhost:3000/api/activite/equipement/numero_equipement/" + equipement.nomInstalation).then((response) => {
+					axios.get("http://localhost:3000/api/activite/equipement/numero_equipement/" + equipement.numeroInstalation).then((response) => {
 						this.listeActiviteesEquipement.push(response.data);
 					});
 				});

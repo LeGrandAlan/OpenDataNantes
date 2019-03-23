@@ -48,14 +48,16 @@
                     :rows-per-page-items="rowsParPage"
             >
                 <template v-slot:items="props">
-                    <td class="text-xs-center">{{ props.item.nomUsuelDeLInstallation }}</td>
-                    <td class="text-xs-center">{{ props.item.nombrePlaceParking }}</td>
-                    <td class="text-xs-center" v-if="props.item.accHandicapes === 'true'">Oui</td>
-                    <td class="text-xs-center" v-else="">Non</td>
-                    <td class="text-xs-center" v-if="props.item.desserteTram === 'true'">Oui</td>
-                    <td class="text-xs-center" v-else="">Non</td>
-                    <td class="text-xs-center" v-if="props.item.desserteBus === 'true'">Oui</td>
-                    <td class="text-xs-center" v-else="">Non</td>
+                    <tr v-on:click="detailsInstallation(props.item.noDeLInstallation)">
+                        <td class="text-xs-center">{{ props.item.nomUsuelDeLInstallation }}</td>
+                        <td class="text-xs-center">{{ props.item.nombrePlaceParking }}</td>
+                        <td class="text-xs-center" v-if="props.item.accHandicapes === 'true'">Oui</td>
+                        <td class="text-xs-center" v-else="">Non</td>
+                        <td class="text-xs-center" v-if="props.item.desserteTram === 'true'">Oui</td>
+                        <td class="text-xs-center" v-else="">Non</td>
+                        <td class="text-xs-center" v-if="props.item.desserteBus === 'true'">Oui</td>
+                        <td class="text-xs-center" v-else="">Non</td>
+                    </tr>
                 </template>
                 <v-alert v-slot:no-results="" :value="true" color="error" icon="warning">
                     Votre recherche "{{ search }}" n'aboutit à aucun résultat.
@@ -95,6 +97,11 @@
 					{ text: 'Tram', value: 'desserteTram', align: 'center' },
 					{ text: 'Bus', value: 'desserteBus', align: 'center' },
 				]
+			}
+		},
+		methods: {
+			detailsInstallation(noInstallation) {
+				this.$root.$emit('installationDetailsClicked', noInstallation);
 			}
 		}
 	}
