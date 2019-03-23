@@ -14,7 +14,7 @@
                     :attribution="attribution"
             />
             <v-marker-cluster v-if="marqueursActivite">
-                <l-marker v-for="(marqueurActivite, index) in marqueursActivite" :key="`marqueurActivite-${index}`" :lat-lng="getLatLng(marqueurActivite)">
+                <l-marker v-for="(marqueurActivite, index) in marqueursActivite" :key="`marqueurActivite-${index}`" v-if="getLatLng(marqueurActivite) !== null" :lat-lng="getLatLng(marqueurActivite)">
                     <l-popup>
                         <div>
                             <h3>{{marqueurActivite.activiteLibelle}}</h3><br>
@@ -26,7 +26,7 @@
                 </l-marker>
             </v-marker-cluster>
             <v-marker-cluster v-if="marqueursInstallation">
-                <l-marker v-for="(marqueurInstallation, index) in marqueursInstallation" :key="`marqueursInstallation-${index}`" :lat-lng="getLatLng(marqueurInstallation)">
+                <l-marker v-for="(marqueurInstallation, index) in marqueursInstallation" :key="`marqueursInstallation-${index}`" v-if="getLatLng(marqueurInstallation) !== null" :lat-lng="getLatLng(marqueurInstallation)">
                     <l-popup>
                         <div>
                             <h3>{{marqueurInstallation.nomUsuelDeLInstallation}}</h3><br>
@@ -66,7 +66,7 @@
 				mapOptions: {
 					zoomSnap: 0.5
 				},
-                bounds: null
+				bounds: null
 			};
 		},
 		props: {
@@ -77,15 +77,20 @@
 			marqueursActivite: function (newVal) {
 				let latLngList= [];
 				newVal.forEach(element => {
-                    latLngList.push([this.getLatLng(element).lat, this.getLatLng(element).lng]);
-                });
+					let latLng = this.getLatLng(element);
+					if (latLng !== null){
+						latLngList.push([latLng.lat, latLng.lng]);
+					}
+				});
 				this.bounds = L.latLngBounds(latLngList);
 			},
 			marqueursInstallation: function (newVal) {
-
 				let latLngList= [];
 				newVal.forEach(element => {
-					latLngList.push([this.getLatLng(element).lat, this.getLatLng(element).lng]);
+					let latLng = this.getLatLng(element);
+					if (latLng !== null) {
+						latLngList.push([this.getLatLng(element).lat, this.getLatLng(element).lng]);
+					}
 				});
 				this.bounds = L.latLngBounds(latLngList);
 			}
@@ -107,7 +112,13 @@
 				} else {
 					latSplit = latSplit[0];
 				}
-				return L.latLng(parseFloat(elem.latitude), parseFloat(latSplit));
+
+				//La base de donnée n'étant pas bien faite, il faut tester si les coordonnées sont bonnes
+				try {
+					return L.latLng(parseFloat(elem.latitude), parseFloat(latSplit));
+				} catch (e) {
+					return null;
+				}
 			}
 		}
 	};
