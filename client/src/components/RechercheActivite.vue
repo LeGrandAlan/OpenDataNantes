@@ -22,7 +22,7 @@
                                 item-text="Description"
                                 item-value="API"
                                 label="Département"
-                                placeholder="Nom du dép.    "
+                                placeholder="Nom du dép."
                                 prepend-icon="fas fa-city"
                                 return-object
                                 v-on:change="chargerCommunes()"
@@ -48,6 +48,17 @@
                                 clearable
                         ></v-autocomplete>
                     </v-card-text>
+                </v-flex>
+                <v-flex xs2 pa-4>
+                    <v-slider
+                            :disabled="!geolocalisation"
+                            prepend-icon="fas fa-road"
+                            thumb-size="24"
+                            v-model="slider"
+                            thumb-label="always"
+                            min="1"
+                            max="50"
+                    ></v-slider>
                 </v-flex>
                 <v-flex xs2>
                     <v-switch v-model="bus" label="Déserte bus"></v-switch>
@@ -101,7 +112,7 @@
                     <v-switch v-model="grille" label="Affichage grille"></v-switch>
                 </v-flex>
             </v-layout>
-            <Map v-if="!grille && marqueursActivite !== null" :calculated-zoom="zoom" :calculated-center="center" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
+            <Map v-if="!grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
             <Map v-if="!grille && marqueursActivite === null" style="height: 70%; width: 100%;"/>
             <GridList v-if="grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="width: 100%;"/>
             <GridList v-if="grille && marqueursActivite === null" style="width: 100%;"/>
@@ -132,7 +143,6 @@
 	import Map from './Map.vue';
 	import GridList from './GridList.vue';
 	import axios from 'axios';
-	import * as L from "leaflet";
 
 	export default {
 		name: "RechercheActivite",
@@ -162,7 +172,8 @@
 			text: '',
 			center: null,
 			zoom: null,
-			geolocalisation: null
+			geolocalisation: null,
+			slider: 1
 		}),
 		props: {
 			source: String
@@ -208,7 +219,7 @@
 					}
 				});
 			},
-			chargerMarqueursCarteGeolocalisation(niveauActivite, activite, bus, tram, handi) {
+			chargerMarqueursCarteGeolocalisation(rayon, niveauActivite, activite, bus, tram, handi) {
 
 				this.getGeolocalisation()
 					.then((gelocalisation) => {
@@ -216,7 +227,7 @@
 						let url = `http://localhost:3000/api/activite/`+
 							`latitude/${gelocalisation.coords.latitude}`+
 							`/longitude/${gelocalisation.coords.longitude}`+
-							`/rayon/5`+
+							`/rayon/${rayon}`+
 							`/activite/${activite}`+
 							`/niveau/${niveauActivite}`+
 							`/bus/${bus}`+
@@ -226,7 +237,7 @@
 						axios.get(url).then(response => { //TODO: catch si recoit une réponse mais vide
 							if(response.data.length > 2000) {
 								this.$confirm("Voulez vous vraiment afficher les résultats ?<br>Il y en a " + response.data.length + ".<br><b>C'est fortement déconseillé !</b>").then(res => {
-									if (res) {
+									if (!res) {
 										this.marqueursActivite = response.data.map(el => {return el.activite});
 										this.text = response.data.length + " résultats !";
 										this.snackbar = true;
@@ -258,12 +269,12 @@
 				let bus = this.bus ? true : "null";
 				let tram = this.tram ? true : "null";
 				let handi = this.handi ? true : "null";
+				let slider = this.slider;
 
 				if(this.geolocalisation) {
-					this.chargerMarqueursCarteGeolocalisation(niveauActivite, activite, bus, tram, handi);
+					this.chargerMarqueursCarteGeolocalisation(slider, niveauActivite, activite, bus, tram, handi);
 					return;
 				}
-
 
 				let url = `http://localhost:3000/api/activite/`+
 					`departement/${departement}`+
@@ -278,7 +289,7 @@
 
 					if(response.data.length > 2000) {
 						this.$confirm("Voulez vous vraiment afficher les résultats ?<br>Il y en a " + response.data.length + ".<br><b>C'est fortement déconseillé !</b>").then(res => {
-							if (res) {
+							if (!res) {
 								this.marqueursActivite = response.data;
 								this.text = response.data.length + " résultats !";
 								this.snackbar = true;
