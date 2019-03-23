@@ -124,6 +124,8 @@ class ActiviteDao {
 
 		latitude = Number(latitude);
 		longitude = Number(longitude);
+		console.log(latitude);
+		console.log(longitude);
 		rayon = Number(rayon) * 1000;
 		if (typeof (Number.prototype.toRad) === "undefined") {
 			Number.prototype.toRad = function () {
@@ -213,8 +215,8 @@ class ActiviteDao {
 			"       e.Coordonnees_GPS_latitude      as E_Coordonnees_GPS_latitude, " +
 			"       e.id                            as E_id  " +
 			"from activites a " +
-			"   inner join Equipements on activites.Numero_de_la_fiche_equipement = Equipements.Numero_de_la_fiche_equipement " +
-			"where Equipements.Numero_de_la_fiche_equipement = $value;";
+			"   inner join Equipements e on a.Numero_de_la_fiche_equipement = e.Numero_de_la_fiche_equipement " +
+			"where e.Numero_de_la_fiche_equipement = $value;";
 		const sqlParams = {
 			$value: value
 		};
