@@ -20,7 +20,7 @@ class InstallationDao {
 	 * @return {Promise} all entities
 	 */
 	findAll() {
-		const sqlRequest = "SELECT * FROM installations";
+		const sqlRequest = "select * from installations";
 
 		return this.common.findAll(sqlRequest).then(rows => {
 
@@ -163,7 +163,7 @@ class InstallationDao {
 
 
 	findByCodeDepartement(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Code_du_departement LIKE $value";
+		const sqlRequest = "select * from installations where Code_du_departement LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -183,7 +183,7 @@ class InstallationDao {
 	}
 
 	findByDepartement(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Département LIKE $value";
+		const sqlRequest = "select * from installations where Département LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -203,7 +203,7 @@ class InstallationDao {
 	}
 
 	findByNomCommune(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Nom_de_la_commune LIKE $value";
+		const sqlRequest = "select * from installations where Nom_de_la_commune LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -223,7 +223,7 @@ class InstallationDao {
 	}
 
 	findByNumeroInstallation(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Numero_de_linstallation = $value";
+		const sqlRequest = "select * from installations where Numero_de_linstallation = $value";
 		const sqlParams = {
 			$value: value
 		};
@@ -243,7 +243,7 @@ class InstallationDao {
 	}
 
 	findByNomInstallation(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Nom_usuel_de_linstallation LIKE $value";
+		const sqlRequest = "select * from installations where Nom_usuel_de_linstallation LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -263,7 +263,7 @@ class InstallationDao {
 	}
 
 	findByCodePostal(codePostal) {
-		const sqlRequest = "SELECT * FROM installations WHERE Code_postal LIKE $codePostal";
+		const sqlRequest = "select * from installations where Code_postal LIKE $codePostal";
 		const sqlParams = {
 			$codePostal: "%" + codePostal + "%"
 		};
@@ -283,7 +283,7 @@ class InstallationDao {
 	}
 
 	findByInstallationParticuliere(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Installation_particuliere LIKE $value";
+		const sqlRequest = "select * from installations where Installation_particuliere LIKE $value";
 		const sqlParams = {
 			$value: "%" + value + "%"
 		};
@@ -303,7 +303,7 @@ class InstallationDao {
 	}
 
 	findByAccessibiliteHandicapes(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Accessibilite_handicapes_à_mobilite_reduite = $value";
+		const sqlRequest = "select * from installations where Accessibilite_handicapes_à_mobilite_reduite = $value";
 		const sqlParams = {
 			$value: value
 		};
@@ -323,7 +323,7 @@ class InstallationDao {
 	}
 
 	findByDesserteBus(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Desserte_bus = $value";
+		const sqlRequest = "select * from installations where Desserte_bus = $value";
 		const sqlParams = {
 			$value: value
 		};
@@ -344,7 +344,7 @@ class InstallationDao {
 
 
 	findByDesserteTram(value) {
-		const sqlRequest = "SELECT * FROM installations WHERE Desserte_Tram = $value";
+		const sqlRequest = "select * from installations where Desserte_Tram = $value";
 		const sqlParams = {
 			$value: value
 		};
