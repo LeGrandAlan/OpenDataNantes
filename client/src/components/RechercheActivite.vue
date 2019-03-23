@@ -6,7 +6,7 @@
                     <v-card-text>
                         <h1 style="display: inline-block; margin-right: 10px;">Recherche d'activités</h1>
                         <v-icon v-if="geolocalisation" v-on:click="changerStatusGeolocalisation()" style="font-size: 34px; color: blue;">far fa-compass</v-icon>
-                        <v-icon v-else v-on:click="changerStatusGeolocalisation()" style="font-size: 34px; color: grey;">far fa-compass</v-icon>
+                        <v-icon v-else v-on:click="changerStatusGeolocalisation()" style="font-size: 34px; color: gray;">far fa-compass</v-icon>
                         (Géolocalisation <span v-if="geolocalisation">activée</span><span v-else>désactivée</span>)
                     </v-card-text>
                 </v-flex>
@@ -16,7 +16,7 @@
                                 v-model="departement"
                                 :items="departements"
                                 :disabled="geolocalisation"
-                                color="grey"
+                                color="gray"
                                 hide-no-data
                                 hide-selected
                                 item-text="Description"
@@ -36,7 +36,7 @@
                                 v-model="commune"
                                 :items="communes"
                                 :disabled="(departement === '' || departement === undefined) || geolocalisation"
-                                color="grey"
+                                color="gray"
                                 hide-no-data
                                 hide-selected
                                 item-text="Description"
@@ -71,7 +71,7 @@
                         <v-autocomplete
                                 v-model="activite"
                                 :items="activites"
-                                color="grey"
+                                color="gray"
                                 hide-no-data
                                 hide-selected
                                 item-text="Description"
@@ -89,7 +89,7 @@
                         <v-autocomplete
                                 v-model="niveauActivite"
                                 :items="niveauxActivite"
-                                color="grey"
+                                color="gray"
                                 hide-no-data
                                 hide-selected
                                 item-text="Description"

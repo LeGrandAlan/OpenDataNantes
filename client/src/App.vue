@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <v-app id="inspire" light>
+        <v-app id="inspire" :dark="darkMode">
             <v-navigation-drawer
                     clipped
                     fixed
@@ -22,6 +22,15 @@
                         </v-list-tile-action>
                         <v-list-tile-content>
                             <v-list-tile-title>Installations</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+                    <v-list-tile style="margin-top: 50px;" v-on:click="darkMode = !darkMode">
+                        <v-list-tile-action>
+                            <v-icon>fas fa-moon</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title v-if="!darkMode">Activer dark mode</v-list-tile-title>
+                            <v-list-tile-title v-else>Désactiver dark mode</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                 </v-list>
@@ -58,7 +67,8 @@
 		data: () => ({
 			drawer: true,
 			currentComponent: null,
-			noInstallation: null
+			noInstallation: null,
+			darkMode: false
 		}),
 		mounted() {
 			this.$root.$on('installationDetailsClicked', (noInstallation) => {
