@@ -112,7 +112,7 @@
                     <v-switch v-model="grille" label="Affichage grille"></v-switch>
                 </v-flex>
             </v-layout>
-            <Map v-if="!grille && marqueursActivite !== null" :calculated-zoom="zoom" :calculated-center="center" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
+            <Map v-if="!grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
             <Map v-if="!grille && marqueursActivite === null" style="height: 70%; width: 100%;"/>
             <GridList v-if="grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="width: 100%;"/>
             <GridList v-if="grille && marqueursActivite === null" style="width: 100%;"/>
@@ -289,7 +289,7 @@
 
 					if(response.data.length > 2000) {
 						this.$confirm("Voulez vous vraiment afficher les résultats ?<br>Il y en a " + response.data.length + ".<br><b>C'est fortement déconseillé !</b>").then(res => {
-							if (res) {
+							if (!res) {
 								this.marqueursActivite = response.data;
 								this.text = response.data.length + " résultats !";
 								this.snackbar = true;

@@ -83,8 +83,6 @@
 			},
 			marqueursInstallation: function (newVal) {
 
-				console.log(newVal);
-
 				let latLngList= [];
 				newVal.forEach(element => {
 					latLngList.push([this.getLatLng(element).lat, this.getLatLng(element).lng]);
