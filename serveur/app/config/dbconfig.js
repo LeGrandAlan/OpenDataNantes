@@ -1,18 +1,18 @@
 "use strict";
-const path = require('path');
+
 const fs = require('fs');
 const sqlite = require('sqlite3').verbose();
 const parse = require('csv-parse');
 
-const ACTIVITEFILEPATH = ("./data/normal/234400034_004-009_activites-des-fiches-equipements-rpdl.csv");
+const ACTIVITEFILEPATH = ("./data/extra_small/234400034_004-009_activites-des-fiches-equipements-rpdl_extra_small.csv");
 // const ACTIVITEFILEPATH = ("./data/small/234400034_004-009_activites-des-fiches-equipements-rpdl_small.csv");
 const ACTIVITETABLENAME = "activites";
 
-const INSTALLATIONFILEPATH = ("./data/normal/234400034_004-010_fiches-installations-rpdl.csv");
+const INSTALLATIONFILEPATH = ("./data/extra_small/234400034_004-010_fiches-installations-rpdl_extra_small.csv");
 // const INSTALLATIONFILEPATH = ("./data/small/234400034_004-010_fiches-installations-rpdl_small.csv");
 const INSTALLATIONTABLENAME = "installations";
 
-const EQUIPEMENTPATH = ("./data/normal/234400034_004-011_fiches-equipements-rpdl.csv");
+const EQUIPEMENTPATH = ("./data/extra_small/234400034_004-011_fiches-equipements-rpdl_extra_small.csv");
 // const EQUIPEMENTPATH = ("./data/small/234400034_004-011_fiches-equipements-rpdl_small.csv");
 const EQUIPEMENTTABLENAME = "equipements";
 // open database in memory

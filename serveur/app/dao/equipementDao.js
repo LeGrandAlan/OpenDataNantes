@@ -167,7 +167,10 @@ class EquipementDao {
 			equipements = equipements.filter((value) => {
 				return value.distance <= (rayon / 1000);
 			});
-			return equipements.length > 0 ? equipements : new DaoError(21, "Entity not found");
+			if (equipements.length === 0)
+				throw new DaoError(21, "Entity not found");
+
+			return equipements;
 		});
 	}
 

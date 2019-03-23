@@ -5,7 +5,7 @@
  */
 
 class Equipement {
-	constructor(codeDepartement, departement, codeINSEE, commune, numeroInstalation, numeroEquipement, nomInstalation
+	constructor(codeDepartement, departement, codeINSEE, commune, numeroInstalation, nomInstalation, numeroEquipement
 		, nomEquipement, typeEquipementCode, typeEquipement, proprietairePrincipal, nombreVestiaire, accueilBuvette
 		, longitude, latitude, id, installation) {
 		this.codeDepartement = codeDepartement;
@@ -21,8 +21,8 @@ class Equipement {
 		this.proprietairePrincipal = proprietairePrincipal;
 		this.nombreVestiaire = nombreVestiaire;
 		this.accueilBuvette = accueilBuvette;
-		this.longitude = longitude;
 		this.latitude = latitude;
+		this.longitude = longitude;
 		this.id = id;
 		this.installation = installation;
 	}
