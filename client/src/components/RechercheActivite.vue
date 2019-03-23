@@ -1,7 +1,7 @@
 <template>
     <v-container fluid fill-height pa-0>
         <v-layout column>
-            <v-layout row wrap align-content-start pa-2>
+            <v-layout row wrap align-content-start pa-2 style="flex-grow: 0">
                 <v-flex xs12>
                     <v-card-text>
                         <h1 style="display: inline-block; margin-right: 10px;">Recherche d'activités</h1>
@@ -108,14 +108,19 @@
                 <v-flex xs1>
                     <v-btn v-on:click="chargerMarqueursCarte" color="info">Valider</v-btn>
                 </v-flex>
-                <v-flex xs1>
-                    <v-switch v-model="grille" label="Affichage grille"></v-switch>
-                </v-flex>
+                <v-tabs fixed-tabs>
+                    <v-tab v-on:click="table = false">
+                        Carte
+                    </v-tab>
+                    <v-tab v-on:click="table = true" >
+                        Tableau
+                    </v-tab>
+                </v-tabs>
             </v-layout>
-            <Map v-if="!grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
-            <Map v-if="!grille && marqueursActivite === null" style="height: 70%; width: 100%;"/>
-            <GridList v-if="grille && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="width: 100%;"/>
-            <GridList v-if="grille && marqueursActivite === null" style="width: 100%;"/>
+            <Table v-if="!table && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
+            <Table v-if="!table && marqueursActivite === null" style="height: 70%; width: 100%;"/>
+            <GridList v-if="table && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="width: 100%;"/>
+            <GridList v-if="table && marqueursActivite === null" style="width: 100%;"/>
         </v-layout>
         <v-snackbar
                 v-model="snackbar"
@@ -140,18 +145,18 @@
 </template>
 
 <script>
-	import Map from './Map.vue';
-	import GridList from './GridList.vue';
+	import Table from './Map.vue';
+	import GridList from './Table.vue';
 	import axios from 'axios';
 
 	export default {
 		name: "RechercheActivite",
 		components: {
 			GridList,
-			Map
+			Table
 		},
 		data: () => ({
-			grille: false,
+			table: false,
 			departement: "",
 			departements: null,
 			commune: "",
