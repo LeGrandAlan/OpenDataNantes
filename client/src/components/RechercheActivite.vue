@@ -51,6 +51,7 @@
                 </v-flex>
                 <v-flex xs2 pa-4>
                     <v-slider
+                            :disabled="!geolocalisation"
                             prepend-icon="fas fa-road"
                             thumb-size="24"
                             v-model="slider"
@@ -236,7 +237,7 @@
 						axios.get(url).then(response => { //TODO: catch si recoit une réponse mais vide
 							if(response.data.length > 2000) {
 								this.$confirm("Voulez vous vraiment afficher les résultats ?<br>Il y en a " + response.data.length + ".<br><b>C'est fortement déconseillé !</b>").then(res => {
-									if (res) {
+									if (!res) {
 										this.marqueursActivite = response.data.map(el => {return el.activite});
 										this.text = response.data.length + " résultats !";
 										this.snackbar = true;

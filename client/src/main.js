@@ -24,8 +24,8 @@ Vue.use(Vuetify, {
   iconfont: 'fa'
 });
 Vue.use(VuetifyConfirm, {
-  buttonTrueText: 'On a dit non',
-  buttonFalseText: 'Bon d\'accord',
+  buttonTrueText: 'Je n\'affiche pas',
+  buttonFalseText: 'J\'affiche',
   color: 'warning',
   icon: 'warning',
   title: 'Attention',

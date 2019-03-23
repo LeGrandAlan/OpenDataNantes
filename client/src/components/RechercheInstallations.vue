@@ -4,20 +4,24 @@
             <v-layout row wrap align-content-start pa-2>
                 <v-flex xs12>
                     <v-card-text>
-                        <h1>Recherche d'installations</h1>
+                        <h1 style="display: inline-block; margin-right: 10px;">Recherche d'installations</h1>
+                        <v-icon v-if="geolocalisation" v-on:click="changerStatusGeolocalisation()" style="font-size: 34px; color: blue;">far fa-compass</v-icon>
+                        <v-icon v-else v-on:click="changerStatusGeolocalisation()" style="font-size: 34px; color: grey;">far fa-compass</v-icon>
+                        (Géolocalisation <span v-if="geolocalisation">activée</span><span v-else>désactivée</span>)
                     </v-card-text>
                 </v-flex>
-                <v-flex xs3>
+                <v-flex xs2>
                     <v-card-text>
                         <v-autocomplete
                                 v-model="departement"
                                 :items="departements"
+                                :disabled="geolocalisation"
                                 color="grey"
                                 hide-no-data
                                 hide-selected
                                 item-text="Description"
                                 item-value="API"
-                                label="Département"
+                                label="Dép."
                                 placeholder="Nom du département"
                                 prepend-icon="fas fa-city"
                                 return-object
@@ -26,12 +30,12 @@
                         ></v-autocomplete>
                     </v-card-text>
                 </v-flex>
-                <v-flex xs4>
+                <v-flex xs3>
                     <v-card-text>
                         <v-autocomplete
                                 v-model="commune"
                                 :items="communes"
-                                :disabled="departement === ''"
+                                :disabled="(departement === '' || departement === undefined) || geolocalisation"
                                 color="grey"
                                 hide-no-data
                                 hide-selected
@@ -44,6 +48,17 @@
                                 clearable
                         ></v-autocomplete>
                     </v-card-text>
+                </v-flex>
+                <v-flex xs2 pa-4>
+                    <v-slider
+                            :disabled="!geolocalisation"
+                            prepend-icon="fas fa-road"
+                            thumb-size="24"
+                            v-model="slider"
+                            thumb-label="always"
+                            min="1"
+                            max="50"
+                    ></v-slider>
                 </v-flex>
                 <v-flex xs2>
                     <v-switch v-model="bus" label="Déserte bus"></v-switch>
@@ -154,7 +169,9 @@
 			x: null,
 			mode: '',
 			timeout: 4000,
-			text: ''
+			text: '',
+			geolocalisation: null,
+			slider: 1
 		}),
 		props: {
 			source: String
@@ -177,6 +194,70 @@
 			});
 		},
 		methods: {
+			changerStatusGeolocalisation() {
+				this.geolocalisation = !this.geolocalisation;
+			},
+			getGeolocalisation() {
+				return new Promise(function (resolve, reject) {
+					if (navigator.geolocation) {
+						navigator.geolocation.getCurrentPosition(
+							(position) => {
+								resolve(position);
+							},
+							function (error) {
+								reject(error.message);
+							}, {
+								enableHighAccuracy: true
+								, timeout: 5000
+							}
+						);
+					} else {
+						reject("La géolocalisation n'est pas suportée par votre navigateur.");
+					}
+				});
+			},
+			chargerMarqueursCarteGeolocalisation(rayon, installation, installationParticuliere, bus, tram, handi) {
+
+				this.getGeolocalisation()
+					.then((gelocalisation) => {
+
+						let url = `http://localhost:3000/api/installation/`+
+							`latitude/${gelocalisation.coords.latitude}`+
+							`/longitude/${gelocalisation.coords.longitude}`+
+							`/rayon/${rayon}`+
+							`/nom_installation/${installation}`+
+							`/installationParticuliere/${installationParticuliere}`+
+							`/bus/${bus}`+
+							`/tram/${tram}`+
+							`/handicap/${handi}`;
+
+						axios.get(url).then(response => { //TODO: catch si recoit une réponse mais vide
+							if(response.data.length > 2000) {
+								this.$confirm("Voulez vous vraiment afficher les résultats ?<br>Il y en a " + response.data.length + ".<br><b>C'est fortement déconseillé !</b>").then(res => {
+									if (!res) {
+										this.marqueursInstallation = response.data.map(el => {return el.installation});
+										this.text = response.data.length + " résultats !";
+										this.snackbar = true;
+									}
+								});
+							} else {
+								this.marqueursInstallation = response.data.map(el => {return el.installation});
+								this.text = response.data.length + " résultats !";
+								this.snackbar = true;
+							}
+
+						}).catch(() => {
+							this.marqueursInstallation = null;
+							this.text = "Aucun résultats !";
+							this.snackbar = true;
+						});
+
+					})
+					.catch((erreur) => {
+						alert(erreur);
+					});
+
+			},
 			chargerMarqueursCarte() {
 
 				let installationParticuliere = this.installationParticuliere === "" || this.installationParticuliere === undefined ? "null" : this.installationParticuliere;
@@ -186,6 +267,12 @@
 				let bus = this.bus ? true : "null";
 				let tram = this.tram ? true : "null";
 				let handi = this.handi ? true : "null";
+				let slider = this.slider;
+
+				if(this.geolocalisation) {
+					this.chargerMarqueursCarteGeolocalisation(slider, installation, installationParticuliere, bus, tram, handi);
+					return;
+				}
 
 				let url = `http://localhost:3000/api/installation/`+
 					`departement/${departement}`+
@@ -200,26 +287,14 @@
 
 					if(response.data.length > 2000) {
 						this.$confirm("Voulez vous vraiment afficher les résultats ?<br>Il y en a " + response.data.length + ".<br><b>C'est fortement déconseillé !</b>").then(res => {
-							if(res) {
+							if(!res) {
 								this.marqueursInstallation = response.data;
-
-								//TODO: à enlever (il est la en attendant que Maxence supprime la première ligne)
-								this.marqueursInstallation = this.marqueursInstallation.filter(marqueur => {
-									return marqueur.nomUsuelDeLInstallation !== "5";
-								});
-
 								this.text = response.data.length + " résultats !";
 								this.snackbar = true;
 							}
 						});
 					} else {
 						this.marqueursInstallation = response.data;
-
-						//TODO: à enlever (il est la en attendant que Maxence supprime la première ligne)
-						this.marqueursInstallation = this.marqueursInstallation.filter(marqueur => {
-							return marqueur.nomUsuelDeLInstallation !== "5";
-						});
-
 						this.text = response.data.length + " résultats !";
 						this.snackbar = true;
 					}
