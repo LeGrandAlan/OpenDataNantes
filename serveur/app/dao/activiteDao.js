@@ -65,6 +65,7 @@ class ActiviteDao {
 	findByAll(departement, commune, activite, niveau, bus, tram, handicap) {
 		const sqlRequest =
 			"select a.*," +
+			"       e.nom_equipement," +
 			"       e.Coordonnees_GPS_latitude," +
 			"       e.Coordonnees_GPS_longitude " +
 			"from activites a, " +
@@ -96,7 +97,7 @@ class ActiviteDao {
 			for (const row of rows) {
 				let values = Object.values(row);
 				activites.push(new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-					, values[8], values[9], values[10], values[11], values[15], values[16], values[14]));
+					, values[8], values[9], values[10], values[11], values[16], values[17], values[14], values[15]));
 			}
 			return activites;
 		});
@@ -105,6 +106,7 @@ class ActiviteDao {
 	findByAllAndCoordonnees(latitude, longitude, rayon, activite, niveau, bus, tram, handicap) {
 		const sqlRequest =
 			"select a.*," +
+			"       e.nom_equipement," +
 			"       e.Coordonnees_GPS_latitude," +
 			"       e.Coordonnees_GPS_longitude " +
 			"from activites a," +
@@ -124,8 +126,6 @@ class ActiviteDao {
 
 		latitude = Number(latitude);
 		longitude = Number(longitude);
-		console.log(latitude);
-		console.log(longitude);
 		rayon = Number(rayon) * 1000;
 		if (typeof (Number.prototype.toRad) === "undefined") {
 			Number.prototype.toRad = function () {
@@ -162,8 +162,8 @@ class ActiviteDao {
 				let values = Object.values(row);
 				activites.push({
 					activite: new Activite(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]
-						, values[8], values[9], values[10], values[11], values[15], values[16], values[14]),
-					distance: distance(latitude, longitude, Number(values[15]), Number(values[16]))
+						, values[8], values[9], values[10], values[11], values[16], values[17], values[14],values[15]),
+					distance: distance(latitude, longitude, Number(values[16]), Number(values[17]))
 				});
 			}
 			activites.sort((a, b) => {
