@@ -234,7 +234,7 @@
 							`/tram/${tram}`+
 							`/handicap/${handi}`;
 
-						axios.get(url).then(response => { //TODO: catch si recoit une réponse mais vide
+						axios.get(url).then(response => {
 							if(response.data.length > 2000) {
 								this.$confirm("Voulez vous vraiment afficher les résultats ?<br>Il y en a " + response.data.length + ".<br><b>C'est fortement déconseillé !</b>").then(res => {
 									if (!res) {

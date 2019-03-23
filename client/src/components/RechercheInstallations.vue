@@ -194,9 +194,16 @@
 			});
 		},
 		methods: {
+			/**
+             * Active la géolocalisation (la variable)
+			 */
 			changerStatusGeolocalisation() {
 				this.geolocalisation = !this.geolocalisation;
 			},
+			/**
+             * Retourne une promesse avec la géolocalisation ou une erreur
+			 * @returns {Promise<any>}
+			 */
 			getGeolocalisation() {
 				return new Promise(function (resolve, reject) {
 					if (navigator.geolocation) {
@@ -216,6 +223,15 @@
 					}
 				});
 			},
+			/**
+             * Charge la carte avec les critères de recherche et la géolocalisation de l'utilisateur
+			 * @param rayon                     rayon de recherche en kilomètres
+			 * @param installation              nom de l'installation
+			 * @param installationParticuliere  type d'installation
+			 * @param bus                       vrai si accessible en bus
+			 * @param tram                      vrai si accessible en tram
+			 * @param handi                     vrai si accessible aux personnes à mobilité réduite
+			 */
 			chargerMarqueursCarteGeolocalisation(rayon, installation, installationParticuliere, bus, tram, handi) {
 
 				this.getGeolocalisation()
@@ -258,6 +274,9 @@
 					});
 
 			},
+			/**
+             * Charge la carte avec les critères de recherche et, si activée, la géolocalisation de l'utilisateur
+			 */
 			chargerMarqueursCarte() {
 
 				let installationParticuliere = this.installationParticuliere === "" || this.installationParticuliere === undefined ? "null" : this.installationParticuliere;
@@ -305,6 +324,9 @@
 					this.snackbar = true;
 				});
 			},
+			/**
+             * Charge la liste des communes en fonction du département sélectionné
+			 */
 			chargerCommunes() {
 				if (this.departement !== "Non défini") {
 					axios.get("http://localhost:3000/api/activite/liste/departement/" + this.departement + "/nom_commune/").then(response => {

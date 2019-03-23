@@ -19,7 +19,7 @@
                         <div>
                             <h3>{{marqueurActivite.equipement}} : {{marqueurActivite.activiteLibelle}}</h3><br>
                             <span v-if="marqueurActivite.niveauDeLActivite">Niveau : {{marqueurActivite.niveauDeLActivite}}<br></span>
-                            Ville : {{marqueurActivite.nomDeLaCommune}}<br>
+                            Commune : {{marqueurActivite.nomDeLaCommune}}<br>
                             Nombre d'équipements : {{marqueurActivite.nombreEquipementsIdentiques}}
                         </div>
                     </l-popup>
