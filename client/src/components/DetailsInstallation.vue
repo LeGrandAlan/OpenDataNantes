@@ -1,6 +1,6 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <v-container fluid fill-height pa-8 >
-        <v-layout column>
+        <v-layout column v-if="installation">
             <h1>Details de l'installation : {{installation.nomUsuelDeLInstallation}}</h1>
             <ul style="margin: 16px 0;">
                 <li>{{installation.noDeLaVoie !== 'null' ? installation.noDeLaVoie : ''}} {{installation.nomDeLaVoie}}, {{installation.codePostal}} {{installation.nomDeLaCommune}}, {{installation.departement}}</li>
