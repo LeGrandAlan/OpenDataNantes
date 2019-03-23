@@ -459,7 +459,8 @@ class InstallationDao {
 		return this.common.findAll(sqlRequest).then(rows => {
 			let noms = [];
 			for (const row of rows) {
-				noms.push(row["Installation_particuliere"]);
+				if (row["Installation_particuliere"] !== "false")
+					noms.push(row["Installation_particuliere"]);
 			}
 			return noms;
 		});
