@@ -22,7 +22,7 @@
                                 item-text="Description"
                                 item-value="API"
                                 label="Département"
-                                placeholder="Nom du dép.    "
+                                placeholder="Nom du dép."
                                 prepend-icon="fas fa-city"
                                 return-object
                                 v-on:change="chargerCommunes()"
@@ -48,6 +48,16 @@
                                 clearable
                         ></v-autocomplete>
                     </v-card-text>
+                </v-flex>
+                <v-flex xs2 pa-4>
+                    <v-slider
+                            prepend-icon="fas fa-road"
+                            thumb-size="24"
+                            v-model="slider"
+                            thumb-label="always"
+                            min="1"
+                            max="50"
+                    ></v-slider>
                 </v-flex>
                 <v-flex xs2>
                     <v-switch v-model="bus" label="Déserte bus"></v-switch>
@@ -132,7 +142,6 @@
 	import Map from './Map.vue';
 	import GridList from './GridList.vue';
 	import axios from 'axios';
-	import * as L from "leaflet";
 
 	export default {
 		name: "RechercheActivite",
@@ -162,7 +171,8 @@
 			text: '',
 			center: null,
 			zoom: null,
-			geolocalisation: null
+			geolocalisation: null,
+			slider: 1
 		}),
 		props: {
 			source: String
@@ -208,7 +218,7 @@
 					}
 				});
 			},
-			chargerMarqueursCarteGeolocalisation(niveauActivite, activite, bus, tram, handi) {
+			chargerMarqueursCarteGeolocalisation(rayon, niveauActivite, activite, bus, tram, handi) {
 
 				this.getGeolocalisation()
 					.then((gelocalisation) => {
@@ -216,7 +226,7 @@
 						let url = `http://localhost:3000/api/activite/`+
 							`latitude/${gelocalisation.coords.latitude}`+
 							`/longitude/${gelocalisation.coords.longitude}`+
-							`/rayon/5`+
+							`/rayon/${rayon}`+
 							`/activite/${activite}`+
 							`/niveau/${niveauActivite}`+
 							`/bus/${bus}`+
@@ -258,12 +268,12 @@
 				let bus = this.bus ? true : "null";
 				let tram = this.tram ? true : "null";
 				let handi = this.handi ? true : "null";
+				let slider = this.slider;
 
 				if(this.geolocalisation) {
-					this.chargerMarqueursCarteGeolocalisation(niveauActivite, activite, bus, tram, handi);
+					this.chargerMarqueursCarteGeolocalisation(slider, niveauActivite, activite, bus, tram, handi);
 					return;
 				}
-
 
 				let url = `http://localhost:3000/api/activite/`+
 					`departement/${departement}`+
