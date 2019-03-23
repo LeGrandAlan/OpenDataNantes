@@ -14,6 +14,7 @@
                     :attribution="attribution"
             />
             <v-marker-cluster v-if="marqueursActivite">
+                <!-- eslint-disable-next-line -->
                 <l-marker v-for="(marqueurActivite, index) in marqueursActivite" :key="`marqueurActivite-${index}`" v-if="getLatLng(marqueurActivite) !== null" :lat-lng="getLatLng(marqueurActivite)">
                     <l-popup>
                         <div>
@@ -26,6 +27,7 @@
                 </l-marker>
             </v-marker-cluster>
             <v-marker-cluster v-if="marqueursInstallation">
+                <!-- eslint-disable-next-line -->
                 <l-marker v-for="(marqueurInstallation, index) in marqueursInstallation" :key="`marqueursInstallation-${index}`" v-if="getLatLng(marqueurInstallation) !== null" :lat-lng="getLatLng(marqueurInstallation)">
                     <l-popup>
                         <div>
