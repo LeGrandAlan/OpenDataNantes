@@ -22,9 +22,9 @@ const db = new sqlite.Database('./database.db', (err) => {
 	console.log('Connected to my database.');
 });
 
-db.get("PRAGMA foreign_keys = ON");
-db.get("PRAGMA synchronous = OFF");
-db.get("PRAGMA temp_store = MEMORY");
+db.get("PRAGMA foreign_keys = ON"); // on active les contraintes d'intégrités
+db.get("PRAGMA synchronous = OFF"); // pas d'appels disque à chaque insert
+db.get("PRAGMA temp_store = MEMORY"); // on place la BD en RAM
 
 
 /**

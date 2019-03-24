@@ -11,7 +11,7 @@ const compression = require('compression');
 const database = require('./app/config/dbconfig');
 
 /* Init database */
-if (process.argv[2] === "init")
+if (process.argv[2] === "init") // si la commande d'execution comporte init
 	database.init();
 
 /* Init server listening */
@@ -25,6 +25,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(compression());
+
 /* Express security   */
 app.use(helmet());
 app.disable('x-powered-by');

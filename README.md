@@ -14,7 +14,7 @@ Il y a deux parties dans ce projet :
 - Client : utilisation du serveur pour afficher les données de manières
 pratique aux utilisateurs.
 
-##Deploiement
+## Deploiement
 
 Pour lancer exécuter le serveur et le client sur une même machine, nous vous
 conseillons d'ouvrir deux terminaux, un sera placé dans le répertoire client, et l'autre

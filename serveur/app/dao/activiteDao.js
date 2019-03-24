@@ -205,7 +205,7 @@ class ActiviteDao {
 		const sqlParams = {
 			$value: value
 		};
-		console.log(sqlParams);
+
 		return this.common.findAllWithParams(sqlRequest, sqlParams).then(rows => {
 
 			let activites = [];
