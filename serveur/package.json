@@ -1,0 +1,23 @@
+{
+	"name": "serveur",
+	"version": "1.0.0",
+	"description": "Projet universitaire dans le cadre du cours de Technologies pour la production de logiciels (M4105C)",
+	"main": "index.js",
+	"scripts": {
+		"start": "node ./index.js",
+		"initDB": "node ./index.js init"
+	},
+	"author": "Alan Le Grand, Etienne Lécrivain et Maxence Dominici",
+	"license": "AGPL-3.0-or-later",
+	"dependencies": {
+		"bluebird": "latest",
+		"body-parser": "latest",
+		"cors": "^2.8.5",
+		"csv-parse": "^4.3.4",
+		"express": "latest",
+		"fs": "latest",
+		"helmet": "^3.16.0",
+		"sqlite3": "^4.0.6",
+		"compression": "latest"
+	}
+}
