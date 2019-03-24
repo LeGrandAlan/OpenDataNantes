@@ -117,10 +117,10 @@
                     </v-tab>
                 </v-tabs>
             </v-layout>
-            <Table v-if="!table && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
-            <Table v-if="!table && marqueursActivite === null" style="height: 70%; width: 100%;"/>
-            <GridList v-if="table && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="width: 100%;"/>
-            <GridList v-if="table && marqueursActivite === null" style="width: 100%;"/>
+            <Map v-if="!table && marqueursActivite !== null" :dark-mode="darkMode" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
+            <Map v-if="!table && marqueursActivite === null" :dark-mode="darkMode" style="height: 70%; width: 100%;"/>
+            <Table v-if="table && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="width: 100%;"/>
+            <Table v-if="table && marqueursActivite === null" style="width: 100%;"/>
         </v-layout>
         <v-snackbar
                 v-model="snackbar"
@@ -145,14 +145,14 @@
 </template>
 
 <script>
-	import Table from './Map.vue';
-	import GridList from './Table.vue';
+	import Map from './Map.vue';
+	import Table from './Table.vue';
 	import axios from 'axios';
 
 	export default {
 		name: "RechercheActivite",
 		components: {
-			GridList,
+			Map,
 			Table
 		},
 		data: () => ({
@@ -181,7 +181,7 @@
 			slider: 1
 		}),
 		props: {
-			source: String
+			darkMode: Boolean
 		},
 		mounted() {
 

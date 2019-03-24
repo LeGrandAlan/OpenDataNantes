@@ -61,7 +61,7 @@
 				zoom: 12,
 				center: L.latLng(47.209274, -1.548773),
 				//url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-				url: ' https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
+				url: 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
 				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 				currentZoom: 12,
 				currentCenter: L.latLng(47.209274, -1.548773),
@@ -73,9 +73,16 @@
 		},
 		props: {
 			marqueursActivite: Array,
-			marqueursInstallation: Array
+			marqueursInstallation: Array,
+			darkMode: Boolean
 		},
 		watch: {
+			darkMode: function (newVal) {
+				if (newVal)
+					this.url = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png';
+				else
+					this.url = 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png';
+			},
 			marqueursActivite: function (newVal) {
 				let latLngList= [];
 				newVal.forEach(element => {

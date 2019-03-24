@@ -117,8 +117,8 @@
                     </v-tab>
                 </v-tabs>
             </v-layout>
-            <Map v-if="!table && marqueursInstallation !== null" :marqueurs-installation=marqueursInstallation style="height: 70%; width: 100%;"/>
-            <Map v-if="!table && marqueursInstallation === null" style="height: 70%; width: 100%;"/>
+            <Map v-if="!table && marqueursInstallation !== null" :dark-mode="darkMode" :marqueurs-installation=marqueursInstallation style="height: 70%; width: 100%;"/>
+            <Map v-if="!table && marqueursInstallation === null" :dark-mode="darkMode" style="height: 70%; width: 100%;"/>
             <Table v-if="table && marqueursInstallation !== null" :marqueurs-installation=marqueursInstallation style="width: 100%;"/>
             <Table v-if="table && marqueursInstallation === null" style="width: 100%;"/>
         </v-layout>
@@ -179,7 +179,7 @@
 			slider: 1
 		}),
 		props: {
-			source: String
+			darkMode: Boolean
 		},
 		mounted() {
 			setTimeout(function () {

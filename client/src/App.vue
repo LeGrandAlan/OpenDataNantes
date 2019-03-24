@@ -42,7 +42,7 @@
             <v-content>
                 <!--<keep-alive>-->
                 <component v-if="currentComponent === 'DetailsInstallation'" :noInstallation="noInstallation" v-bind:is="currentComponent"></component>
-                <component v-else v-bind:is="currentComponent"></component>
+                <component v-else v-bind:is="currentComponent" :dark-mode="darkMode"></component>
                 <!--</keep-alive>-->
             </v-content>
             <v-footer app fixed>
