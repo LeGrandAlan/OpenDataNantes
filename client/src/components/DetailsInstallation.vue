@@ -8,7 +8,9 @@
                 <li>Type d'installation : {{installation.installationParticuliere !== 'false' ? installation.installationParticuliere : 'non précisé'}}</li>
                 <li v-if="installation.nombrePlaceParking > 0">{{installation.nombrePlaceParking}} places de parking</li>
                 <li v-if="installation.desserteTram === 'true'">Accessible par tram <v-icon>fas fa-train</v-icon></li>
-                <li v-if="installation.desserteBus === 'true'">Accessible par bus <v-icon>fas fa-bus</v-icon></li>
+                <li v-if="installation.desserteBus === 'true'">Accessible par bus <v-icon>fas fa-bus</v-icon></li><br>
+                <li v-if="installation.latitude">Latitude : {{installation.latitude}}</li>
+                <li v-if="installation.longitude">Longitude : {{installation.longitude}}</li>
             </ul>
             <h1 style="margin-bottom: 16px;">Equipements de l'installation</h1>
             <v-expansion-panel>
