@@ -104,6 +104,12 @@
 				this.bounds = L.latLngBounds(latLngList);
 			}
 		},
+		mounted() {
+			if (this.darkMode)
+				this.url = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png';
+			else
+				this.url = 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png';
+		},
 		methods: {
 			detailsInstallation(noInstallation) {
 				this.$root.$emit('installationDetailsClicked', noInstallation);
