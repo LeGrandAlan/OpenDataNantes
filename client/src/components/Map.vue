@@ -32,8 +32,8 @@
                     <l-popup>
                         <div>
                             <h3>{{marqueurInstallation.nomUsuelDeLInstallation}}</h3><br>
-                            {{marqueurInstallation.installationParticuliere}}<br>
-                            {{marqueurInstallation.noDeLaVoie !== 'null' ? marqueurInstallation.noDeLaVoie : ''}} {{marqueurInstallation.nomDeLaVoie}} {{marqueurInstallation.nomDeLaCommune}}<br>
+                            <span v-if="marqueurInstallation.installationParticuliere !== 'false'">{{marqueurInstallation.installationParticuliere}}<br></span>
+                            {{marqueurInstallation.noDeLaVoie !== 'null' ? marqueurInstallation.noDeLaVoie : ''}} {{marqueurInstallation.nomDeLaVoie}}, {{marqueurInstallation.nomDeLaCommune}}<br>
                             Places de parking : {{marqueurInstallation.nombrePlaceParking}}<br>
                             <a v-on:click="detailsInstallation(marqueurInstallation.noDeLInstallation)">Voir toutes les informations</a>
                         </div>

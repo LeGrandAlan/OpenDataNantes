@@ -5,7 +5,7 @@
                 <v-flex xs12>
                     <v-card-text>
                         <h1 style="display: inline-block; margin-right: 10px;">Recherche d'installations</h1>
-                        <v-icon v-if="geolocalisation" v-on:click="changerStatusGeolocalisation()" style="font-size: 34px; color: blue;">far fa-compass</v-icon>
+                        <v-icon v-if="geolocalisation" v-on:click="changerStatusGeolocalisation()" style="font-size: 34px; color: #1976d2;">far fa-compass</v-icon>
                         <v-icon v-else v-on:click="changerStatusGeolocalisation()" style="font-size: 34px; color: gray;">far fa-compass</v-icon>
                         (Géolocalisation <span v-if="geolocalisation">activée</span><span v-else>désactivée</span>)
                     </v-card-text>
