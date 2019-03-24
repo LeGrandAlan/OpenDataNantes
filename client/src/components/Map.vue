@@ -59,13 +59,13 @@
 		},
 		data () {
 			return {
-				zoom: 12,
-				center: L.latLng(47.209274, -1.548773),
+				zoom: 7.7,
+				center: L.latLng(47.409274, -0.548773),
 				//url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
 				url: 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png',
 				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-				currentZoom: 12,
-				currentCenter: L.latLng(47.209274, -1.548773),
+				currentZoom: 7.7,
+				currentCenter: L.latLng(47.409274, -0.548773),
 				mapOptions: {
 					zoomSnap: 0.5
 				},
