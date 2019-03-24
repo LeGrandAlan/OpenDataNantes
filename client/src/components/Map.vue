@@ -149,4 +149,13 @@
         position: absolute;
         bottom: 0;
     }
+
+    .theme--dark .leaflet-popup-content-wrapper {
+        background: #222 !important;
+        color: white !important;
+    }
+
+    .theme--dark .leaflet-popup-tip {
+        background: #222 !important;
+    }
 </style>
