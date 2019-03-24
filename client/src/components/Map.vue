@@ -6,6 +6,7 @@
                 :center="center"
                 :bounds="bounds"
                 :options="mapOptions"
+                :min-zoom="5"
                 @update:center="centerUpdate"
                 @update:zoom="zoomUpdate"
         >
