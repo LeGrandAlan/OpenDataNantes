@@ -117,8 +117,10 @@
                     </v-tab>
                 </v-tabs>
             </v-layout>
-            <Map v-if="!table && marqueursActivite !== null" :dark-mode="darkMode" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
-            <Map v-if="!table && marqueursActivite === null" :dark-mode="darkMode" style="height: 70%; width: 100%;"/>
+            <keep-alive>
+                <Map v-if="!table && marqueursActivite !== null" :dark-mode="darkMode" :marqueurs-activite=marqueursActivite style="height: 70%; width: 100%;"/>
+                <Map v-if="!table && marqueursActivite === null" :dark-mode="darkMode" style="height: 70%; width: 100%;"/>
+            </keep-alive>
             <Table v-if="table && marqueursActivite !== null" :marqueurs-activite=marqueursActivite style="width: 100%;"/>
             <Table v-if="table && marqueursActivite === null" style="width: 100%;"/>
         </v-layout>

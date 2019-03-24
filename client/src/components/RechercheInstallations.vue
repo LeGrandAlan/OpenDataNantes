@@ -117,8 +117,10 @@
                     </v-tab>
                 </v-tabs>
             </v-layout>
-            <Map v-if="!table && marqueursInstallation !== null" :dark-mode="darkMode" :marqueurs-installation=marqueursInstallation style="height: 70%; width: 100%;"/>
-            <Map v-if="!table && marqueursInstallation === null" :dark-mode="darkMode" style="height: 70%; width: 100%;"/>
+            <keep-alive>
+                <Map v-if="!table && marqueursInstallation !== null" :dark-mode="darkMode" :marqueurs-installation=marqueursInstallation style="height: 70%; width: 100%;"/>
+                <Map v-if="!table && marqueursInstallation === null" :dark-mode="darkMode" style="height: 70%; width: 100%;"/>
+            </keep-alive>
             <Table v-if="table && marqueursInstallation !== null" :marqueurs-installation=marqueursInstallation style="width: 100%;"/>
             <Table v-if="table && marqueursInstallation === null" style="width: 100%;"/>
         </v-layout>
@@ -200,13 +202,13 @@
 		},
 		methods: {
 			/**
-             * Active la géolocalisation (la variable)
+			 * Active la géolocalisation (la variable)
 			 */
 			changerStatusGeolocalisation() {
 				this.geolocalisation = !this.geolocalisation;
 			},
 			/**
-             * Retourne une promesse avec la géolocalisation ou une erreur
+			 * Retourne une promesse avec la géolocalisation ou une erreur
 			 * @returns {Promise<any>}
 			 */
 			getGeolocalisation() {
@@ -229,7 +231,7 @@
 				});
 			},
 			/**
-             * Charge la carte avec les critères de recherche et la géolocalisation de l'utilisateur
+			 * Charge la carte avec les critères de recherche et la géolocalisation de l'utilisateur
 			 * @param rayon                     rayon de recherche en kilomètres
 			 * @param installation              nom de l'installation
 			 * @param installationParticuliere  type d'installation
@@ -280,7 +282,7 @@
 
 			},
 			/**
-             * Charge la carte avec les critères de recherche et, si activée, la géolocalisation de l'utilisateur
+			 * Charge la carte avec les critères de recherche et, si activée, la géolocalisation de l'utilisateur
 			 */
 			chargerMarqueursCarte() {
 
@@ -330,7 +332,7 @@
 				});
 			},
 			/**
-             * Charge la liste des communes en fonction du département sélectionné
+			 * Charge la liste des communes en fonction du département sélectionné
 			 */
 			chargerCommunes() {
 				if (this.departement !== "Non défini") {
