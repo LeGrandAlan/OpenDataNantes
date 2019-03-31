@@ -31,7 +31,12 @@ Pour cela, nous utilisons npm.
 ```
 npm install
 ```
-Une fois la commande précédente terminée, vous pouvez lancer le serveur.
+Une fois la commande précédente terminée, vous avez plusieurs options :
+- Soit vous lancez le serveur tout en initialisant la base de données :
+```
+npm run startDB
+```
+- Soit vous lancez le serveur simplement (ne marche pas si la base de données n'a jamais été initialisée) :
 ```
 npm run start
 ```
