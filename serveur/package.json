@@ -13,7 +13,7 @@
 		"bluebird": "latest",
 		"body-parser": "latest",
 		"cors": "^2.8.5",
-		"csv-parse": "^4.3.4",
+		"csv-parse": "^4.4.6",
 		"express": "latest",
 		"fs": "latest",
 		"helmet": "^3.16.0",
